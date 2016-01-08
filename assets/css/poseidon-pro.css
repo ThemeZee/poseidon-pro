@@ -1,12 +1,12 @@
 /*
- * ThemeZee Boilerplate Addon
- * https://themezee.com/plugins/boilerplate-addon/
+ * Poseidon Pro
+ * https://themezee.com/plugins/poseidon-addon/
  *
  * Copyright(C) 2015, ThemeZee.com - support@themezee.com
  * License: GPL v3
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  *
- * @package ThemeZee Boilerplate Addon
+ * @package Poseidon Pro
  */
 
  
@@ -15,16 +15,16 @@
 ---------------------------------------------------------------- */
 
 /* Clearing Floats */
-.tzba-clearfix:before, 
-.tzba-clearfix:after {  
+.poseidon-pro-clearfix:before, 
+.poseidon-pro-clearfix:after {  
 	content: " ";
 	display: table;  
 }  
 
-.tzba-clearfix:after {  
+.poseidon-pro-clearfix:after {  
 	clear: both;
 }  
 
-.tzba-clearfix {
+.poseidon-pro-clearfix {
     *zoom: 1; /* For IE 6/7 only */  
 }

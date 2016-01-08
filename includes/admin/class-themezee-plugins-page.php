@@ -4,7 +4,7 @@
  *
  * Registers and displays the ThemeZee Addons Page
  *
- * @package ThemeZee Boilerplate Addon
+ * @package Poseidon Pro
  */
  
 // Exit if accessed directly
@@ -40,8 +40,8 @@ class ThemeZee_Plugins_Page {
 	static function add_plugins_page() {
 			
 		add_options_page(
-			esc_html__( 'ThemeZee Plugins', 'themezee-boilerplate-addon' ),
-			esc_html__( 'ThemeZee Plugins', 'themezee-boilerplate-addon' ),
+			esc_html__( 'ThemeZee Plugins', 'poseidon-pro' ),
+			esc_html__( 'ThemeZee Plugins', 'poseidon-pro' ),
 			'manage_options',
 			'themezee-plugins',
 			array( __CLASS__, 'display_plugins_page' )
@@ -110,14 +110,14 @@ class ThemeZee_Plugins_Page {
 	*/
 	static function display_overview_page() { 
 	
-		$plugin_link = '<a target="_blank" href="https://themezee.com/plugins/?utm_source=plugin-overview&utm_medium=teaser&utm_campaign=plugins" title="'. esc_html__( 'ThemeZee Plugins', 'themezee-boilerplate-addon' ) . '">'. esc_html__( 'plugins', 'themezee-boilerplate-addon' ) . '</a>';
+		$plugin_link = '<a target="_blank" href="https://themezee.com/plugins/?utm_source=plugin-overview&utm_medium=teaser&utm_campaign=plugins" title="'. esc_html__( 'ThemeZee Plugins', 'poseidon-pro' ) . '">'. esc_html__( 'plugins', 'poseidon-pro' ) . '</a>';
 		?>
 		
 		<div id="themezee-plugins-overview">
 		
-			<h1 id="themezee-plugin-header"><?php esc_html_e( 'ThemeZee Plugins', 'themezee-boilerplate-addon' ); ?></h1>
+			<h1 id="themezee-plugin-header"><?php esc_html_e( 'ThemeZee Plugins', 'poseidon-pro' ); ?></h1>
 			<div class="themezee-plugins-intro">
-				<?php printf( esc_html__( 'You need more features and functionality? Extend your website with our customized %s.', 'themezee-boilerplate-addon' ), $plugin_link ); ?>
+				<?php printf( esc_html__( 'You need more features and functionality? Extend your website with our customized %s.', 'poseidon-pro' ), $plugin_link ); ?>
 			</div>
 			<hr/>
 
@@ -140,7 +140,7 @@ class ThemeZee_Plugins_Page {
 	static function get_settings_tabs() {
 
 		$tabs                 = array();
-		$tabs['overview']      = esc_html__( 'Overview', 'themezee-boilerplate-addon' );
+		$tabs['overview']      = esc_html__( 'Overview', 'poseidon-pro' );
 		
 		return apply_filters( 'themezee_plugins_settings_tabs', $tabs );
 	}
@@ -158,7 +158,7 @@ class ThemeZee_Plugins_Page {
 			return;
 				
 		// Enqueue Admin CSS
-		wp_enqueue_style( 'themezee-plugins-stylesheet', TZBA_PLUGIN_URL . 'assets/css/themezee-plugins.css', array(), TZBA_VERSION );
+		wp_enqueue_style( 'themezee-plugins-stylesheet', POSEIDON_PRO_PLUGIN_URL . 'assets/css/themezee-plugins.css', array(), POSEIDON_PRO_VERSION );
 		
 	}
 	

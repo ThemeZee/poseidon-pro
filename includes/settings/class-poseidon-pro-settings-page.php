@@ -1,10 +1,10 @@
 <?php
 /***
- * TZBA Settings Page Class
+ * Poseidon Pro Settings Page Class
  *
  * Adds a new tab on the themezee plugins page and displays the settings page.
  *
- * @package ThemeZee Boilerplate Addon
+ * @package Poseidon Pro
  */
  
 // Exit if accessed directly
@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 // Use class to avoid namespace collisions
-if ( ! class_exists('TZBA_Settings_Page') ) :
+if ( ! class_exists('Poseidon_Pro_Settings_Page') ) :
 
-class TZBA_Settings_Page {
+class Poseidon_Pro_Settings_Page {
 
 	/**
 	 * Setup the Settings Page class
@@ -27,7 +27,7 @@ class TZBA_Settings_Page {
 		add_filter( 'themezee_plugins_settings_tabs', array( __CLASS__, 'add_settings_page' ) );
 		
 		// Hook settings page to plugin page
-		add_action( 'themezee_plugins_page_boilerplate', array( __CLASS__, 'display_settings_page' ) );
+		add_action( 'themezee_plugins_page_poseidon', array( __CLASS__, 'display_settings_page' ) );
 	}
 
 	/**
@@ -37,8 +37,8 @@ class TZBA_Settings_Page {
 	*/
 	static function add_settings_page($tabs) {
 			
-		// Add Boilerplate Settings Page to Tabs List
-		$tabs['boilerplate']      = esc_html__( 'Boilerplate', 'themezee-boilerplate-addon' );
+		// Add Poseidon Pro Settings Page to Tabs List
+		$tabs['poseidon']      = esc_html__( 'Poseidon Pro', 'poseidon-pro' );
 		
 		return $tabs;
 		
@@ -54,14 +54,14 @@ class TZBA_Settings_Page {
 		ob_start();
 	?>
 		
-		<div id="tzba-settings" class="tzba-settings-wrap">
+		<div id="poseidon-pro-settings" class="poseidon-pro-settings-wrap">
 			
-			<h1><?php esc_html_e( 'Boilerplate', 'themezee-boilerplate-addon' ); ?></h1>
+			<h1><?php esc_html_e( 'Poseidon Pro', 'poseidon-pro' ); ?></h1>
 			
-			<form class="tzba-settings-form" method="post" action="options.php">
+			<form class="poseidon-pro-settings-form" method="post" action="options.php">
 				<?php
-					settings_fields('tzba_settings');
-					do_settings_sections('tzba_settings');
+					settings_fields('poseidon_pro_settings');
+					do_settings_sections('poseidon_pro_settings');
 					submit_button();
 				?>
 			</form>
@@ -73,7 +73,7 @@ class TZBA_Settings_Page {
 	
 }
 
-// Run TZBA Settings Page Class
-TZBA_Settings_Page::setup();
+// Run Poseidon Pro Settings Page Class
+Poseidon_Pro_Settings_Page::setup();
 
 endif;

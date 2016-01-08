@@ -1,17 +1,17 @@
 <?php
 /*
-Plugin Name: ThemeZee Boilerplate Addon
-Plugin URI: https://themezee.com/plugins/boilerplate-addon/
-Description: A collection of our most popular widgets, neatly bundled into a single plugin. The Plugin includes advanced widgets for Recent Posts, Recent Comments, Facebook Likebox, Tabbed Content, Social Icons and more.
+Plugin Name: Poseidon Pro
+Plugin URI: http://themezee.com/addons/poseidon-pro/
+Description: Adds additional features like footer widgets, custom colors, fonts and logo upload to the Poseidon theme.
 Author: ThemeZee
 Author URI: https://themezee.com/
 Version: 1.0
-Text Domain: themezee-boilerplate-addon
+Text Domain: poseidon-pro
 Domain Path: /languages/
 License: GPL v3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-ThemeZee Boilerplate Addon
+Poseidon Pro
 Copyright(C) 2015, ThemeZee.com - support@themezee.com
 
 */
@@ -20,22 +20,22 @@ Copyright(C) 2015, ThemeZee.com - support@themezee.com
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Use class to avoid namespace collisions
-if ( ! class_exists( 'ThemeZee_Boilerplate_Addon' ) ) :
+if ( ! class_exists( 'Poseidon_Pro' ) ) :
 
 
 /**
- * Main ThemeZee_Boilerplate_Addon Class
+ * Main Poseidon_Pro Class
  *
- * @package ThemeZee Boilerplate Addon
+ * @package Poseidon Pro
  */
-class ThemeZee_Boilerplate_Addon {
+class Poseidon_Pro {
 
 	/**
 	 * Call all Functions to setup the Plugin
 	 *
-	 * @uses ThemeZee_Boilerplate_Addon::constants() Setup the constants needed
-	 * @uses ThemeZee_Boilerplate_Addon::includes() Include the required files
-	 * @uses ThemeZee_Boilerplate_Addon::setup_actions() Setup the hooks and actions
+	 * @uses Poseidon_Pro::constants() Setup the constants needed
+	 * @uses Poseidon_Pro::includes() Include the required files
+	 * @uses Poseidon_Pro::setup_actions() Setup the hooks and actions
 	 * @return void
 	 */
 	static function setup() {
@@ -63,25 +63,25 @@ class ThemeZee_Boilerplate_Addon {
 	static function constants() {
 		
 		// Define Plugin Name
-		define( 'TZBA_NAME', 'ThemeZee Boilerplate Addon' );
+		define( 'POSEIDON_PRO_NAME', 'Poseidon Pro' );
 
 		// Define Version Number
-		define( 'TZBA_VERSION', '1.0' );
+		define( 'POSEIDON_PRO_VERSION', '1.0' );
 		
 		// Define Plugin Name
-		define( 'TZBA_PRODUCT_ID', 99999 );
+		define( 'POSEIDON_PRO_PRODUCT_ID', 99999 );
 
 		// Define Update API URL
-		define( 'TZBA_STORE_API_URL', 'https://themezee.com' ); 
+		define( 'POSEIDON_PRO_STORE_API_URL', 'https://themezee.com' ); 
 
 		// Plugin Folder Path
-		define( 'TZBA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+		define( 'POSEIDON_PRO_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
 		// Plugin Folder URL
-		define( 'TZBA_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+		define( 'POSEIDON_PRO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 		// Plugin Root File
-		define( 'TZBA_PLUGIN_FILE', __FILE__ );
+		define( 'POSEIDON_PRO_PLUGIN_FILE', __FILE__ );
 		
 	}
 	
@@ -93,7 +93,7 @@ class ThemeZee_Boilerplate_Addon {
 	 */
 	static function translation() {
 
-		load_plugin_textdomain( 'themezee-boilerplate-addon', false, dirname( plugin_basename( TZBA_PLUGIN_FILE ) ) . '/languages/' );
+		load_plugin_textdomain( 'poseidon-pro', false, dirname( plugin_basename( POSEIDON_PRO_PLUGIN_FILE ) ) . '/languages/' );
 		
 	}
 	
@@ -106,12 +106,12 @@ class ThemeZee_Boilerplate_Addon {
 	static function includes() {
 
 		// Include Admin Classes
-		require_once TZBA_PLUGIN_DIR . '/includes/admin/class-themezee-plugins-page.php';
-		require_once TZBA_PLUGIN_DIR . '/includes/admin/class-tzba-plugin-updater.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-themezee-plugins-page.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-plugin-updater.php';
 		
 		// Include Settings Classes
-		require_once TZBA_PLUGIN_DIR . '/includes/settings/class-tzba-settings.php';
-		require_once TZBA_PLUGIN_DIR . '/includes/settings/class-tzba-settings-page.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/settings/class-poseidon-pro-settings.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/settings/class-poseidon-pro-settings-page.php';
 		
 	}
 	
@@ -128,9 +128,9 @@ class ThemeZee_Boilerplate_Addon {
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_styles' ) );
 		
 		// Add Settings link to Plugin actions
-		add_filter( 'plugin_action_links_' . plugin_basename( TZBA_PLUGIN_FILE ), array( __CLASS__, 'plugin_action_links' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( POSEIDON_PRO_PLUGIN_FILE ), array( __CLASS__, 'plugin_action_links' ) );
 		
-		// Add Boilerplate Addon Box to Plugin Overview Page
+		// Add Poseidon Pro Addon Box to Plugin Overview Page
 		add_action( 'themezee_plugins_overview_page', array( __CLASS__, 'plugin_overview_page' ) );
 		
 		// Add License Key admin notice
@@ -149,12 +149,12 @@ class ThemeZee_Boilerplate_Addon {
 	static function enqueue_styles() {
 		
 		// Return early if theme handles styling
-		if ( current_theme_supports( 'themezee-boilerplate-addon' ) ) :
+		if ( current_theme_supports( 'poseidon-pro' ) ) :
 			return;
 		endif;
 		
 		// Enqueue Plugin Stylesheet
-		wp_enqueue_style( 'themezee-boilerplate-addon', TZBA_PLUGIN_URL . 'assets/css/themezee-boilerplate-addon.css', array(), TZBA_VERSION );
+		wp_enqueue_style( 'poseidon-pro', POSEIDON_PRO_PLUGIN_URL . 'assets/css/poseidon-pro.css', array(), POSEIDON_PRO_VERSION );
 		
 	}
 	
@@ -165,7 +165,7 @@ class ThemeZee_Boilerplate_Addon {
 	 */
 	static function plugin_action_links( $actions ) {
 
-		$settings_link = array( 'settings' => sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=themezee-plugins&tab=boilerplate' ), __( 'Settings', 'themezee-boilerplate-addon' ) ) );
+		$settings_link = array( 'settings' => sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=themezee-plugins&tab=poseidon' ), __( 'Settings', 'poseidon-pro' ) ) );
 		
 		return array_merge( $settings_link, $actions );
 	}
@@ -184,12 +184,12 @@ class ThemeZee_Boilerplate_Addon {
 		<dl>
 			<dt>
 				<h4><?php echo esc_html( $plugin_data['Name'] ); ?></h4>
-				<span><?php printf( esc_html__( 'Version %s', 'themezee-boilerplate-addon' ),  esc_html( $plugin_data['Version'] ) ); ?></span>
+				<span><?php printf( esc_html__( 'Version %s', 'poseidon-pro' ),  esc_html( $plugin_data['Version'] ) ); ?></span>
 			</dt>
 			<dd>
 				<p><?php echo wp_kses_post( $plugin_data['Description'] ); ?><br/></p>
-				<a href="<?php echo admin_url( 'options-general.php?page=themezee-plugins&tab=boilerplate' ); ?>" class="button button-primary"><?php esc_html_e( 'Plugin Settings', 'themezee-boilerplate-addon' ); ?></a>&nbsp;
-				<a href="<?php echo esc_url( 'https://themezee.com/docs/boilerplate-addon-documentation/?utm_source=plugin-overview&utm_medium=button&utm_campaign=boilerplate&utm_content=documentation' ); ?>" class="button button-secondary" target="_blank"><?php esc_html_e( 'View Documentation', 'themezee-boilerplate-addon' ); ?></a>
+				<a href="<?php echo admin_url( 'options-general.php?page=themezee-plugins&tab=poseidon' ); ?>" class="button button-primary"><?php esc_html_e( 'Plugin Settings', 'poseidon-pro' ); ?></a>&nbsp;
+				<a href="<?php echo esc_url( 'https://themezee.com/docs/poseidon-addon-documentation/?utm_source=plugin-overview&utm_medium=button&utm_campaign=poseidon&utm_content=documentation' ); ?>" class="button button-secondary" target="_blank"><?php esc_html_e( 'View Documentation', 'poseidon-pro' ); ?></a>
 			</dd>
 		</dl>
 		
@@ -211,15 +211,15 @@ class ThemeZee_Boilerplate_Addon {
 		}
 		
 		// Get Settings
-		$options = TZBA_Settings::instance();
+		$options = Poseidon_Pro_Settings::instance();
 		
 		if( '' == $options->get( 'license_key' ) ) : ?>
 			
 			<div class="updated">
 				<p>
-					<?php printf( __( 'Please enter your license key for the %1$s add-on in order to receive updates and support. <a href="%2$s">Enter License Key</a>', 'themezee-boilerplate-addon' ),
-						TZBA_NAME,
-						admin_url( 'options-general.php?page=themezee-plugins&tab=boilerplate' ) ); 
+					<?php printf( __( 'Please enter your license key for the %1$s add-on in order to receive updates and support. <a href="%2$s">Enter License Key</a>', 'poseidon-pro' ),
+						POSEIDON_PRO_NAME,
+						admin_url( 'options-general.php?page=themezee-plugins&tab=poseidon' ) ); 
 					?>
 				</p>
 			</div>
@@ -240,18 +240,18 @@ class ThemeZee_Boilerplate_Addon {
 			return;
 		endif;
 		
-		$options = TZBA_Settings::instance();
+		$options = Poseidon_Pro_Settings::instance();
 
 		if( $options->get( 'license_key' ) <> '' ) :
 			
 			$license_key = $options->get( 'license_key' );
 			
 			// setup the updater
-			$tzba_updater = new TZBA_Plugin_Updater( TZBA_STORE_API_URL, __FILE__, array(
-					'version' 	=> TZBA_VERSION,
+			$poseidon_pro_updater = new Poseidon_Pro_Plugin_Updater( POSEIDON_PRO_STORE_API_URL, __FILE__, array(
+					'version' 	=> POSEIDON_PRO_VERSION,
 					'license' 	=> $license_key,
-					'item_name' => TZBA_NAME,
-					'item_id'   => TZBA_PRODUCT_ID,
+					'item_name' => POSEIDON_PRO_NAME,
+					'item_id'   => POSEIDON_PRO_PRODUCT_ID,
 					'author' 	=> 'ThemeZee'
 				)
 			);
@@ -263,6 +263,6 @@ class ThemeZee_Boilerplate_Addon {
 }
 
 // Run Plugin
-ThemeZee_Boilerplate_Addon::setup();
+Poseidon_Pro::setup();
 
 endif;
