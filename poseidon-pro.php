@@ -106,12 +106,9 @@ class Poseidon_Pro {
 	static function includes() {
 
 		// Include Admin Classes
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-themezee-plugins-page.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-plugin-updater.php';
-		
-		// Include Settings Classes
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/settings/class-poseidon-pro-settings.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/settings/class-poseidon-pro-settings-page.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-settings.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-settings-page.php';
 		
 	}
 	
@@ -129,9 +126,6 @@ class Poseidon_Pro {
 		
 		// Add Settings link to Plugin actions
 		add_filter( 'plugin_action_links_' . plugin_basename( POSEIDON_PRO_PLUGIN_FILE ), array( __CLASS__, 'plugin_action_links' ) );
-		
-		// Add Poseidon Pro Addon Box to Plugin Overview Page
-		add_action( 'themezee_plugins_overview_page', array( __CLASS__, 'plugin_overview_page' ) );
 		
 		// Add License Key admin notice
 		add_action( 'admin_notices', array( __CLASS__, 'license_key_admin_notice' ) );
@@ -168,32 +162,6 @@ class Poseidon_Pro {
 		$settings_link = array( 'settings' => sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=themezee-plugins&tab=poseidon' ), __( 'Settings', 'poseidon-pro' ) ) );
 		
 		return array_merge( $settings_link, $actions );
-	}
-	
-	/**
-	 * Add widget bundle box to plugin overview admin page
-	 *
-	 * @return void
-	 */
-	static function plugin_overview_page() { 
-	
-		$plugin_data = get_plugin_data( __FILE__ );
-		
-		?>
-
-		<dl>
-			<dt>
-				<h4><?php echo esc_html( $plugin_data['Name'] ); ?></h4>
-				<span><?php printf( esc_html__( 'Version %s', 'poseidon-pro' ),  esc_html( $plugin_data['Version'] ) ); ?></span>
-			</dt>
-			<dd>
-				<p><?php echo wp_kses_post( $plugin_data['Description'] ); ?><br/></p>
-				<a href="<?php echo admin_url( 'options-general.php?page=themezee-plugins&tab=poseidon' ); ?>" class="button button-primary"><?php esc_html_e( 'Plugin Settings', 'poseidon-pro' ); ?></a>&nbsp;
-				<a href="<?php echo esc_url( 'https://themezee.com/docs/poseidon-addon-documentation/?utm_source=plugin-overview&utm_medium=button&utm_campaign=poseidon&utm_content=documentation' ); ?>" class="button button-secondary" target="_blank"><?php esc_html_e( 'View Documentation', 'poseidon-pro' ); ?></a>
-			</dd>
-		</dl>
-		
-		<?php
 	}
 	
 	/**

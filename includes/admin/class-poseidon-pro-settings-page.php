@@ -23,24 +23,25 @@ class Poseidon_Pro_Settings_Page {
 	*/
 	static function setup() {
 		
-		// Add settings page to plugin tabs
-		add_filter( 'themezee_plugins_settings_tabs', array( __CLASS__, 'add_settings_page' ) );
+		// Add settings page to appearance menu
+		add_action( 'admin_menu', array( __CLASS__, 'add_settings_page' ), 12 );
 		
-		// Hook settings page to plugin page
-		add_action( 'themezee_plugins_page_poseidon', array( __CLASS__, 'display_settings_page' ) );
 	}
-
+	
 	/**
-	 * Add settings page to tabs list on themezee add-on page
+	 * Add Settings Page to Admin menu
 	 *
 	 * @return void
 	*/
-	static function add_settings_page($tabs) {
+	static function add_settings_page() {
 			
-		// Add Poseidon Pro Settings Page to Tabs List
-		$tabs['poseidon']      = esc_html__( 'Poseidon Pro', 'poseidon-pro' );
-		
-		return $tabs;
+		add_theme_page(
+			esc_html__( 'Pro Version', 'poseidon-pro' ),
+			esc_html__( 'Pro Version', 'poseidon-pro' ),
+			'manage_options',
+			'poseidon-pro',
+			array( __CLASS__, 'display_settings_page' )
+		);
 		
 	}
 	
@@ -53,15 +54,16 @@ class Poseidon_Pro_Settings_Page {
 	
 		ob_start();
 	?>
-		
-		<div id="poseidon-pro-settings" class="poseidon-pro-settings-wrap">
+
+		<div id="poseidon-pro-settings" class="poseidon-pro-settings-wrap wrap">
 			
 			<h1><?php esc_html_e( 'Poseidon Pro', 'poseidon-pro' ); ?></h1>
+			<?php settings_errors(); ?>
 			
 			<form class="poseidon-pro-settings-form" method="post" action="options.php">
 				<?php
-					settings_fields('poseidon_pro_settings');
-					do_settings_sections('poseidon_pro_settings');
+					settings_fields( 'poseidon_pro_settings' );
+					do_settings_sections( 'poseidon_pro_settings' );
 					submit_button();
 				?>
 			</form>
