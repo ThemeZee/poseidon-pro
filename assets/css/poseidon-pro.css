@@ -1,6 +1,5 @@
 /*
- * Poseidon Pro
- * https://themezee.com/plugins/poseidon-addon/
+ * Poseidon Pro CSS
  *
  * Copyright(C) 2015, ThemeZee.com - support@themezee.com
  * License: GPL v3
@@ -11,20 +10,107 @@
 
  
 /*--------------------------------------------------------------
-# General Styles
----------------------------------------------------------------- */
+# Footer Widget Area
+--------------------------------------------------------------*/
+.footer-widgets-background {
+	background: #303030;
+	padding: 3em 0 1em;
+}
 
-/* Clearing Floats */
-.poseidon-pro-clearfix:before, 
-.poseidon-pro-clearfix:after {  
-	content: " ";
-	display: table;  
-}  
+.footer-widgets {
+	margin-right: -2em;
+}
 
-.poseidon-pro-clearfix:after {  
-	clear: both;
-}  
+.footer-widget-column {
+	float: left;
+	width: 25%;
+	padding-right: 2em;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
 
-.poseidon-pro-clearfix {
-    *zoom: 1; /* For IE 6/7 only */  
+.footer-widgets .widget {
+	color: #fff;
+}
+
+.footer-widgets .widget-title {
+	color: #fff;
+	border-bottom: 4px solid rgba(255,255,255,0.08);
+}
+
+.footer-widgets .widget a:link, 
+.footer-widgets .widget a:visited  {
+	color: #eee;
+}
+
+.footer-widgets .widget a:hover, 
+.footer-widgets .widget a:active  {
+	color: #aaa;
+}
+
+/*--------------------------------------------------------------
+# Media Queries
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+## Desktop Medium ( < 1040px )
+--------------------------------------------------------------*/
+@media only screen and (max-width: 65em) {
+	
+	.footer-widget-column {
+		width: 50%;
+	}
+	
+	.footer-widget-column:nth-child(3) {
+		clear: left;
+	}
+	
+}
+
+/*--------------------------------------------------------------
+## Desktop Small ( < 960px )
+--------------------------------------------------------------*/
+@media only screen and (max-width: 60em) {
+
+	.footer-widgets-wrap {
+		padding: 1.5em 1.5em 0;
+	}
+
+	.footer-widgets {
+		margin-right: -1.5em;
+	}
+
+	.footer-widget-column {
+		padding-right: 1.5em;
+	}
+	
+}
+
+/*--------------------------------------------------------------
+## Mobile Large ( < 560px )
+--------------------------------------------------------------*/
+@media only screen and (max-width: 35em) {
+	
+	.footer-widgets {
+		margin-right: 0;
+	}
+	
+	.footer-widget-column {
+		float: none;
+		width: 100%;
+		padding-right: 0;
+	}
+	
+}
+
+/*--------------------------------------------------------------
+## Mobile Medium ( < 480px )
+--------------------------------------------------------------*/
+@media only screen and (max-width: 30em) {
+
+	.footer-widgets-wrap {
+		padding: 1.2em 1.2em 0;
+	}
+
 }

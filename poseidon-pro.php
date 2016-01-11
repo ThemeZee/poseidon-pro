@@ -110,6 +110,8 @@ class Poseidon_Pro {
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-settings.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-settings-page.php';
 		
+		// Include Pro Features
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/class-poseidon-pro-footer-widgets.php';
 	}
 	
 	
@@ -141,11 +143,11 @@ class Poseidon_Pro {
 	 * @return void
 	 */
 	static function enqueue_styles() {
-		
-		// Return early if theme handles styling
-		if ( current_theme_supports( 'poseidon-pro' ) ) :
+
+		// Return early if Poseidon Theme is not active
+		if ( ! current_theme_supports( 'poseidon-pro'  ) ) {
 			return;
-		endif;
+		}
 		
 		// Enqueue Plugin Stylesheet
 		wp_enqueue_style( 'poseidon-pro', POSEIDON_PRO_PLUGIN_URL . 'assets/css/poseidon-pro.css', array(), POSEIDON_PRO_VERSION );
@@ -159,7 +161,7 @@ class Poseidon_Pro {
 	 */
 	static function plugin_action_links( $actions ) {
 
-		$settings_link = array( 'settings' => sprintf( '<a href="%s">%s</a>', admin_url( 'options-general.php?page=themezee-plugins&tab=poseidon' ), __( 'Settings', 'poseidon-pro' ) ) );
+		$settings_link = array( 'settings' => sprintf( '<a href="%s">%s</a>', admin_url( 'themes.php?page=poseidon-pro' ), __( 'Settings', 'poseidon-pro' ) ) );
 		
 		return array_merge( $settings_link, $actions );
 	}
@@ -187,7 +189,7 @@ class Poseidon_Pro {
 				<p>
 					<?php printf( __( 'Please enter your license key for the %1$s add-on in order to receive updates and support. <a href="%2$s">Enter License Key</a>', 'poseidon-pro' ),
 						POSEIDON_PRO_NAME,
-						admin_url( 'options-general.php?page=themezee-plugins&tab=poseidon' ) ); 
+						admin_url( 'themes.php?page=poseidon-pro' ) ); 
 					?>
 				</p>
 			</div>

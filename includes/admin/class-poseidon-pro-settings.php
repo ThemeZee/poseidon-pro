@@ -129,9 +129,7 @@ class Poseidon_Pro_Settings {
 		}
 		
 		// Add Sections
-		add_settings_section( 'poseidon_pro_settings_widgets', esc_html__( 'General', 'poseidon-pro' ), array( $this, 'general_section_intro' ), 'poseidon_pro_settings' );
-		add_settings_section( 'poseidon_pro_settings_example_one', __('Example 1', 'poseidon-pro' ), '__return_false', 'poseidon_pro_settings' );
-		add_settings_section( 'poseidon_pro_settings_example_two', __('Example 2', 'poseidon-pro' ), '__return_false', 'poseidon_pro_settings' );
+		add_settings_section( 'poseidon_pro_settings_features', esc_html__( 'Features', 'poseidon-pro' ), '__return_false', 'poseidon_pro_settings' );
 		add_settings_section( 'poseidon_pro_settings_license', esc_html__( 'License', 'poseidon-pro' ), array( $this, 'license_section_intro' ), 'poseidon_pro_settings' );
 		
 		// Add Settings
@@ -182,7 +180,7 @@ class Poseidon_Pro_Settings {
 	 * @return void
 	*/
 	function license_section_intro() {
-		printf( __( 'Please enter your license key. An active license key is needed for automatic plugin updates and <a href="%s" target="_blank">support</a>.', 'poseidon-pro' ), 'https://themezee.com/support/?utm_source=plugin-settings&utm_medium=textlink&utm_campaign=poseidon&utm_content=support' );
+		printf( __( 'Please enter your license key. An active license key is needed for automatic plugin updates and <a href="%s" target="_blank">support</a>.', 'poseidon-pro' ), 'https://themezee.com/support/?utm_source=plugin-settings&utm_medium=textlink&utm_campaign=poseidon-pro&utm_content=support' );
 
 	}
 	
@@ -282,127 +280,29 @@ class Poseidon_Pro_Settings {
 	function get_registered_settings() {
 
 		$settings = array(
-			'textfield' => array(
-				'name' =>  __('Textfield', 'poseidon-pro'),
-				'desc' => __('Displays a textfield setting. ', 'poseidon-pro'),
-				'section' => 'example_one',
-				'type' => 'text',
-				'size' => 'regular' // Delete that line for normal text field
-			),
-			'textfield_small' => array(
-				'name' =>  __('Textfield Small', 'poseidon-pro'),
-				'desc' => __('Displays a small textfield setting. ', 'poseidon-pro'),
-				'section' => 'example_one',
-				'type' => 'text',
-				'size' => 'small',
-				'default' => ''
-			),
-			'textfield_large' => array(
-				'name' =>  __('Textfield Large', 'poseidon-pro'),
-				'desc' => __('Displays a large textfield setting. ', 'poseidon-pro'),
-				'section' => 'example_one',
-				'type' => 'text',
-				'size' => 'large',
-				'default' => ''
-			),
-			'radio_button' => array(
-				'name' =>  __('Radio Buttons', 'poseidon-pro'),
-				'desc' => __('Shows an example radio button control. ', 'poseidon-pro'),
-				'section' => 'example_one',
-				'type' => 'radio',
-				'options' => array(	
-					'radio_1' => __('Radio Setting 1', 'poseidon-pro'),	
-					'radio_2' => __('Radio Setting 2', 'poseidon-pro'),	
-					'radio_3' => __('Radio Setting 3', 'poseidon-pro')
-				),
-				'default' => 'radio_2'
-			),
-			'checkbox' => array(
-				'name' =>  __('Checkbox', 'poseidon-pro'),
-				'desc' => __('Displays an example checkbox (default = true). ', 'poseidon-pro'),
-				'section' => 'example_one',
+			'colors' => array(
+				'name' =>  esc_html__( 'Custom Colors', 'poseidon-pro'),
+				'desc' => esc_html__( 'Enable custom color settings', 'poseidon-pro' ),
+				'section' => 'features',
 				'type' => 'checkbox',
 				'default' => true
 			),
-			'checkbox_2' => array(
-				'name' =>  __('Checkbox 2', 'poseidon-pro'),
-				'desc' => __('Displays a second example checkbox (default = false). ', 'poseidon-pro'),
-				'section' => 'example_one',
+			'fonts' => array(
+				'name' =>  esc_html__( 'Typography', 'poseidon-pro'),
+				'desc' => esc_html__( 'Enable custom font settings', 'poseidon-pro' ),
+				'section' => 'features',
 				'type' => 'checkbox',
-				'default' => false
-			),
-			'textarea' => array(
-				'name' =>  __('Textarea', 'poseidon-pro'),
-				'desc' => __('Displays a textarea. ', 'poseidon-pro'),
-				'section' => 'example_one',
-				'type' => 'textarea',
-				'size' => 'large',
-				'default' => __('Default Text', 'poseidon-pro')	
-			),
-			'textarea_html' => array(
-				'name' =>  __('Textarea HTML', 'poseidon-pro'),
-				'desc' => __('Displays a HTML textarea. ', 'poseidon-pro'),
-				'section' => 'example_one',
-				'type' => 'textarea_html',
-				'size' => 'large',
-				'default' => __('Default HTML', 'poseidon-pro')	
-			),
-			'select_field' => array(
-				'name' =>  __('Select Field', 'poseidon-pro'),
-				'desc' => __('Shows an example select field control. ', 'poseidon-pro'),
-				'section' => 'example_two',
-				'type' => 'select',
-				'options' => array(	
-					'select_1' => __('Select Setting 1', 'poseidon-pro'),	
-					'select_2' => __('Select Setting 2', 'poseidon-pro'),	
-					'select_3' => __('Select Setting 3', 'poseidon-pro')
-				),
-				'default' => 'select_3'
-			),
-			'multicheck' => array(
-				'name' => __( 'Multi Checkbox', 'poseidon-pro' ),
-				'desc' => __( 'Select multiple checkboxes.', 'poseidon-pro' ),
-				'section' => 'example_two',
-				'type' => 'multicheck',
-				'options' => array(	
-					'check_1' => __('Checkbox Setting 1', 'poseidon-pro'),	
-					'check_2' => __('Checkbox Setting 2', 'poseidon-pro'),	
-					'check_3' => __('Checkbox Setting 3', 'poseidon-pro')
-				),
 				'default' => true
 			),
-			'number' => array(
-				'name' =>  __('Number', 'poseidon-pro'),
-				'desc' => __('Example number setting', 'poseidon-pro'),
-				'section' => 'example_two',
-				'type' => 'number',
-				'max' => 80,
-				'min' => 3,
-				'step' => 0.5,
-				'default' => 4
-			),
-			'upload' => array(
-				'name' =>  __('File Upload', 'poseidon-pro'),
-				'desc' => __('Example uploader', 'poseidon-pro'),
-				'section' => 'example_two',
-				'type' => 'upload',
-				'default' => ''
-			),
-			'missing' => array(
-				'name' =>  __('Missing Callback', 'poseidon-pro'),
-				'desc' => __('No Setting exists for that type', 'poseidon-pro'),
-				'section' => 'example_two',
-				'type' => 'blablub',
-				'default' => ''
-			),
-			'editor' => array(
-				'name' =>  __('Editor', 'poseidon-pro'),
-				'section' => 'example_two',
-				'type' => 'rich_editor',
-				'default' => ''
+			'footer_widgets' => array(
+				'name' =>  esc_html__( 'Footer Widgets', 'poseidon-pro' ),
+				'desc' => esc_html__( 'Enable footer widget areas', 'poseidon-pro' ),
+				'section' => 'features',
+				'type' => 'checkbox',
+				'default' => true
 			),
 			'license_key' => array(
-				'name' => __( 'License Key', 'poseidon-pro' ),
+				'name' => esc_html__( 'License Key', 'poseidon-pro' ),
 				'section' => 'license',
 				'type' => 'license',
 				'default' => ''
