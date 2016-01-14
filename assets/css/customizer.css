@@ -1,0 +1,50 @@
+/*
+ * Customizer CSS
+ *
+ * Adjusts styling for theme option controls in the Customizer
+ *
+ * @package Poseidon Pro
+ */
+
+#customize-control-poseidon_control_header_logo  {
+	margin-bottom: 0;
+}
+
+#customize-control-poseidon_control_footer_text {
+	margin-top: 12px;
+}
+
+#customize-control-poseidon_control_footer_text textarea,
+#customize-control-poseidon_control_installed_fonts textarea {
+	height: 4em;
+}
+
+/* Custom Font Control */
+.customize-control-poseidon_pro_custom_font {
+	margin-bottom: 24px;
+}
+
+.customize-control-poseidon_pro_custom_font .actions, 
+.customize-control-poseidon_pro_custom_font_list .actions {
+	margin-top: 8px;
+}
+
+.customize-control-poseidon_pro_custom_font .actions .button.previous {
+	margin-right: 4px;
+}
+
+.customize-control-poseidon_pro_custom_font .actions .button.standard {
+	float: right;
+}
+
+.customize-control-poseidon_pro_custom_font select {
+	width: 100%;
+}
+
+.customize-control-poseidon_pro_custom_font div:hover {
+	cursor: default;
+}
+
+.customize-control-poseidon_pro_custom_font .actions .button:hover {
+	cursor: pointer;
+}

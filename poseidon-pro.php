@@ -54,7 +54,6 @@ class Poseidon_Pro {
 		
 	}
 	
-	
 	/**
 	 * Setup plugin constants
 	 *
@@ -85,7 +84,6 @@ class Poseidon_Pro {
 		
 	}
 	
-	
 	/**
 	 * Load Translation File
 	 *
@@ -97,23 +95,52 @@ class Poseidon_Pro {
 		
 	}
 	
-	
 	/**
 	 * Include required files
 	 *
 	 * @return void
 	 */
 	static function includes() {
-
+	
 		// Include Admin Classes
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-plugin-updater.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-settings.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-settings-page.php';
 		
+		// Include Customizer Classes
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/customizer/class-poseidon-pro-customizer.php';
+		
 		// Include Pro Features
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/class-poseidon-pro-footer-widgets.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-site-logo.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-header-bar.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-footer-line.php';
+		
+		// Get Settings
+		$instance = Poseidon_Pro_Settings::instance();
+		$settings = $instance->get_all();
+		
+		// Only include custom color feature if enabled
+		if( true == $settings['custom_colors'] ) {
+			
+			require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-custom-colors.php';
+
+		}
+		
+		// Only include custom font feature if enabled
+		if( true == $settings['custom_fonts'] ) {
+			
+			require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-custom-fonts.php';
+
+		} 
+		
+		// Only include footer widgets if enabled
+		if( true == $settings['footer_widgets'] ) {
+			
+			require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-footer-widgets.php';
+
+		}
+		
 	}
-	
 	
 	/**
 	 * Setup Action Hooks
@@ -122,15 +149,15 @@ class Poseidon_Pro {
 	 * @return void
 	 */
 	static function setup_actions() {
-
+		
 		// Enqueue Frontend Widget Styles
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_styles' ) );
 		
 		// Add Settings link to Plugin actions
 		add_filter( 'plugin_action_links_' . plugin_basename( POSEIDON_PRO_PLUGIN_FILE ), array( __CLASS__, 'plugin_action_links' ) );
 		
-		// Add License Key admin notice
-		add_action( 'admin_notices', array( __CLASS__, 'license_key_admin_notice' ) );
+		// Add admin notices
+		add_action( 'admin_notices', array( __CLASS__, 'admin_notices' ) );
 		
 		// Add automatic plugin updater from ThemeZee Store API
 		add_action( 'admin_init', array( __CLASS__, 'plugin_updater' ), 0 );
@@ -167,34 +194,54 @@ class Poseidon_Pro {
 	}
 	
 	/**
-	 * Add license key admin notice
+	 * Add admin notices
 	 *
 	 * @return void
 	 */
-	static function license_key_admin_notice() { 
+	static function admin_notices() { 
 	
 		global $pagenow;
+		
+		// Display missing theme notice on themes and plugins page
+		if ( ( $pagenow == 'themes.php' && !isset( $_GET['page'] ) ) or $pagenow == 'plugins.php' ) :
 	
-		// Display only on Plugins page
-		if ( 'plugins.php' !== $pagenow  ) {
-			return;
-		}
-		
-		// Get Settings
-		$options = Poseidon_Pro_Settings::instance();
-		
-		if( '' == $options->get( 'license_key' ) ) : ?>
+			// Display notice if Poseidon theme is not active
+			if ( ! get_theme_support( 'poseidon-pro' ) ) : ?>
 			
-			<div class="updated">
-				<p>
-					<?php printf( __( 'Please enter your license key for the %1$s add-on in order to receive updates and support. <a href="%2$s">Enter License Key</a>', 'poseidon-pro' ),
-						POSEIDON_PRO_NAME,
-						admin_url( 'themes.php?page=poseidon-pro' ) ); 
-					?>
-				</p>
-			</div>
+				<div class="notice notice-warning">
+					<p>
+						<?php printf( __( 'The %1$s add-on needs the %2$s theme activated in order to work. You should deactivate %1$s if you have switched to another theme permanently.', 'poseidon-pro' ),
+							POSEIDON_PRO_NAME,
+							'Poseidon'
+						); ?>
+					</p>
+				</div>
+		
+			<?php
+			endif;
 			
-		<?php
+		endif;
+	
+		// Display missing license key notice on updates and plugins page
+		if ( $pagenow == 'update-core.php' or $pagenow == 'plugins.php' ) :
+		
+			// Get Settings
+			$options = Poseidon_Pro_Settings::instance();
+		
+			if( '' == $options->get( 'license_key' ) ) : ?>
+				
+				<div class="updated">
+					<p>
+						<?php printf( __( 'Please enter your license key for the %1$s add-on in order to receive updates and support. <a href="%2$s">Enter License Key</a>', 'poseidon-pro' ),
+							POSEIDON_PRO_NAME,
+							admin_url( 'themes.php?page=poseidon-pro' ) ); 
+						?>
+					</p>
+				</div>
+				
+			<?php
+			endif;
+			
 		endif;
 	
 	}

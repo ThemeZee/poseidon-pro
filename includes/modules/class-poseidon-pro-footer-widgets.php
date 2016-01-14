@@ -10,7 +10,6 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-
 // Use class to avoid namespace collisions
 if ( ! class_exists( 'Poseidon_Pro_Footer_Widgets' ) ) :
 
@@ -22,13 +21,61 @@ class Poseidon_Pro_Footer_Widgets {
 	 * @return void
 	*/
 	static function setup() {
-		
-		// Register widgets in backend
-		add_action( 'widgets_init', array( __CLASS__, 'register_widgets' ), 20 );
+
+		// Return early if Poseidon Theme is not active
+		if ( ! current_theme_supports( 'poseidon-pro'  ) ) {
+			return;
+		}
 		
 		// Display widgets
 		add_action( 'poseidon_before_footer', array( __CLASS__, 'display_widgets' ) );
 		
+	}
+	
+	/**
+	 * Displays Footer Widgets
+	 *
+	 * Hooks into the poseidon_before_footer action hook in footer area.
+	 */
+	static function display_widgets() {
+		
+		// Check if there are footer widgets
+		if( is_active_sidebar( 'footer-left' ) 
+			or is_active_sidebar( 'footer-center-left' )
+			or is_active_sidebar( 'footer-center-right' )
+			or is_active_sidebar( 'footer-right' ) ) : ?>
+				
+			<div id="footer-widgets-bg" class="footer-widgets-background">
+			
+				<div id="footer-widgets-wrap" class="footer-widgets-wrap container">
+				
+					<div id="footer-widgets" class="footer-widgets clearfix"  role="complementary">			
+
+						<div class="footer-widget-column widget-area">
+							<?php dynamic_sidebar('footer-left'); ?>
+						</div>
+						
+						<div class="footer-widget-column widget-area">
+							<?php dynamic_sidebar('footer-center-left'); ?>
+						</div>
+						
+
+						<div class="footer-widget-column widget-area">
+							<?php dynamic_sidebar('footer-center-right'); ?>
+						</div>
+						
+						<div class="footer-widget-column widget-area">
+							<?php dynamic_sidebar('footer-right'); ?>
+						</div>
+						
+					</div>
+					
+				</div>
+				
+			</div>
+			
+		<?php endif;
+			
 	}
 	
 	/**
@@ -89,55 +136,12 @@ class Poseidon_Pro_Footer_Widgets {
 		
 	}
 	
-	/**
-	 * Displays Footer Widgets
-	 *
-	 * Hooks into the poseidon_before_footer action hook in footer area.
-	 */
-	static function display_widgets() {
-		
-		// Check if there are footer widgets
-		if( is_active_sidebar( 'footer-left' ) 
-			or is_active_sidebar( 'footer-center-left' )
-			or is_active_sidebar( 'footer-center-right' )
-			or is_active_sidebar( 'footer-right' ) ) : ?>
-				
-			<div id="footer-widgets-bg" class="footer-widgets-background">
-			
-				<div id="footer-widgets-wrap" class="footer-widgets-wrap container">
-				
-					<div id="footer-widgets" class="footer-widgets clearfix"  role="complementary">			
-
-						<div class="footer-widget-column widget-area">
-							<?php dynamic_sidebar('footer-left'); ?>
-						</div>
-						
-						<div class="footer-widget-column widget-area">
-							<?php dynamic_sidebar('footer-center-left'); ?>
-						</div>
-						
-
-						<div class="footer-widget-column widget-area">
-							<?php dynamic_sidebar('footer-center-right'); ?>
-						</div>
-						
-						<div class="footer-widget-column widget-area">
-							<?php dynamic_sidebar('footer-right'); ?>
-						</div>
-						
-					</div>
-					
-				</div>
-				
-			</div>
-			
-		<?php endif;
-			
-	}
-	
 }
 
 // Run Class
-Poseidon_Pro_Footer_Widgets::setup();
+add_action( 'init', array( 'Poseidon_Pro_Footer_Widgets', 'setup' ) );
+
+// Register widgets in backend
+add_action( 'widgets_init', array( 'Poseidon_Pro_Footer_Widgets', 'register_widgets' ), 20 );
 
 endif;

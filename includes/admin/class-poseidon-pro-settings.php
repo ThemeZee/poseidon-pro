@@ -280,14 +280,14 @@ class Poseidon_Pro_Settings {
 	function get_registered_settings() {
 
 		$settings = array(
-			'colors' => array(
+			'custom_colors' => array(
 				'name' =>  esc_html__( 'Custom Colors', 'poseidon-pro'),
 				'desc' => esc_html__( 'Enable custom color settings', 'poseidon-pro' ),
 				'section' => 'features',
 				'type' => 'checkbox',
 				'default' => true
 			),
-			'fonts' => array(
+			'custom_fonts' => array(
 				'name' =>  esc_html__( 'Typography', 'poseidon-pro'),
 				'desc' => esc_html__( 'Enable custom font settings', 'poseidon-pro' ),
 				'section' => 'features',
