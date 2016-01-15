@@ -118,7 +118,7 @@ class Poseidon_Pro_Custom_Fonts {
 	 * @uses poseidon_google_fonts_url filter hook
 	 * @return string Google Font URL
 	 */
-	static function google_fonts_url() { 
+	static function google_fonts_url( $google_fonts_url ) { 
 
 		// Get Theme Options from Database
 		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
@@ -129,10 +129,13 @@ class Poseidon_Pro_Custom_Fonts {
 		// Set Google Font Array
 		$google_font_families = array();
 		
+		// Set Font Styles
+		$font_styles = ':400,400italic,700,700italic';
+		
 		// Add Text Font
 		if( isset( $theme_options['text_font'] ) and ! in_array( $theme_options['text_font'], $default_fonts ) ) {
 			
-			$google_font_families[] = $theme_options['text_font'];
+			$google_font_families[] = $theme_options['text_font'] . $font_styles;
 			$default_fonts[] = $theme_options['text_font']; 
 			
 		}
@@ -140,7 +143,7 @@ class Poseidon_Pro_Custom_Fonts {
 		// Add Title Font
 		if( isset( $theme_options['title_font'] ) and ! in_array( $theme_options['title_font'], $default_fonts ) ) {
 			
-			$google_font_families[] = $theme_options['title_font'];
+			$google_font_families[] = $theme_options['title_font'] . $font_styles;
 			$default_fonts[] = $theme_options['title_font']; 
 			
 		}
@@ -148,7 +151,7 @@ class Poseidon_Pro_Custom_Fonts {
 		// Add Navigation Font
 		if( isset( $theme_options['navi_font'] ) and ! in_array( $theme_options['navi_font'], $default_fonts ) ) {
 			
-			$google_font_families[] = $theme_options['navi_font'];
+			$google_font_families[] = $theme_options['navi_font'] . $font_styles;
 			$default_fonts[] = $theme_options['navi_font'];
 			
 		}
@@ -156,14 +159,14 @@ class Poseidon_Pro_Custom_Fonts {
 		// Add Widget Title Font
 		if( isset( $theme_options['widget_title_font'] ) and ! in_array( $theme_options['widget_title_font'], $default_fonts ) ) {
 			
-			$google_font_families[] = $theme_options['widget_title_font'];
+			$google_font_families[] = $theme_options['widget_title_font'] . $font_styles;
 			$default_fonts[] = $theme_options['widget_title_font']; 
 			
 		}
 		
 		// Return early if google font array is empty
 		if ( empty( $google_font_families ) ) {
-			return;
+			return $google_fonts_url;
 		}
 		
 		// Setup Google Font URLs

@@ -44,12 +44,15 @@ class Poseidon_Pro_Custom_Colors {
 		
 		// Get Theme Options from Database
 		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
+		
+		// Get Default Fonts from settings
+		$default_options = Poseidon_Pro_Customizer::get_default_options();
 
 		// Set Color CSS Variable
 		$color_css = '';
 		
 		// Set Link Color
-		if ( isset($theme_options['link_color']) and $theme_options['link_color'] <> '#2299cc' ) : 
+		if ( $theme_options['link_color'] != $default_options['link_color'] ) { 
 		
 			$color_css .= '
 				a, a:link, a:visited, .comment a:link, .top-navigation-toggle:after, .top-navigation-menu .submenu-dropdown-toggle:before, 
@@ -68,20 +71,20 @@ class Poseidon_Pro_Custom_Colors {
 					background-color: '. $theme_options['link_color'] .';
 				}';
 				
-		endif;
+		}
 		
 		// Set Navigation Color
-		if ( isset($theme_options['navi_color']) and $theme_options['navi_color'] <> '#444444' ) : 
+		if ( $theme_options['navi_color'] != $default_options['navi_color'] ) { 
 		
 			$color_css .= '
 				.primary-navigation, .main-navigation-toggle, .sidebar-navigation-toggle {
 					background-color: '. $theme_options['navi_color'] .';
 				}';
 				
-		endif;
+		}
 		
 		// Set Navigation Hover Color
-		if ( isset($theme_options['navi_hover_color']) and $theme_options['navi_hover_color'] <> '#2299cc' ) : 
+		if ( $theme_options['navi_hover_color'] != $default_options['navi_hover_color'] ) { 
 		
 			$color_css .= '
 				.main-navigation-menu a:hover, .main-navigation-menu ul, .main-navigation-menu li.current-menu-item a, 
@@ -100,10 +103,10 @@ class Poseidon_Pro_Custom_Colors {
 					}
 				}';
 				
-		endif;
+		}
 		
 		// Set Post Title Color
-		if ( isset($theme_options['title_color']) and $theme_options['title_color'] <> '#2299cc' ) : 
+		if ( $theme_options['title_color'] != $default_options['title_color'] ) { 
 		
 			$color_css .= '
 				.site-title, .page-title, .entry-title, .entry-title a:link, .entry-title a:visited {
@@ -114,10 +117,10 @@ class Poseidon_Pro_Custom_Colors {
 				}
 				.entry-title a:hover, .entry-title a:focus, .entry-title a:active { color: #444; }';
 				
-		endif;
+		}
 		
 		// Set Widget Title Color
-		if ( isset($theme_options['widget_title_color']) and $theme_options['widget_title_color'] <> '#2299cc' ) : 
+		if ( $theme_options['widget_title_color'] != $default_options['widget_title_color'] ) { 
 		
 			$color_css .= '
 				.widget-title, .page-header .archive-title, .comments-header .comments-title, .comment-reply-title span,
@@ -128,10 +131,10 @@ class Poseidon_Pro_Custom_Colors {
 					color: '. $theme_options['widget_title_color'] .';
 				}';
 				
-		endif;
+		}
 		
 		// Set Slider Color
-		if ( isset($theme_options['slider_color']) and $theme_options['slider_color'] <> '#2299cc' ) : 
+		if ( $theme_options['slider_color'] != $default_options['slider_color'] ) { 
 		
 			$color_css .= '
 				.post-slider .zeeslide .slide-content, .post-slider-controls .zeeflex-direction-nav a {
@@ -141,8 +144,7 @@ class Poseidon_Pro_Custom_Colors {
 					color: '. $theme_options['slider_color'].';
 				}';
 				
-		endif;
-		
+		}
 		
 		// Print Color CSS
 		if ( isset($color_css) and $color_css <> '' ) :
@@ -170,9 +172,12 @@ class Poseidon_Pro_Custom_Colors {
 			)
 		);
 		
+		// Get Default Colors from settings
+		$default_options = Poseidon_Pro_Customizer::get_default_options();
+		
 		// Add Link Color setting
 		$wp_customize->add_setting( 'poseidon_theme_options[link_color]', array(
-			'default'           => '#2299cc',
+			'default'           => $default_options['link_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color'
@@ -189,7 +194,7 @@ class Poseidon_Pro_Custom_Colors {
 		
 		// Add Navigation Color setting
 		$wp_customize->add_setting( 'poseidon_theme_options[navi_color]', array(
-			'default'           => '#444444',
+			'default'           => $default_options['navi_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color'
@@ -206,7 +211,7 @@ class Poseidon_Pro_Custom_Colors {
 		
 		// Add Navigation Hover Color setting
 		$wp_customize->add_setting( 'poseidon_theme_options[navi_hover_color]', array(
-			'default'           => '#2299cc',
+			'default'           => $default_options['navi_hover_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color'
@@ -223,7 +228,7 @@ class Poseidon_Pro_Custom_Colors {
 		
 		// Add Title Color setting
 		$wp_customize->add_setting( 'poseidon_theme_options[title_color]', array(
-			'default'           => '#2299cc',
+			'default'           => $default_options['title_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color'
@@ -240,7 +245,7 @@ class Poseidon_Pro_Custom_Colors {
 
 		// Add Widget Title Color setting
 		$wp_customize->add_setting( 'poseidon_theme_options[widget_title_color]', array(
-			'default'           => '#2299cc',
+			'default'           => $default_options['widget_title_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color'
@@ -257,7 +262,7 @@ class Poseidon_Pro_Custom_Colors {
 		
 		// Add Slider Color setting
 		$wp_customize->add_setting( 'poseidon_theme_options[slider_color]', array(
-			'default'           => '#2299cc',
+			'default'           => $default_options['slider_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color'
