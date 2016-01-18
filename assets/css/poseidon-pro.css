@@ -112,86 +112,18 @@
 	float: right;
 }
 
-.social-icons-navigation-toggle {
-	display: none;
+.header-bar .social-icons-menu li a {
+	padding: 0.8em;
 }
 
-.social-icons-menu {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	list-style-position: outside;
-	line-height: 1;
+.header-bar .social-icons-menu li a:before {
+	font-size: 18px;
 }
 
-.social-icons-menu li {
-	float: left;
-	margin: 0;
-	padding: 0;
-}
-
-.social-icons-menu li a {
-	position: relative;
-	display: inline-block;
-	padding: 0.6em;
+.header-bar .social-icons-menu li a:hover:before {
 	text-decoration: none;
+	color: #aaa;
 }
-
-.social-icons-menu li a:before {
-	color: #fff;
-	display: inline-block;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	font-size: 24px;
-	line-height: 1;
-	font-family: 'Genericons';
-	text-decoration: inherit;
-	vertical-align: top;
-}
-
-/* Add Genericons */
-.social-icons-menu li a:before { content: '\f408'; color: #333; } /* Default Icon */
-.social-icons-menu li a[href*="codepen.io"]:before  { content: '\f216'; color: #222; }
-.social-icons-menu li a[href*="digg.com"]:before { content: '\f221'; color: #151515; }
-.social-icons-menu li a[href*="dribbble.com"]:before { content: '\f201'; color: #ea4c89; }
-.social-icons-menu li a[href*="facebook.com"]:before { content: '\f204'; color: #3b5998; }
-.social-icons-menu li a[href*="flickr.com"]:before { content: '\f211'; color: #ff0084; }
-.social-icons-menu li a[href*="plus.google.com"]:before { content: '\f218'; color: #dd4b39; }
-.social-icons-menu li a[href*="github.com"]:before { content: '\f200'; color: #171515; }
-.social-icons-menu li a[href*="instagram.com"]:before { content: '\f215'; color: #3f729b; }
-.social-icons-menu li a[href*="linkedin.com"]:before { content: '\f207'; color: #007bb6; }
-.social-icons-menu li a[href*="pinterest.com"]:before { content: '\f209'; color: #cb2027; }
-.social-icons-menu li a[href*="polldaddy.com"]:before { content: '\f217'; color: #bc0b0b; }
-.social-icons-menu li a[href*="getpocket.com"]:before { content: '\f224'; color: #ee4056; }
-.social-icons-menu li a[href*="reddit.com"]:before { content: '\f222'; color: #ff4500; }
-.social-icons-menu li a[href*="spotify.com"]:before { content: '\f515'; color: #81b71a; }
-.social-icons-menu li a[href*="skype.com"]:before,
-.social-icons-menu li a[href*="skype:"]:before { content: '\f220'; color: #00aff0; }
-.social-icons-menu li a[href*="stumbleupon.com"]:before { content: '\f223'; color: #f74425; }
-.social-icons-menu li a[href*="tumblr.com"]:before { content: '\f214'; color: #32506d; }
-.social-icons-menu li a[href*="twitch.tv"]:before { content: '\f516'; color: #6441A5; }
-.social-icons-menu li a[href*="twitter.com"]:before { content: '\f202'; color: #00aced; }
-.social-icons-menu li a[href*="vimeo.com"]:before  { content: '\f212'; color: #aad450; }
-.social-icons-menu li a[href*="wordpress.org"]:before { content: '\f205'; color: #21759b; }
-.social-icons-menu li a[href*="wordpress.com"]:before { content: '\f205'; color: #1e8cbe; }
-.social-icons-menu li a[href*="youtube.com"]:before { content: '\f213'; color: #c4302b; }
-.social-icons-menu li a[href*="newsletter"]:before,
-.social-icons-menu li a[href*="mailto"]:before { content: '\f410'; color: #dd4444; }
-.social-icons-menu li a[href*="/feed"]:before,
-.social-icons-menu li a[href*="/feed/"]:before,
-.social-icons-menu li a[href*="?feed=rss2"]:before,
-.social-icons-menu li a[href*="feedburner.google.com"]:before,
-.social-icons-menu li a[href*="feedburner.com"]:before { content: '\f413'; color: #ee802f; }
-
-.social-icons-menu li a:hover:before {
-	text-decoration: none;
-	color: #222;
-}
-
-.social-icons-menu li a .screen-reader-text {
-	display: none;
-}
-
 
 /*--------------------------------------------------------------
 # Footer Widget Area
@@ -261,8 +193,8 @@
 .footer-navigation-menu a {
 	display: block;
 	font-family: 'Raleway', Tahoma, Arial;
-	font-size: 13px;
-	font-size: 0.8125rem;
+	font-size: 14px;
+	font-size: 0.875rem;
 	font-weight: bold;
 	padding: 0.1em 1em;
 	text-transform: uppercase;
