@@ -34,6 +34,11 @@ class Poseidon_Pro_Settings_Page {
 	 * @return void
 	*/
 	static function add_settings_page() {
+	
+		// Return early if Poseidon Theme is not active
+		if ( ! current_theme_supports( 'poseidon-pro'  ) ) {
+			return;
+		}
 			
 		add_theme_page(
 			esc_html__( 'Pro Version', 'poseidon-pro' ),
