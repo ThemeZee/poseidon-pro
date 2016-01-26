@@ -28,11 +28,21 @@ class Poseidon_Pro_Custom_Colors {
 			return;
 		}
 		
-		// Adds custom CSS code to change fonts
-		add_action( 'wp_head', array( __CLASS__, 'custom_colors_css' ) );
+		// Enqueue Custom Color Stylesheet
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'custom_colors_stylesheet' ), 20 );
 		
 		// Add Custom Color Settings
 		add_action( 'customize_register', array( __CLASS__, 'color_settings' ) );
+		
+	}
+	
+	/**
+	 * Register and Enqueue Custom Color Stylesheet
+	 *
+	 */
+	static function custom_colors_stylesheet() {
+
+		wp_enqueue_style( 'poseidon-pro-custom-colors', add_query_arg( 'poseidon_pro_colors', 1, home_url( '/' ) ) );
 		
 	}
 	
@@ -51,71 +61,179 @@ class Poseidon_Pro_Custom_Colors {
 		// Set Color CSS Variable
 		$color_css = '';
 		
-		// Set Link Color
+		/* Set Link Color */
 		if ( $theme_options['link_color'] != $default_options['link_color'] ) { 
 		
 			$color_css .= '
-				a, a:link, a:visited, .comment a:link, .top-navigation-toggle:after, .top-navigation-menu .submenu-dropdown-toggle:before, 
-				.footer-navigation-toggle:after, .social-icons-navigation-toggle:after {
+				/* Link and Button Color Setting */
+				a:link, 
+				a:visited,
+				.more-link {
 					color: '. $theme_options['link_color'] .';
 				}
-				a:hover, a:focus, a:active { color: #444; }
-				button, input[type="button"], input[type="reset"], input[type="submit"], .search-form .search-submit, .more-link {
-					background-color: '. $theme_options['link_color'] .';
+				
+				a:hover, 
+				a:focus, 
+				a:active { 
+					color: #404040; 
 				}
-				.entry-tags .meta-tags a, .post-pagination a, .post-pagination .current, .comment-navigation a, .widget_tag_cloud .tagcloud a {
-					border: 1px solid '. $theme_options['link_color'] .';
+				
+				.entry-tags .meta-tags a:link, 
+				.entry-tags .meta-tags a:visited {
+					color: #777;
 				}
-				.entry-tags .meta-tags a:hover, .entry-tags .meta-tags a:active, .post-pagination a:hover, .post-pagination .current, 
-				.comment-navigation a:hover, .comment-navigation a:active, .widget_tag_cloud .tagcloud a:hover, .widget_tag_cloud .tagcloud a:active {
-					background-color: '. $theme_options['link_color'] .';
+				
+				button,
+				input[type="button"],
+				input[type="reset"],
+				input[type="submit"],
+				.entry-tags .meta-tags a:hover, 
+				.entry-tags .meta-tags a:active {
+					color: #fff;
+					background: '. $theme_options['link_color'] .';
+				}
+				
+				button:hover,
+				input[type="button"]:hover,
+				input[type="reset"]:hover,
+				input[type="submit"]:hover,
+				button:focus,
+				input[type="button"]:focus,
+				input[type="reset"]:focus,
+				input[type="submit"]:focus,
+				button:active,
+				input[type="button"]:active,
+				input[type="reset"]:active,
+				input[type="submit"]:active {
+					background: #404040;
+				}
+				';
+				
+		}
+		
+		// Set Top Navigation Color
+		if ( $theme_options['top_navi_color'] != $default_options['top_navi_color'] ) { 
+		
+			$color_css .= '
+				/* Top Navigation Color Setting */
+				.header-bar-wrap, 
+				.top-navigation-menu ul {
+					background: '. $theme_options['top_navi_color'] .';
 				}';
 				
 		}
 		
-		// Set Navigation Color
-		if ( $theme_options['navi_color'] != $default_options['navi_color'] ) { 
+		// Set Primary Navigation Color
+		if ( $theme_options['navi_primary_color'] != $default_options['navi_primary_color'] ) { 
 		
 			$color_css .= '
-				.primary-navigation, .main-navigation-toggle, .sidebar-navigation-toggle {
-					background-color: '. $theme_options['navi_color'] .';
-				}';
-				
-		}
-		
-		// Set Navigation Hover Color
-		if ( $theme_options['navi_hover_color'] != $default_options['navi_hover_color'] ) { 
-		
-			$color_css .= '
-				.main-navigation-menu a:hover, .main-navigation-menu ul, .main-navigation-menu li.current-menu-item a, 
-				.main-navigation-toggle:hover, .main-navigation-toggle:active, .main-navigation-toggle:focus, 
-				.sidebar-navigation-toggle:hover, .sidebar-navigation-toggle:active, .sidebar-navigation-toggle:focus {
-					background-color: '. $theme_options['navi_hover_color'] .';
+				/* Navigation Primary Color Setting */
+				.main-navigation-menu a:link, 
+				.main-navigation-menu a:visited,
+				.main-navigation-menu > .menu-item-has-children > a:after,
+				.main-navigation-menu ul .menu-item-has-children > a:after,
+				.footer-navigation-menu a:link, 
+				.footer-navigation-menu a:visited {
+					color: '. $theme_options['navi_primary_color'] .';
 				}
+				
+				.main-navigation-menu a:hover, 
+				.main-navigation-menu a:active,
+				.main-navigation-menu > .menu-item-has-children > a:hover:after,
+				.main-navigation-menu ul .menu-item-has-children > a:hover:after,
+				.footer-navigation-menu a:hover,
+				.footer-navigation-menu a:active {
+					color: #22aadd;
+				}
+				
+				.main-navigation-menu ul {
+					border-top: 4px solid '. $theme_options['navi_primary_color'] .';
+				}
+				
 				@media only screen and (max-width: 60em) {
-					.main-navigation-menu a:hover, .main-navigation-menu li.current-menu-item a {
-						background: none;
+					
+					.main-navigation-toggle:after,
+					.main-navigation-menu .submenu-dropdown-toggle:before,
+					.footer-navigation-toggle:after {
+						color: '. $theme_options['navi_primary_color'] .';
+					}
+					
+					.main-navigation-menu {
+						border-top: 4px solid '. $theme_options['navi_primary_color'] .';
+					}
+					
+					.main-navigation-menu ul {
+						border: none;
+					}
+					
+					.footer-navigation-menu {
+						border-top: 2px solid '. $theme_options['navi_primary_color'] .';
 					}
 				}
-				@media only screen and (min-width: 60em) {
-					.main-navigation-menu li.menu-item:hover a {
-						background-color: '. $theme_options['navi_hover_color'] .';
-					}
-				}';
+				';
 				
 		}
 		
-		// Set Post Title Color
-		if ( $theme_options['title_color'] != $default_options['title_color'] ) { 
+		// Set Secondary Navigation Color
+		if ( $theme_options['navi_secondory_color'] != $default_options['navi_secondory_color'] ) { 
 		
 			$color_css .= '
-				.site-title, .page-title, .entry-title, .entry-title a:link, .entry-title a:visited {
-					color: '. $theme_options['title_color'] .';
+				/* Navigation Secondary Color Setting */
+				.main-navigation-menu a:hover, 
+				.main-navigation-menu a:active,
+				.main-navigation-menu li.current-menu-item > a, 
+				.main-navigation-menu > .menu-item-has-children > a:hover:after,
+				.main-navigation-menu ul .menu-item-has-children > a:hover:after,
+				.footer-navigation-menu a:hover,
+				.footer-navigation-menu a:active {
+					color: '. $theme_options['navi_secondory_color'] .';
 				}
-				.entry-title {
-					border-bottom: 3px solid '. $theme_options['title_color'] .';
+				
+				@media only screen and (max-width: 60em) {
+					
+					.main-navigation-toggle:hover:after, 
+					.main-navigation-menu .submenu-dropdown-toggle:hover:before,
+					.footer-navigation-toggle:hover:after {
+						color: '. $theme_options['navi_secondory_color'] .';
+					}
+					
 				}
-				.entry-title a:hover, .entry-title a:focus, .entry-title a:active { color: #444; }';
+				';
+				
+		}
+		
+		// Set Primary Post Color
+		if ( $theme_options['post_primary_color'] != $default_options['post_primary_color'] ) { 
+		
+			$color_css .= '
+				/* Post Titles Primary Color Setting */
+				.site-title, 
+				.page-title, 
+				.entry-title, 
+				.entry-title a:link, 
+				.entry-title a:visited {
+					color: '. $theme_options['post_primary_color'] .';
+				}
+				
+				.entry-title a:hover, 
+				.entry-title a:active{
+					color: #22aadd;
+				}
+				';
+				
+		}
+		
+		// Set Secondary Post Color
+		if ( $theme_options['post_secondory_color'] != $default_options['post_secondory_color'] ) { 
+		
+			$color_css .= '
+				/* Post Titles Secondary Color Setting */
+				.site-branding a:hover .site-title,
+				.entry-title a:hover, 
+				.entry-title a:active {
+					color: '. $theme_options['post_secondory_color'] .';
+				}
+				';
 				
 		}
 		
@@ -123,37 +241,82 @@ class Poseidon_Pro_Custom_Colors {
 		if ( $theme_options['widget_title_color'] != $default_options['widget_title_color'] ) { 
 		
 			$color_css .= '
-				.widget-title, .page-header .archive-title, .comments-header .comments-title, .comment-reply-title span,
-				.tzwb-tabbed-content .tzwb-tabnavi li a:hover, .tzwb-tabbed-content .tzwb-tabnavi li a:active, .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab { 
-					background-color: '. $theme_options['widget_title_color'] .';
-				}
-				.widget-category-posts .widget-header .category-archive-link .category-archive-icon {
+				/* Widget Titles Color Setting */
+				.widget-title,
+				.widget-title a:link,
+				.widget-title a:visited,
+				.page-header .archive-title,
+				.comments-header .comments-title,
+				.comment-reply-title span,
+				.tzwb-tabbed-content .tzwb-tabnavi li a:hover, 
+				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
+				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
 					color: '. $theme_options['widget_title_color'] .';
-				}';
+				}
+				
+				.widget-title a:hover, 
+				.widget-title a:active  {
+					color: #22aadd;
+				}
+				';
 				
 		}
 		
-		// Set Slider Color
-		if ( $theme_options['slider_color'] != $default_options['slider_color'] ) { 
+		// Set Widget Link Color
+		if ( $theme_options['widget_link_color'] != $default_options['widget_link_color'] ) { 
 		
 			$color_css .= '
-				.post-slider .zeeslide .slide-content, .post-slider-controls .zeeflex-direction-nav a {
-					background-color: '. $theme_options['slider_color'].';
+				/* Widget Links Color Setting */
+				.sidebar .widget a:link,
+				.sidebar .widget a:visited,
+				.widget-title a:hover, 
+				.widget-title a:active {
+					color: '. $theme_options['widget_link_color'] .';
 				}
-				.post-slider .zeeslide .more-link {
-					color: '. $theme_options['slider_color'].';
-				}';
 				
+				.sidebar .widget a:hover,
+				.sidebar .widget a:active {
+					color: #404040;
+				}
+				
+				.sidebar .widget .entry-meta a:link,
+				.sidebar .widget .entry-meta a:visited {
+					color: #aaa;
+				}
+				
+				.sidebar .widget_tag_cloud .tagcloud a:link, 
+				.sidebar .widget_tag_cloud .tagcloud a:visited,
+				.sidebar .widget .entry-meta a:hover,
+				.sidebar .widget .entry-meta a:active {
+					color: #777;
+				}
+				
+				.sidebar .widget_tag_cloud .tagcloud a:hover, 
+				.sidebar .widget_tag_cloud .tagcloud a:active,
+				.tzwb-social-icons .social-icons-menu li a {
+					color: #fff;
+					background: '. $theme_options['widget_link_color'] .';
+				}
+
+				.tzwb-social-icons .social-icons-menu li a:hover {
+					background: #404040;
+				}
+				';
 		}
 		
-		// Print Color CSS
-		if ( isset($color_css) and $color_css <> '' ) :
+		// Set Footer Widgets Color
+		if ( $theme_options['footer_color'] != $default_options['footer_color'] ) { 
 		
-			echo '<style type="text/css">';
-			echo $color_css;
-			echo '</style>';
-		
-		endif;
+			$color_css .= '
+				/* Footer Widget Color Setting */
+				.footer-widgets-background {
+					background: '. $theme_options['footer_color'] .';
+				}
+				';
+				
+		}
+
+		return $color_css;
 		
 	}
 	
@@ -175,7 +338,24 @@ class Poseidon_Pro_Custom_Colors {
 		// Get Default Colors from settings
 		$default_options = Poseidon_Pro_Customizer::get_default_options();
 		
-		// Add Link Color setting
+		// Add Top Navigation Color setting
+		$wp_customize->add_setting( 'poseidon_theme_options[top_navi_color]', array(
+			'default'           => $default_options['top_navi_color'],
+			'type'           	=> 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color'
+			)
+		);
+		$wp_customize->add_control( new WP_Customize_Color_Control( 
+			$wp_customize, 'poseidon_theme_options[top_navi_color]', array(
+				'label'      => _x( 'Top Navigation', 'color setting', 'poseidon-pro' ),
+				'section'    => 'poseidon_pro_section_colors',
+				'settings'   => 'poseidon_theme_options[top_navi_color]',
+				'priority' => 1
+			) ) 
+		);
+		
+		// Add Link and Button Color setting
 		$wp_customize->add_setting( 'poseidon_theme_options[link_color]', array(
 			'default'           => $default_options['link_color'],
 			'type'           	=> 'option',
@@ -184,62 +364,79 @@ class Poseidon_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'link_color', array(
-				'label'      => _x( 'Links & Buttons', 'color setting', 'poseidon-pro' ),
+			$wp_customize, 'poseidon_theme_options[link_color]', array(
+				'label'      => _x( 'Links and Buttons', 'color setting', 'poseidon-pro' ),
 				'section'    => 'poseidon_pro_section_colors',
 				'settings'   => 'poseidon_theme_options[link_color]',
-				'priority' => 1
-			) ) 
-		);
-		
-		// Add Navigation Color setting
-		$wp_customize->add_setting( 'poseidon_theme_options[navi_color]', array(
-			'default'           => $default_options['navi_color'],
-			'type'           	=> 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => 'sanitize_hex_color'
-			)
-		);
-		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'navi_color', array(
-				'label'      => _x( 'Navigation (primary)', 'color setting', 'poseidon-pro' ),
-				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[navi_color]',
 				'priority' => 2
 			) ) 
 		);
 		
-		// Add Navigation Hover Color setting
-		$wp_customize->add_setting( 'poseidon_theme_options[navi_hover_color]', array(
-			'default'           => $default_options['navi_hover_color'],
+		// Add Navigation Primary Color setting
+		$wp_customize->add_setting( 'poseidon_theme_options[navi_primary_color]', array(
+			'default'           => $default_options['navi_primary_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'navi_hover_color', array(
-				'label'      => _x( 'Navigation (secondary)', 'color setting', 'poseidon-pro' ),
+			$wp_customize, 'poseidon_theme_options[navi_primary_color]', array(
+				'label'      => _x( 'Navigation (primary)', 'color setting', 'poseidon-pro' ),
 				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[navi_hover_color]',
+				'settings'   => 'poseidon_theme_options[navi_primary_color]',
 				'priority' => 3
 			) ) 
 		);
 		
-		// Add Title Color setting
-		$wp_customize->add_setting( 'poseidon_theme_options[title_color]', array(
-			'default'           => $default_options['title_color'],
+		// Add Navigation Secondary Color setting
+		$wp_customize->add_setting( 'poseidon_theme_options[navi_secondory_color]', array(
+			'default'           => $default_options['navi_secondory_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'title_color', array(
-				'label'      => _x( 'Post Titles', 'color setting', 'poseidon-pro' ),
+			$wp_customize, 'poseidon_theme_options[navi_secondory_color]', array(
+				'label'      => _x( 'Navigation (secondary)', 'color setting', 'poseidon-pro' ),
 				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[title_color]',
+				'settings'   => 'poseidon_theme_options[navi_secondory_color]',
 				'priority' => 4
+			) ) 
+		);
+		
+		// Add Post Primary Color setting
+		$wp_customize->add_setting( 'poseidon_theme_options[post_primary_color]', array(
+			'default'           => $default_options['post_primary_color'],
+			'type'           	=> 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color'
+			)
+		);
+		$wp_customize->add_control( new WP_Customize_Color_Control( 
+			$wp_customize, 'poseidon_theme_options[post_primary_color]', array(
+				'label'      => _x( 'Post Titles (primary)', 'color setting', 'poseidon-pro' ),
+				'section'    => 'poseidon_pro_section_colors',
+				'settings'   => 'poseidon_theme_options[post_primary_color]',
+				'priority' => 5
+			) ) 
+		);
+		
+		// Add Post Secondary Color setting
+		$wp_customize->add_setting( 'poseidon_theme_options[post_secondory_color]', array(
+			'default'           => $default_options['post_secondory_color'],
+			'type'           	=> 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color'
+			)
+		);
+		$wp_customize->add_control( new WP_Customize_Color_Control( 
+			$wp_customize, 'poseidon_theme_options[post_secondory_color]', array(
+				'label'      => _x( 'Post Titles (secondary)', 'color setting', 'poseidon-pro' ),
+				'section'    => 'poseidon_pro_section_colors',
+				'settings'   => 'poseidon_theme_options[post_secondory_color]',
+				'priority' => 6
 			) ) 
 		);
 
@@ -252,37 +449,85 @@ class Poseidon_Pro_Custom_Colors {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'widget_title_color', array(
+			$wp_customize, 'poseidon_theme_options[widget_title_color]', array(
 				'label'      => _x( 'Widget Titles', 'color setting', 'poseidon-pro' ),
 				'section'    => 'poseidon_pro_section_colors',
 				'settings'   => 'poseidon_theme_options[widget_title_color]',
-				'priority' => 5
+				'priority' => 7
 			) ) 
 		);
 		
-		// Add Slider Color setting
-		$wp_customize->add_setting( 'poseidon_theme_options[slider_color]', array(
-			'default'           => $default_options['slider_color'],
+		// Add Widget Title Color setting
+		$wp_customize->add_setting( 'poseidon_theme_options[widget_link_color]', array(
+			'default'           => $default_options['widget_link_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'slider_color', array(
-				'label'      => _x( 'Post Slider', 'color setting', 'poseidon-pro' ),
+			$wp_customize, 'poseidon_theme_options[widget_link_color]', array(
+				'label'      => _x( 'Widget Links', 'color setting', 'poseidon-pro' ),
 				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[slider_color]',
-				'active_callback' => 'poseidon_slider_activated_callback',
-				'priority' => 7
+				'settings'   => 'poseidon_theme_options[widget_link_color]',
+				'priority' => 8
 			) ) 
 		);
 		
+		// Add Footer Widgets Color setting
+		$wp_customize->add_setting( 'poseidon_theme_options[footer_color]', array(
+			'default'           => $default_options['footer_color'],
+			'type'           	=> 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color'
+			)
+		);
+		$wp_customize->add_control( new WP_Customize_Color_Control( 
+			$wp_customize, 'poseidon_theme_options[footer_color]', array(
+				'label'      => _x( 'Footer Widgets', 'color setting', 'poseidon-pro' ),
+				'section'    => 'poseidon_pro_section_colors',
+				'settings'   => 'poseidon_theme_options[footer_color]',
+				'priority' => 9
+			) ) 
+		);
+		
+	}
+	
+	/**
+	 * If the query var is set, print the Custom Color CSS rules.
+	 *
+	 */
+	static function print_custom_colors_css() {
+
+		// Only print CSS if this is a stylesheet request
+		if( ! isset( $_GET['poseidon_pro_colors'] ) || intval( $_GET['poseidon_pro_colors'] ) !== 1 ) {
+			return;
+		}
+
+		// CSS File Header
+		ob_start();
+		header( 'Content-type: text/css' );
+		
+		// Get CSS
+		$raw_css = self::custom_colors_css();
+		$raw_css = $raw_css <> '' ? $raw_css : '/* No Custom Colors settings were saved */';
+		
+		// Sanitize CSS Code
+		$css = wp_kses( $raw_css, array( '\'', '\"' ) );
+		$css = str_replace( '&gt;', '>', $css );
+		$css = preg_replace( '/\t\t\t\t/', '', $css );
+		
+		// Print CSS
+		echo $css;
+		die();
 	}
 
 }
 
 // Run Class
 add_action( 'init', array( 'Poseidon_Pro_Custom_Colors', 'setup' ) );
+
+// Print Custom Color CSS
+add_action( 'plugins_loaded', array( 'Poseidon_Pro_Custom_Colors', 'print_custom_colors_css' ) );
 
 endif;
