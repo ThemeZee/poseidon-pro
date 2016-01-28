@@ -1,8 +1,8 @@
 <?php
 /***
- * Footer Widgets
+ * Custom Colors
  *
- * Registers footer widget areas and hooks into the Poseidon theme to display widgets
+ * Adds color settings to Customizer and generates color CSS code
  *
  * @package Poseidon Pro
  */
@@ -17,7 +17,7 @@ if ( ! class_exists( 'Poseidon_Pro_Custom_Colors' ) ) :
 class Poseidon_Pro_Custom_Colors {
 
 	/**
-	 * Footer Widgets Setup
+	 * Custom Colors Setup
 	 *
 	 * @return void
 	*/
@@ -28,29 +28,19 @@ class Poseidon_Pro_Custom_Colors {
 			return;
 		}
 		
-		// Enqueue Custom Color Stylesheet
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'custom_colors_stylesheet' ), 20 );
+		// Add Custom Color CSS code to custom stylesheet output
+		add_filter( 'poseidon_pro_custom_css_stylesheet', array( __CLASS__, 'custom_colors_css' ) ); 
 		
 		// Add Custom Color Settings
 		add_action( 'customize_register', array( __CLASS__, 'color_settings' ) );
-		
-	}
-	
-	/**
-	 * Register and Enqueue Custom Color Stylesheet
-	 *
-	 */
-	static function custom_colors_stylesheet() {
 
-		wp_enqueue_style( 'poseidon-pro-custom-colors', add_query_arg( 'poseidon_pro_colors', 1, home_url( '/' ) ) );
-		
 	}
 	
 	/**
 	 * Adds Color CSS styles in the head area to override default colors
 	 *
 	 */
-	static function custom_colors_css() { 
+	static function custom_colors_css( $custom_css ) { 
 		
 		// Get Theme Options from Database
 		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
@@ -71,7 +61,7 @@ class Poseidon_Pro_Custom_Colors {
 				.more-link {
 					color: '. $theme_options['link_color'] .';
 				}
-				
+					
 				a:hover, 
 				a:focus, 
 				a:active { 
@@ -175,7 +165,7 @@ class Poseidon_Pro_Custom_Colors {
 		}
 		
 		// Set Secondary Navigation Color
-		if ( $theme_options['navi_secondory_color'] != $default_options['navi_secondory_color'] ) { 
+		if ( $theme_options['navi_secondary_color'] != $default_options['navi_secondary_color'] ) { 
 		
 			$color_css .= '
 				/* Navigation Secondary Color Setting */
@@ -186,7 +176,7 @@ class Poseidon_Pro_Custom_Colors {
 				.main-navigation-menu ul .menu-item-has-children > a:hover:after,
 				.footer-navigation-menu a:hover,
 				.footer-navigation-menu a:active {
-					color: '. $theme_options['navi_secondory_color'] .';
+					color: '. $theme_options['navi_secondary_color'] .';
 				}
 				
 				@media only screen and (max-width: 60em) {
@@ -194,7 +184,7 @@ class Poseidon_Pro_Custom_Colors {
 					.main-navigation-toggle:hover:after, 
 					.main-navigation-menu .submenu-dropdown-toggle:hover:before,
 					.footer-navigation-toggle:hover:after {
-						color: '. $theme_options['navi_secondory_color'] .';
+						color: '. $theme_options['navi_secondary_color'] .';
 					}
 					
 				}
@@ -224,14 +214,14 @@ class Poseidon_Pro_Custom_Colors {
 		}
 		
 		// Set Secondary Post Color
-		if ( $theme_options['post_secondory_color'] != $default_options['post_secondory_color'] ) { 
+		if ( $theme_options['post_secondary_color'] != $default_options['post_secondary_color'] ) { 
 		
 			$color_css .= '
 				/* Post Titles Secondary Color Setting */
 				.site-branding a:hover .site-title,
 				.entry-title a:hover, 
 				.entry-title a:active {
-					color: '. $theme_options['post_secondory_color'] .';
+					color: '. $theme_options['post_secondary_color'] .';
 				}
 				';
 				
@@ -315,8 +305,11 @@ class Poseidon_Pro_Custom_Colors {
 				';
 				
 		}
-
-		return $color_css;
+		
+		$color_css = $color_css <> '' ? $color_css : '/* No Custom Colors settings were saved */';
+		$custom_css .= $color_css;
+		
+		return $custom_css;
 		
 	}
 	
@@ -376,7 +369,7 @@ class Poseidon_Pro_Custom_Colors {
 		$wp_customize->add_setting( 'poseidon_theme_options[navi_primary_color]', array(
 			'default'           => $default_options['navi_primary_color'],
 			'type'           	=> 'option',
-			'transport'         => 'postMessage',
+			'transport'         => 'refresh',
 			'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
@@ -390,18 +383,18 @@ class Poseidon_Pro_Custom_Colors {
 		);
 		
 		// Add Navigation Secondary Color setting
-		$wp_customize->add_setting( 'poseidon_theme_options[navi_secondory_color]', array(
-			'default'           => $default_options['navi_secondory_color'],
+		$wp_customize->add_setting( 'poseidon_theme_options[navi_secondary_color]', array(
+			'default'           => $default_options['navi_secondary_color'],
 			'type'           	=> 'option',
-			'transport'         => 'postMessage',
+			'transport'         => 'refresh',
 			'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'poseidon_theme_options[navi_secondory_color]', array(
+			$wp_customize, 'poseidon_theme_options[navi_secondary_color]', array(
 				'label'      => _x( 'Navigation (secondary)', 'color setting', 'poseidon-pro' ),
 				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[navi_secondory_color]',
+				'settings'   => 'poseidon_theme_options[navi_secondary_color]',
 				'priority' => 4
 			) ) 
 		);
@@ -410,7 +403,7 @@ class Poseidon_Pro_Custom_Colors {
 		$wp_customize->add_setting( 'poseidon_theme_options[post_primary_color]', array(
 			'default'           => $default_options['post_primary_color'],
 			'type'           	=> 'option',
-			'transport'         => 'postMessage',
+			'transport'         => 'refresh',
 			'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
@@ -424,18 +417,18 @@ class Poseidon_Pro_Custom_Colors {
 		);
 		
 		// Add Post Secondary Color setting
-		$wp_customize->add_setting( 'poseidon_theme_options[post_secondory_color]', array(
-			'default'           => $default_options['post_secondory_color'],
+		$wp_customize->add_setting( 'poseidon_theme_options[post_secondary_color]', array(
+			'default'           => $default_options['post_secondary_color'],
 			'type'           	=> 'option',
-			'transport'         => 'postMessage',
+			'transport'         => 'refresh',
 			'sanitize_callback' => 'sanitize_hex_color'
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Color_Control( 
-			$wp_customize, 'poseidon_theme_options[post_secondory_color]', array(
+			$wp_customize, 'poseidon_theme_options[post_secondary_color]', array(
 				'label'      => _x( 'Post Titles (secondary)', 'color setting', 'poseidon-pro' ),
 				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[post_secondory_color]',
+				'settings'   => 'poseidon_theme_options[post_secondary_color]',
 				'priority' => 6
 			) ) 
 		);
@@ -492,42 +485,10 @@ class Poseidon_Pro_Custom_Colors {
 		);
 		
 	}
-	
-	/**
-	 * If the query var is set, print the Custom Color CSS rules.
-	 *
-	 */
-	static function print_custom_colors_css() {
-
-		// Only print CSS if this is a stylesheet request
-		if( ! isset( $_GET['poseidon_pro_colors'] ) || intval( $_GET['poseidon_pro_colors'] ) !== 1 ) {
-			return;
-		}
-
-		// CSS File Header
-		ob_start();
-		header( 'Content-type: text/css' );
-		
-		// Get CSS
-		$raw_css = self::custom_colors_css();
-		$raw_css = $raw_css <> '' ? $raw_css : '/* No Custom Colors settings were saved */';
-		
-		// Sanitize CSS Code
-		$css = wp_kses( $raw_css, array( '\'', '\"' ) );
-		$css = str_replace( '&gt;', '>', $css );
-		$css = preg_replace( '/\t\t\t\t/', '', $css );
-		
-		// Print CSS
-		echo $css;
-		die();
-	}
 
 }
 
 // Run Class
 add_action( 'init', array( 'Poseidon_Pro_Custom_Colors', 'setup' ) );
-
-// Print Custom Color CSS
-add_action( 'plugins_loaded', array( 'Poseidon_Pro_Custom_Colors', 'print_custom_colors_css' ) );
 
 endif;

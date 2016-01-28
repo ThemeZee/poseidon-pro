@@ -111,35 +111,16 @@ class Poseidon_Pro {
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/customizer/class-poseidon-pro-customizer.php';
 		
 		// Include Pro Features
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-site-logo.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-header-bar.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-custom-colors.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-custom-fonts.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-footer-line.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-footer-widgets.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-header-bar.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-site-logo.php';
 		
-		// Get Settings
-		$instance = Poseidon_Pro_Settings::instance();
-		$settings = $instance->get_all();
-		
-		// Only include custom color feature if enabled
-		if( true == $settings['custom_colors'] ) {
-			
-			require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-custom-colors.php';
+		// Include Custom Stylesheet class
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/class-poseidon-pro-custom-stylesheet.php';
 
-		}
-		
-		// Only include custom font feature if enabled
-		if( true == $settings['custom_fonts'] ) {
-			
-			require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-custom-fonts.php';
-
-		} 
-		
-		// Only include footer widgets if enabled
-		if( true == $settings['footer_widgets'] ) {
-			
-			require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-footer-widgets.php';
-
-		}
-		
 	}
 	
 	/**

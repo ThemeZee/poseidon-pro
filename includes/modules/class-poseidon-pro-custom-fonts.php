@@ -1,8 +1,8 @@
 <?php
 /***
- * Footer Widgets
+ * Custom Fonts
  *
- * Registers footer widget areas and hooks into the Poseidon theme to display widgets
+ * Adds custom font settings to Customizer and generates font CSS code
  *
  * @package Poseidon Pro
  */
@@ -17,7 +17,7 @@ if ( ! class_exists( 'Poseidon_Pro_Custom_Fonts' ) ) :
 class Poseidon_Pro_Custom_Fonts {
 
 	/**
-	 * Footer Widgets Setup
+	 * Custom Fonts Setup
 	 *
 	 * @return void
 	*/
@@ -33,8 +33,8 @@ class Poseidon_Pro_Custom_Fonts {
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/customizer/class-poseidon-pro-customize-font-control.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/customizer/class-poseidon-pro-customize-font-list-control.php';
 		
-		// Adds custom CSS code to change fonts
-		add_action( 'wp_head', array( __CLASS__, 'custom_fonts_css' ) );
+		// Add Custom Color CSS code to custom stylesheet output
+		add_filter( 'poseidon_pro_custom_css_stylesheet', array( __CLASS__, 'custom_fonts_css' ) ); 
 		
 		// Load custom fonts from Google web font API
 		add_filter( 'poseidon_google_fonts_url', array( __CLASS__, 'google_fonts_url' ) );
@@ -49,7 +49,7 @@ class Poseidon_Pro_Custom_Fonts {
 	 *
 	 * @return string CSS code
 	 */
-	static function custom_fonts_css() {
+	static function custom_fonts_css( $custom_css ) {
 		
 		// Get Theme Options from Database
 		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
@@ -64,9 +64,15 @@ class Poseidon_Pro_Custom_Fonts {
 		if ( $theme_options['text_font'] != $default_options['text_font'] ) { 
 		
 			$font_css .= '
-				body, button, input, select, textarea, .top-navigation-menu a {
+				/* Base Font Setting */
+				body,
+				button,
+				input,
+				select,
+				textarea {
 					font-family: "'.esc_attr($theme_options['text_font']).'";
-				}';
+				}
+				';
 			
 		}
 		
@@ -74,9 +80,13 @@ class Poseidon_Pro_Custom_Fonts {
 		if ( $theme_options['title_font'] != $default_options['title_font'] ) { 
 		
 			$font_css .= '
-				.site-title, .page-title, .entry-title {
+				/* Headings Font Setting */
+				.site-title, 
+				.page-title, 
+				.entry-title {
 					font-family: "'.esc_attr($theme_options['title_font']).'";
-				}';
+				}
+				';
 			
 		}
 		
@@ -84,9 +94,13 @@ class Poseidon_Pro_Custom_Fonts {
 		if ( $theme_options['navi_font'] != $default_options['navi_font'] ) { 
 		
 			$font_css .= '
-				.main-navigation-menu a {
+				/* Navigation Font Setting */
+				.top-navigation-menu a,
+				.main-navigation-menu a,
+				.footer-navigation-menu a {
 					font-family: "'.esc_attr($theme_options['navi_font']).'";
-				}';
+				}
+				';
 			
 		}
 		
@@ -94,21 +108,29 @@ class Poseidon_Pro_Custom_Fonts {
 		if ( $theme_options['widget_title_font'] != $default_options['widget_title_font'] ) { 
 		
 			$font_css .= '
-				button, input[type="button"], input[type="reset"], input[type="submit"],
-				.widget-title, .more-link, .page-header .archive-title, .comments-header .comments-title, .comment-reply-title span {
+				/* Widget Titles Font Setting */
+				button,
+				input[type="button"],
+				input[type="reset"],
+				input[type="submit"],
+				.more-link,
+				.widget-title,
+				.post-pagination a,
+				.post-pagination .current,
+				.page-header .archive-title,
+				.comments-header .comments-title,
+				.comment-reply-title span,
+				.tzwb-tabbed-content .tzwb-tabnavi li a {
 					font-family: "'.esc_attr($theme_options['widget_title_font']).'";
-				}';
+				}
+				';
 			
 		}
 		
-		// Print Font CSS
-		if ( $font_css <> '' ) {
+		$font_css = $font_css <> '' ? $font_css : '/* No Custom Font settings were saved */';
+		$custom_css .= $font_css;
 		
-			echo '<style type="text/css">';
-			echo $font_css;
-			echo '</style>';
-		
-		}
+		return $custom_css;
 		
 	}
 	

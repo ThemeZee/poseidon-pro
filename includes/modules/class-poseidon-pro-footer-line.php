@@ -115,7 +115,7 @@ class Poseidon_Pro_Footer_Line {
 			'sanitize_callback' => array( __CLASS__, 'sanitize_footer_text' )
 			)
 		);
-		$wp_customize->add_control( 'poseidon_control_footer_text', array(
+		$wp_customize->add_control( 'poseidon_theme_options[footer_text]', array(
 			'label'    => __( 'Footer Text', 'poseidon-pro' ),
 			'section'  => 'poseidon_pro_section_footer',
 			'settings' => 'poseidon_theme_options[footer_text]',
@@ -132,7 +132,7 @@ class Poseidon_Pro_Footer_Line {
 			'sanitize_callback' => 'poseidon_sanitize_checkbox'
 			)
 		);
-		$wp_customize->add_control( 'poseidon_control_credit_link', array(
+		$wp_customize->add_control( 'poseidon_theme_options[credit_link]', array(
 			'label'    => __( 'Display Credit Link to ThemeZee on footer line', 'poseidon-pro' ),
 			'section'  => 'poseidon_pro_section_footer',
 			'settings' => 'poseidon_theme_options[credit_link]',

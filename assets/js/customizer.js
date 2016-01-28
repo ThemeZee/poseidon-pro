@@ -8,101 +8,80 @@
 
 ( function( $ ) {
 
-	/* Link & Button Color Option */		
+	/* Link & Button Color Option */
 	wp.customize( 'poseidon_theme_options[link_color]', function( value ) {
 		value.bind( function( newval ) {
-			$('.entry-content a, .entry-content a:link, .entry-content a:visited, .top-navigation-menu a:link, .top-navigation-menu a:visited, .entry-meta a:link, .entry-meta a:visited, .entry-footer a:link, .entry-footer a:visited, .comment a:link, .comment a:visited, .widget a:link, .widget a:visited, .top-navigation-toggle:after, .top-navigation-menu .submenu-dropdown-toggle:before, .footer-navigation-toggle:after, .social-icons-navigation-toggle:after, .footer-navigation-menu a')
-				.not( $('.more-link:link, .more-link:visited, .post-slider .zeeslide .entry-meta a:link, .post-slider .zeeslide .entry-meta a:visited, .widget-category-posts .entry-title a, .tzwb-tabbed-content .tzwb-tabnavi li a') )
+			$('.entry-content a, .entry-content a:link, .entry-content a:visited, .post-navigation a:link, .post-navigation a:visited, .comments-area a:link, .comments-area a:visited, .more-link:link, .more-link:visited, .breadcrumbs a:link, .breadcrumbs a:visited')
 				.css('color', newval );
-			$('.entry-content a, .top-navigation-menu a, .entry-meta a, .entry-footer a, .comment a, .widget a, .top-navigation-toggle:after, .top-navigation-menu .submenu-dropdown-toggle:before, .footer-navigation-toggle:after, .social-icons-navigation-toggle:after, .footer-navigation-menu a')
-				.not( $('.more-link:link, .more-link:visited, .post-slider .zeeslide .entry-meta a:link, .post-slider .zeeslide .entry-meta a:visited') )
-				.hover( function() { $( this ).css('color', '#444444' ); },
+			$('.entry-content a, .post-navigation a, .more-link, .comments-area a, .breadcrumbs a')
+				.hover( function() { $( this ).css('color', '#404040' ); },
 						function() { $( this ).css('color', newval ); }
 				);
-			$('button, input[type="button"], input[type="reset"], input[type="submit"], .search-form .search-submit, .more-link, .post-pagination .current')
-				.not( $('.post-slider .zeeslide .more-link, .top-navigation-toggle, .main-navigation-toggle, .footer-navigation-toggle, .social-icons-navigation-toggle') )
+			$('button, input[type="button"], input[type="reset"], input[type="submit"]')
 				.css('background', newval );
-			$('button, input[type="button"], input[type="reset"], input[type="submit"], .search-form .search-submit, .more-link')
-				.not( $('.post-slider .zeeslide .more-link, .top-navigation-toggle, .main-navigation-toggle, .footer-navigation-toggle, .social-icons-navigation-toggle') )
-				.hover( function() { $( this ).css('background', '#444444' ); },
+			$('button, input[type="button"], input[type="reset"], input[type="submit"]')
+				.hover( function() { $( this ).css('background', '#404040' ); },
 						function() { $( this ).css('background', newval ); }
 				);
-			$('.entry-tags .meta-tags a, .post-pagination a, .post-pagination .current, .comment-navigation a, .widget_tag_cloud .tagcloud a')
-				.css('border', '1px solid ' + newval );
-			$('.entry-tags .meta-tags a, .post-pagination a, .comment-navigation a, .widget_tag_cloud .tagcloud a')
-				.hover( function() { $( this ).css( { 'background': newval, 'color': '#ffffff' } ); },
-						function() { $( this ).css('background', '#ffffff' ); }
+			$('.entry-tags .meta-tags a')
+				.hover( function() { $( this ).css('background', newval ); },
+						function() { $( this ).css('background', '#eeeeee' ); }
 				);
 		} );
 	} );
 	
-	/* Navigation Color Option */
-	wp.customize( 'poseidon_theme_options[navi_color]', function( value ) {
+	/* Top Navigation Color Option */
+	wp.customize( 'poseidon_theme_options[top_navi_color]', function( value ) {
 		value.bind( function( newval ) {
-			$('.primary-navigation, .main-navigation-toggle, .sidebar-navigation-toggle')
+			$('.header-bar-wrap, .top-navigation-menu ul')
 				.css('background', newval );
-		} );
-	} );
-	
-	/* Navigation Hover Color Option */
-	wp.customize( 'poseidon_theme_options[navi_hover_color]', function( value ) {
-		value.bind( function( newval ) {
-			$('.main-navigation-menu ul, .main-navigation-menu ul a, .main-navigation-menu li.current-menu-item a')
-				.css('background', newval );
-			$('.main-navigation-menu a, .main-navigation-toggle, .sidebar-navigation-toggle')
-				.hover( function() { $( this ).css( 'background',  newval ); },
-						function() { $( this ).css( 'background', 'inherit' ); }
-				);
-		} );
-	} );
-	
-	/* Title Color Option */
-	wp.customize( 'poseidon_theme_options[title_color]', function( value ) {
-		value.bind( function( newval ) {
-			$('.site-title, .page-title, .entry-title, .entry-title a:link, .entry-title a:visited')
-				.not( $('.post-slider .zeeslide .entry-title, .post-slider .zeeslide .entry-title a') )
-				.css('color', newval );
-			$('.entry-title')
-				.not( $('.post-slider .zeeslide .entry-title, .post-slider .zeeslide .entry-title a') )
-				.css('border-bottom', '3px solid ' + newval );
-			$('.entry-title a, .site-title')
-				.not( $('.post-slider .zeeslide .entry-title, .post-slider .zeeslide .entry-title a') )
-				.hover( function() { $( this ).css('color', '#444444' ); },
-						function() { $( this ).css('color', newval ); }
-				);
 		} );
 	} );
 	
 	/* Widget Title Color Option */
 	wp.customize( 'poseidon_theme_options[widget_title_color]', function( value ) {
 		value.bind( function( newval ) {
-			$('.widget-title, .page-header .archive-title, .comments-header .comments-title, .comment-reply-title span, .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab')
-				.css('background', newval );
-			$('.widget-category-posts .widget-header .category-archive-link .category-archive-icon')
+			$('.widget-title, .widget-title a:link, .widget-title a:visited, .page-header .archive-title, .comments-header .comments-title, .comment-reply-title span, .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab')
+				.not( $('.footer-widgets .widget-title') )
 				.css('color', newval );
-			$('.widget-category-posts .widget-header .category-archive-link')
-				.hover( function() { $( this ).children( '.widget-title' ).css('background', '#444444' ); },
-						function() { $( this ).children( '.widget-title' ).css('background', newval ); }
-				);
 			$('.tzwb-tabbed-content .tzwb-tabnavi li a')
-				.hover( function() { $( this ).css('background', newval ); },
-						function() { $( this ).css('background', '#444444' ); }
+				.hover( function() { $( this ).css('color', newval ); },
+						function() { $( this ).css('color', '#404040' ); }
 				)
 				
 		} );
 	} );
 	
-	/* Slider Color Option */
-	wp.customize( 'poseidon_theme_options[slider_color]', function( value ) {
+	/* Widget Link Color Option */
+	wp.customize( 'poseidon_theme_options[widget_link_color]', function( value ) {
 		value.bind( function( newval ) {
-			$('.post-slider .zeeslide .slide-content, .post-slider-controls .zeeflex-direction-nav a')
-				.css('background', newval );
-			$('.post-slider .zeeslide .more-link')
+			$('.sidebar .widget a:link, .sidebar .widget a:visited')
+				.not( $('.sidebar .widget_tag_cloud .tagcloud a, .sidebar .widget .entry-meta a, .tzwb-tabbed-content .tzwb-tabnavi li a, .tzwb-social-icons .social-icons-menu li a, .footer-widgets .widget a') )
 				.css('color', newval );
-			$('.post-slider-controls .zeeflex-direction-nav a')
-				.hover( function() { $( this ).css('background', '#444444' ); },
+			$('.sidebar .widget a')
+				.not( $('.sidebar .widget_tag_cloud .tagcloud a, .sidebar .widget .entry-meta a, .tzwb-tabbed-content .tzwb-tabnavi li a, .tzwb-social-icons .social-icons-menu li a, .footer-widgets .widget a') )
+				.hover( function() { $( this ).css('color', '#404040' ); },
+						function() { $( this ).css('color', newval ); }
+				);
+			$('.sidebar .widget_tag_cloud .tagcloud a')
+				.hover( function() { $( this ).css('background', newval ); },
+						function() { $( this ).css('background', '#eeeeee' ); }
+				);
+			$('.tzwb-social-icons .social-icons-menu li a')
+				.css('background', newval );
+			$('.tzwb-social-icons .social-icons-menu li a')
+				.hover( function() { $( this ).css('background', '#404040' ); },
 						function() { $( this ).css('background', newval ); }
 				);
+				
+		} );
+	} );
+	
+	/* Footer Widgets Color Option */
+	wp.customize( 'poseidon_theme_options[footer_color]', function( value ) {
+		value.bind( function( newval ) {
+			$('.footer-widgets-background')
+				.css('background', newval );
 		} );
 	} );
 	
@@ -113,7 +92,7 @@
 		
 			// Embed Font
 			var fontFamilyUrl = newval.split(" ").join("+");
-			var googleFontPath = "http://fonts.googleapis.com/css?family="+fontFamilyUrl;
+			var googleFontPath = "http://fonts.googleapis.com/css?family="+fontFamilyUrl+":400,700";
 			var googleFontSource = "<link id='poseidon-pro-custom-text-font' href='"+googleFontPath+"' rel='stylesheet' type='text/css'>";					
 			var checkLink = $("head").find("#poseidon-pro-custom-text-font").length;
 			
@@ -123,7 +102,7 @@
 			$("head").append(googleFontSource);
 			
 			// Set CSS
-			$('body, button, input, select, textarea, .top-navigation-menu a')
+			$('body, button, input, select, textarea')
 				.css('font-family', newval );
 				
 		} );
@@ -134,7 +113,7 @@
 		
 			// Embed Font
 			var fontFamilyUrl = newval.split(" ").join("+");
-			var googleFontPath = "http://fonts.googleapis.com/css?family="+fontFamilyUrl;
+			var googleFontPath = "http://fonts.googleapis.com/css?family="+fontFamilyUrl+":400,700";
 			var googleFontSource = "<link id='poseidon-pro-custom-title-font' href='"+googleFontPath+"' rel='stylesheet' type='text/css'>";					
 			var checkLink = $("head").find("#poseidon-pro-custom-title-font").length;
 			
@@ -155,7 +134,7 @@
 		
 			// Embed Font
 			var fontFamilyUrl = newval.split(" ").join("+");
-			var googleFontPath = "http://fonts.googleapis.com/css?family="+fontFamilyUrl;
+			var googleFontPath = "http://fonts.googleapis.com/css?family="+fontFamilyUrl+":400,700";
 			var googleFontSource = "<link id='poseidon-pro-custom-navi-font' href='"+googleFontPath+"' rel='stylesheet' type='text/css'>";					
 			var checkLink = $("head").find("#poseidon-pro-custom-navi-font").length;
 			
@@ -165,7 +144,7 @@
 			$("head").append(googleFontSource);
 			
 			// Set CSS
-			$('.main-navigation-menu a')
+			$('.top-navigation-menu a, .main-navigation-menu a, .footer-navigation-menu a')
 				.css('font-family', newval );
 				
 		} );
@@ -176,7 +155,7 @@
 		
 			// Embed Font
 			var fontFamilyUrl = newval.split(" ").join("+");
-			var googleFontPath = "http://fonts.googleapis.com/css?family="+fontFamilyUrl;
+			var googleFontPath = "http://fonts.googleapis.com/css?family="+fontFamilyUrl+":400,700";
 			var googleFontSource = "<link id='poseidon-pro-custom-widget-title-font' href='"+googleFontPath+"' rel='stylesheet' type='text/css'>";					
 			var checkLink = $("head").find("#poseidon-pro-custom-widget-title-font").length;
 			
@@ -186,7 +165,7 @@
 			$("head").append(googleFontSource);
 			
 			// Set CSS
-			$('button, input[type="button"], input[type="reset"], input[type="submit"], .widget-title, .more-link, .page-header .archive-title, .comments-header .comments-title, .comment-reply-title span')
+			$('button, input[type="button"], input[type="reset"], input[type="submit"], .more-link, .widget-title, .post-pagination a, .post-pagination .current, .page-header .archive-title, .comments-header .comments-title, .comment-reply-title span, .tzwb-tabbed-content .tzwb-tabnavi li a')
 				.css('font-family', newval );
 				
 		} );

@@ -1,8 +1,8 @@
 <?php
 /***
- * Footer Widgets
+ * Site Logo
  *
- * Registers footer widget areas and hooks into the Poseidon theme to display widgets
+ * Adds logo and spacing settings, replaces site title with logo image and adds spacing CSS
  *
  * @package Poseidon Pro
  */
@@ -17,7 +17,7 @@ if ( ! class_exists( 'Poseidon_Pro_Site_Logo' ) ) :
 class Poseidon_Pro_Site_Logo {
 
 	/**
-	 * Footer Widgets Setup
+	 * Site Logo Setup
 	 *
 	 * @return void
 	*/
@@ -32,8 +32,8 @@ class Poseidon_Pro_Site_Logo {
 		remove_action( 'poseidon_site_title', 'poseidon_site_title' );
 		add_action( 'poseidon_site_title', array( __CLASS__, 'display_site_logo' ) );
 		
-		// Add Site Logo Spacing CSS
-		add_action( 'poseidon_site_title', array( __CLASS__, 'site_logo_spacing' ) );
+		// Add Custom Spacing CSS code to custom stylesheet output
+		add_filter( 'poseidon_pro_custom_css_stylesheet', array( __CLASS__, 'custom_spacing_css' ) ); 
 		
 		// Add Site Logo Settings
 		add_action( 'customize_register', array( __CLASS__, 'site_logo_settings' ) );
@@ -69,34 +69,58 @@ class Poseidon_Pro_Site_Logo {
 	}
 	
 	/**
-	 * Adds custom Margin CSS styling for the Logo Spacing option in the head area
+	 * Adds custom Margin CSS styling for the logo and navigation spacing
 	 *
 	 */
-	static function site_logo_spacing() { 
+	static function custom_spacing_css( $custom_css ) { 
 		
 		// Get Theme Options from Database
 		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
 
-		// Set Color CSS Variable
-		$color_css = '';
+		// Set CSS Variable
+		$spacing_css = '';
 		
-		// Set Link Color
-		if ( isset($theme_options['logo_spacing']) and $theme_options['logo_spacing'] <> 15 ) : 
+		// Set Logo Spacing
+		if ( $theme_options['logo_spacing'] <> 10 ) { 
 		
 			$margin = $theme_options['logo_spacing'] / 10;
 		
-			$color_css .= '
-				@media only screen and (min-width: 60em) {
-					.site-branding {
-						margin: '. $margin .'em 0.5em;
+			$spacing_css .= '
+				.site-branding {
+					margin: '. $margin .'em 0;
+				}
+				';
+				
+		}
+		
+		// Set Navigation Spacing
+		if ( $theme_options['navi_spacing'] <> 10 ) { 
+		
+			$margin = $theme_options['navi_spacing'] / 10;
+		
+			$spacing_css .= '
+				.primary-navigation {
+					margin: '. $margin .'em 0;
+				}
+				
+				@media only screen and (max-width: 60em) {
+					
+					.primary-navigation {
+						margin: 0;
 					}
-				}';
+					
+					.main-navigation-toggle {
+						margin: '. $margin .'em 0;
+					}
+				}
+				';
 				
-			echo '<style type="text/css">';
-			echo $color_css;
-			echo '</style>';
-				
-		endif;
+		}
+		
+		// Add Spacing CSS to existing CSS code
+		$custom_css .= $spacing_css;
+		
+		return $custom_css;
 		
 	}
 	
@@ -124,7 +148,7 @@ class Poseidon_Pro_Site_Logo {
 			)
 		);
 		$wp_customize->add_control( new WP_Customize_Image_Control(
-			$wp_customize, 'poseidon_control_header_logo', array(
+			$wp_customize, 'poseidon_theme_options[header_logo]', array(
 				'label'    => __( 'Logo Image (replaces Site Title)', 'poseidon-pro' ),
 				'section'  => 'poseidon_pro_section_logo',
 				'settings' => 'poseidon_theme_options[header_logo]',
@@ -135,18 +159,35 @@ class Poseidon_Pro_Site_Logo {
 		
 		// Add Logo Spacing setting
 		$wp_customize->add_setting( 'poseidon_theme_options[logo_spacing]', array(
-			'default'           => 15,
+			'default'           => 10,
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
 			'sanitize_callback' => 'absint'
 			)
 		);
-		$wp_customize->add_control( 'poseidon_control_logo_spacing', array(
-			'label'    => __( 'Logo Spacing (default: 15)', 'poseidon-pro' ),
+		$wp_customize->add_control( 'poseidon_theme_options[logo_spacing]', array(
+			'label'    => __( 'Logo Spacing (default: 10)', 'poseidon-pro' ),
 			'section'  => 'poseidon_pro_section_logo',
 			'settings' => 'poseidon_theme_options[logo_spacing]',
 			'type'     => 'text',
 			'priority' => 2
+			)
+		);
+		
+		// Add Navigation Spacing setting
+		$wp_customize->add_setting( 'poseidon_theme_options[navi_spacing]', array(
+			'default'           => 10,
+			'type'           	=> 'option',
+			'transport'         => 'refresh',
+			'sanitize_callback' => 'absint'
+			)
+		);
+		$wp_customize->add_control( 'poseidon_theme_options[navi_spacing]', array(
+			'label'    => __( 'Navigation Spacing (default: 10)', 'poseidon-pro' ),
+			'section'  => 'poseidon_pro_section_logo',
+			'settings' => 'poseidon_theme_options[navi_spacing]',
+			'type'     => 'text',
+			'priority' => 3
 			)
 		);
 
