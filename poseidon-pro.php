@@ -68,7 +68,7 @@ class Poseidon_Pro {
 		define( 'POSEIDON_PRO_VERSION', '1.0' );
 		
 		// Define Plugin Name
-		define( 'POSEIDON_PRO_PRODUCT_ID', 99999 );
+		define( 'POSEIDON_PRO_PRODUCT_ID', 53694 );
 
 		// Define Update API URL
 		define( 'POSEIDON_PRO_STORE_API_URL', 'https://themezee.com' ); 

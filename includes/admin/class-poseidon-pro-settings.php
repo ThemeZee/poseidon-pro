@@ -129,7 +129,6 @@ class Poseidon_Pro_Settings {
 		}
 		
 		// Add Sections
-		add_settings_section( 'poseidon_pro_settings_features', esc_html__( 'Features', 'poseidon-pro' ), '__return_false', 'poseidon_pro_settings' );
 		add_settings_section( 'poseidon_pro_settings_license', esc_html__( 'License', 'poseidon-pro' ), array( $this, 'license_section_intro' ), 'poseidon_pro_settings' );
 		
 		// Add Settings
@@ -280,27 +279,6 @@ class Poseidon_Pro_Settings {
 	function get_registered_settings() {
 
 		$settings = array(
-			'custom_colors' => array(
-				'name' =>  esc_html__( 'Custom Colors', 'poseidon-pro'),
-				'desc' => esc_html__( 'Enable custom color settings', 'poseidon-pro' ),
-				'section' => 'features',
-				'type' => 'checkbox',
-				'default' => true
-			),
-			'custom_fonts' => array(
-				'name' =>  esc_html__( 'Typography', 'poseidon-pro'),
-				'desc' => esc_html__( 'Enable custom font settings', 'poseidon-pro' ),
-				'section' => 'features',
-				'type' => 'checkbox',
-				'default' => true
-			),
-			'footer_widgets' => array(
-				'name' =>  esc_html__( 'Footer Widgets', 'poseidon-pro' ),
-				'desc' => esc_html__( 'Enable footer widget areas', 'poseidon-pro' ),
-				'section' => 'features',
-				'type' => 'checkbox',
-				'default' => true
-			),
 			'license_key' => array(
 				'name' => esc_html__( 'License Key', 'poseidon-pro' ),
 				'section' => 'license',
