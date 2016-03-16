@@ -48,24 +48,28 @@ class Poseidon_Pro_Site_Logo {
 
 		// Get Theme Options from Database
 		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
-		?>
-
-		<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-					
-		<?php // Display Logo Image or Site Title
-			if ( isset($theme_options['header_logo']) and $theme_options['header_logo'] <> '' ) : ?>
-				
-				<img class="site-logo" src="<?php echo esc_url($theme_options['header_logo']); ?>" alt="<?php esc_attr(bloginfo('name')); ?>" />
 		
+		// Display Logo Image or Site Title
+		if ( isset($theme_options['header_logo']) and $theme_options['header_logo'] <> '' ) : ?>
+				
+				<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+					<img class="site-logo" src="<?php echo esc_url($theme_options['header_logo']); ?>" alt="<?php esc_attr(bloginfo('name')); ?>" />
+				</a>
+
 		<?php else: ?>
 				
-				<h1 class="site-title"><?php bloginfo('name'); ?></h1>
+				<?php if ( is_home() or is_page_template( 'template-magazine.php' )  ) : ?>
 		
-		<?php endif; ?>
+					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+	
+				<?php else : ?>
 		
-		</a>
-
-		<?php
+					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+	
+				<?php endif; ?>
+		
+		<?php endif; 
+	
 	}
 	
 	/**

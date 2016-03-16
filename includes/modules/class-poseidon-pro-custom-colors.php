@@ -197,7 +197,9 @@ class Poseidon_Pro_Custom_Colors {
 		
 			$color_css .= '
 				/* Post Titles Primary Color Setting */
-				.site-title, 
+				.site-title,
+				.site-title a:link, 
+				.site-title a:visited,
 				.page-title, 
 				.entry-title, 
 				.entry-title a:link, 
@@ -205,8 +207,10 @@ class Poseidon_Pro_Custom_Colors {
 					color: '. $theme_options['post_primary_color'] .';
 				}
 				
+				.site-title a:hover, 
+				.site-title a:active,
 				.entry-title a:hover, 
-				.entry-title a:active{
+				.entry-title a:active {
 					color: #22aadd;
 				}
 				';
@@ -219,6 +223,8 @@ class Poseidon_Pro_Custom_Colors {
 			$color_css .= '
 				/* Post Titles Secondary Color Setting */
 				.site-branding a:hover .site-title,
+				.site-title a:hover, 
+				.site-title a:active,
 				.entry-title a:hover, 
 				.entry-title a:active {
 					color: '. $theme_options['post_secondary_color'] .';

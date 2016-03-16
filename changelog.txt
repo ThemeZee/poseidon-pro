@@ -2,6 +2,11 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 1.0.1
+-----------------------------------
+[improved] HTML markup of site title
+[updated] color settings for site title
+
 Version 1.0
 -----------------------------------
 Initial Version
