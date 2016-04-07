@@ -1,8 +1,8 @@
 <?php
 /***
- * Site Logo
+ * Header Spacing
  *
- * Adds logo and spacing settings, replaces site title with logo image and adds spacing CSS
+ * Adds header spacing settings and CSS
  *
  * @package Poseidon Pro
  */
@@ -12,9 +12,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 // Use class to avoid namespace collisions
-if ( ! class_exists( 'Poseidon_Pro_Site_Logo' ) ) :
+if ( ! class_exists( 'Poseidon_Pro_Header_Spacing' ) ) :
 
-class Poseidon_Pro_Site_Logo {
+class Poseidon_Pro_Header_Spacing {
 
 	/**
 	 * Site Logo Setup
@@ -135,32 +135,36 @@ class Poseidon_Pro_Site_Logo {
 	 */
 	static function site_logo_settings( $wp_customize ) {
 
-		// Add Sections for Site Logo
-		$wp_customize->add_section( 'poseidon_pro_section_logo', array(
-			'title'    => __( 'Site Logo', 'poseidon-pro' ),
+		// Add Section for Header Settings
+		$wp_customize->add_section( 'poseidon_pro_section_header', array(
+			'title'    => __( 'Header Settings', 'poseidon-pro' ),
 			'priority' => 20,
 			'panel' => 'poseidon_options_panel' 
 			)
 		);
 		
-		// Add Upload logo image setting
-		$wp_customize->add_setting( 'poseidon_theme_options[header_logo]', array(
-			'default'           => '',
-			'type'           	=> 'option',
-			'transport'         => 'refresh',
-			'sanitize_callback' => 'esc_url'
-			)
-		);
-		$wp_customize->add_control( new WP_Customize_Image_Control(
-			$wp_customize, 'poseidon_theme_options[header_logo]', array(
-				'label'    => __( 'Logo Image (replaces Site Title)', 'poseidon-pro' ),
-				'section'  => 'poseidon_pro_section_logo',
-				'settings' => 'poseidon_theme_options[header_logo]',
-				'priority' => 1,
-				)
-			)
-		);
+		// Add Upload logo image setting for WordPress 4.4 and earlier
+		if ( ! current_theme_supports( 'site-logo'  ) ) :
 		
+			$wp_customize->add_setting( 'poseidon_theme_options[header_logo]', array(
+				'default'           => '',
+				'type'           	=> 'option',
+				'transport'         => 'refresh',
+				'sanitize_callback' => 'esc_url'
+				)
+			);
+			$wp_customize->add_control( new WP_Customize_Image_Control(
+				$wp_customize, 'poseidon_theme_options[header_logo]', array(
+					'label'    => __( 'Logo Image (replaces Site Title)', 'poseidon-pro' ),
+					'section'  => 'poseidon_pro_section_header',
+					'settings' => 'poseidon_theme_options[header_logo]',
+					'priority' => 1,
+					)
+				)
+			);
+			
+		endif;
+			
 		// Add Logo Spacing setting
 		$wp_customize->add_setting( 'poseidon_theme_options[logo_spacing]', array(
 			'default'           => 10,
@@ -171,7 +175,7 @@ class Poseidon_Pro_Site_Logo {
 		);
 		$wp_customize->add_control( 'poseidon_theme_options[logo_spacing]', array(
 			'label'    => __( 'Logo Spacing (default: 10)', 'poseidon-pro' ),
-			'section'  => 'poseidon_pro_section_logo',
+			'section'  => 'poseidon_pro_section_header',
 			'settings' => 'poseidon_theme_options[logo_spacing]',
 			'type'     => 'text',
 			'priority' => 2
@@ -188,7 +192,7 @@ class Poseidon_Pro_Site_Logo {
 		);
 		$wp_customize->add_control( 'poseidon_theme_options[navi_spacing]', array(
 			'label'    => __( 'Navigation Spacing (default: 10)', 'poseidon-pro' ),
-			'section'  => 'poseidon_pro_section_logo',
+			'section'  => 'poseidon_pro_section_header',
 			'settings' => 'poseidon_theme_options[navi_spacing]',
 			'type'     => 'text',
 			'priority' => 3
@@ -200,6 +204,6 @@ class Poseidon_Pro_Site_Logo {
 }
 
 // Run Class
-add_action( 'init', array( 'Poseidon_Pro_Site_Logo', 'setup' ) );
+add_action( 'init', array( 'Poseidon_Pro_Header_Spacing', 'setup' ) );
 
 endif;

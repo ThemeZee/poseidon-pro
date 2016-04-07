@@ -2,6 +2,14 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 1.0.2
+-----------------------------------
+[renamed] Site Logo section to Header Settings in Customizer
+[removed] logo setting for sites running on WordPress 4.5 or higher
+[added] support for native Site Logo feature of WordPress core (since 4.5)
+
+Please go to Appearance -> Customize -> Site Title, Tagline and Logo and set a new logo image!
+
 Version 1.0.1
 -----------------------------------
 [improved] HTML markup of site title

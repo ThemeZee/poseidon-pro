@@ -116,7 +116,7 @@ class Poseidon_Pro {
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-footer-line.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-footer-widgets.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-header-bar.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-site-logo.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-header-spacing.php';
 		
 		// Include Custom Stylesheet class
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/class-poseidon-pro-custom-stylesheet.php';
