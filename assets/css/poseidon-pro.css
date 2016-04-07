@@ -10,7 +10,7 @@
 
  
 /*--------------------------------------------------------------
-## Header Bar
+# Header Bar
 --------------------------------------------------------------*/
 .header-bar-wrap {
 	background: #404040;
@@ -175,6 +175,32 @@
 }
 
 /*--------------------------------------------------------------
+# Magazine Post Widgets
+--------------------------------------------------------------*/
+
+/* Magazine Posts List */
+.widget-magazine-posts-list .type-post .wp-post-image {
+	float: left;
+	max-width: 40%;
+	margin: 0 1.5em 1.5em 0;
+	padding: 0.3em 0 0;
+}
+
+.widget-magazine-posts-list .type-post .entry-title {
+	font-size: 28px;
+	font-size: 1.75rem;
+}
+
+.widget-magazine-posts-list .type-post .entry-content {
+	font-size: 16px;
+	font-size: 1rem;
+}
+
+.widget-magazine-posts-list .type-post .entry-excerpt p {
+	margin-bottom: 1em;
+}
+
+/*--------------------------------------------------------------
 # Footer Widget Area
 --------------------------------------------------------------*/
 .footer-widgets-background {
@@ -271,6 +297,18 @@
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
+## Desktop X-Large ( < 1200px )
+--------------------------------------------------------------*/
+@media only screen and (max-width: 75em) {
+
+	.widget-magazine-posts-list .type-post .entry-title {
+		font-size: 26px;
+		font-size: 1.625rem;
+	}
+	
+}
+
+/*--------------------------------------------------------------
 ## Desktop Medium ( < 1040px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 65em) {
@@ -294,7 +332,12 @@
 		padding: 0;
 	}
 	
-	/* Magazine Posts Sidebar */
+	/* Magazine Posts */
+	.widget-magazine-posts-list .type-post .entry-title {
+		font-size: 24px;
+		font-size: 1.5rem;
+	}
+	
 	.widget-magazine-posts-sidebar .large-post .wp-post-image {
 		float: left;
 		margin: 0 1.5em 0 0;
@@ -517,6 +560,11 @@
 --------------------------------------------------------------*/
 @media only screen and (max-width: 40em) {
 	
+	.widget-magazine-posts-list .type-post .entry-title {
+		font-size: 22px;
+		font-size: 1.375rem;
+	}
+	
 	/* Footer Navigation Menu */
 	.footer-navigation-menu {
 		padding-top: 0;
@@ -555,7 +603,12 @@
 --------------------------------------------------------------*/
 @media only screen and (max-width: 30em) {
 
-	/* Magazine Posts Sidebar */
+	/* Magazine Posts */
+	.widget-magazine-posts-list .type-post .entry-title {
+		font-size: 20px;
+		font-size: 1.25rem;
+	}
+	
 	.widget-magazine-posts-sidebar .large-post .wp-post-image {
 		float: none;
 		margin: 0 0 0.5em 0;
@@ -566,6 +619,20 @@
 		padding: 1.2em 1.2em 0;
 	}
 
+}
+
+/*--------------------------------------------------------------
+## Mobile Small ( < 320px )
+--------------------------------------------------------------*/
+@media only screen and (max-width: 25em) {
+	
+	.widget-magazine-posts-list .type-post .wp-post-image {
+		float: none;
+		max-width: 100%;
+		margin: 0 0 0.5em;
+		padding: 0;
+	}
+	
 }
 
 @media only screen and (max-width: 20em) {

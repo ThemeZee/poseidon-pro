@@ -92,7 +92,7 @@ class Poseidon_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 			<?php // Display Title
 			$this->widget_title( $args, $settings ); ?>
 			
-			<div class="widget-magazine-posts-content post-layout-small">
+			<div class="widget-magazine-posts-content">
 			
 				<?php $this->render( $settings ); ?>
 				
