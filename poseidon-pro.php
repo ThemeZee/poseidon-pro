@@ -118,6 +118,11 @@ class Poseidon_Pro {
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-header-bar.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-header-spacing.php';
 		
+		// Include Magazine Widgets
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-list.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-sidebar.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-single.php';
+		
 		// Include Custom Stylesheet class
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/class-poseidon-pro-custom-stylesheet.php';
 
@@ -132,7 +137,10 @@ class Poseidon_Pro {
 	static function setup_actions() {
 		
 		// Enqueue Frontend Widget Styles
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_styles' ) );
+		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_styles' ), 11 );
+		
+		// Register additional Magazine Post Widgets
+		add_action( 'widgets_init', array( __CLASS__, 'register_widgets' ) );
 		
 		// Add Settings link to Plugin actions
 		add_filter( 'plugin_action_links_' . plugin_basename( POSEIDON_PRO_PLUGIN_FILE ), array( __CLASS__, 'plugin_action_links' ) );
@@ -159,6 +167,24 @@ class Poseidon_Pro {
 		
 		// Enqueue Plugin Stylesheet
 		wp_enqueue_style( 'poseidon-pro', POSEIDON_PRO_PLUGIN_URL . 'assets/css/poseidon-pro.css', array(), POSEIDON_PRO_VERSION );
+		
+	}
+	
+	/**
+	 * Register Magazine Widgets
+	 *
+	 * @return void
+	 */
+	static function register_widgets() {
+		
+		// Return early if Poseidon Theme is not active
+		if ( ! current_theme_supports( 'poseidon-pro'  ) ) {
+			return;
+		}
+		
+		register_widget( 'Poseidon_Pro_Magazine_Posts_List_Widget' );
+		register_widget( 'Poseidon_Pro_Magazine_Posts_Sidebar_Widget' );
+		register_widget( 'Poseidon_Pro_Magazine_Posts_Single_Widget' );
 		
 	}
 	

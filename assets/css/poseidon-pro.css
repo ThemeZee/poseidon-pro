@@ -294,6 +294,13 @@
 		padding: 0;
 	}
 	
+	/* Magazine Posts Sidebar */
+	.widget-magazine-posts-sidebar .large-post .wp-post-image {
+		float: left;
+		margin: 0 1.5em 0 0;
+		max-width: 40%;
+	}
+	
 	/*** Mobile Top Navigation ***/
 	
 	/* Reset */
@@ -548,6 +555,13 @@
 --------------------------------------------------------------*/
 @media only screen and (max-width: 30em) {
 
+	/* Magazine Posts Sidebar */
+	.widget-magazine-posts-sidebar .large-post .wp-post-image {
+		float: none;
+		margin: 0 0 0.5em 0;
+		max-width: 100%;
+	}
+	
 	.footer-widgets-wrap {
 		padding: 1.2em 1.2em 0;
 	}
