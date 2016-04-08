@@ -76,19 +76,24 @@ class Poseidon_Pro_Footer_Line {
 	 * @return void
 	*/
 	static function display_footer_menu() {
-	
-		echo '<nav id="footer-links" class="footer-navigation navigation clearfix" role="navigation">';
 		
-		wp_nav_menu( array(
-			'theme_location' => 'footer', 
-			'container' => false, 
-			'menu_class' => 'footer-navigation-menu', 
-			'echo' => true, 
-			'fallback_cb' => '',
-			'depth' => 1)
-		);
+		// Check if there is a footer menu
+		if( has_nav_menu( 'footer' ) ) {
+			
+			echo '<nav id="footer-links" class="footer-navigation navigation clearfix" role="navigation">';
+			
+			wp_nav_menu( array(
+				'theme_location' => 'footer', 
+				'container' => false, 
+				'menu_class' => 'footer-navigation-menu', 
+				'echo' => true, 
+				'fallback_cb' => '',
+				'depth' => 1)
+			);
 
-		echo '</nav><!-- #footer-links -->';
+			echo '</nav><!-- #footer-links -->';
+			
+		}
 		
 	}
 	

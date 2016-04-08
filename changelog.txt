@@ -10,6 +10,7 @@ Version 1.0.2
 [added] Magazine Posts List widget
 [added] Magazine Posts Sidebar widget
 [added] Magazine Posts Single widget
+[fixed] styling of footer widgets and footer mobile toggle
 
 Please go to Appearance -> Customize -> Site Title, Tagline and Logo and set a new logo image!
 
