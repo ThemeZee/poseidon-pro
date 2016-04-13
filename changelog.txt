@@ -4,15 +4,14 @@ Poseidon Pro Changelog
 
 Version 1.0.2
 -----------------------------------
-[renamed] Site Logo section to Header Settings in Customizer
-[removed] logo setting for sites running on WordPress 4.5 or higher
-[added] support for native Site Logo feature of WordPress core (since 4.5)
+[removed] site logo setting for sites using WP 4.5 or higher
+[added] support for new custom logo feature from WordPress 4.5
 [added] Magazine Posts List widget
 [added] Magazine Posts Sidebar widget
 [added] Magazine Posts Single widget
 [fixed] styling of footer widgets and footer mobile toggle
 
-Please go to Appearance -> Customize -> Site Title, Tagline and Logo and set a new logo image!
+Please update the Poseidon theme to v1.0.6 and set a new logo image on Appearance -> Customize -> Site Identity!
 
 Version 1.0.1
 -----------------------------------

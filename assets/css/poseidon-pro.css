@@ -239,6 +239,32 @@
 	color: rgba(255,255,255,0.6);
 }
 
+.footer-widgets .widget_tag_cloud .tagcloud a:link, 
+.footer-widgets .widget_tag_cloud .tagcloud a:visited {
+	color: #777;
+}
+
+.footer-widgets .widget_tag_cloud .tagcloud a:hover, 
+.footer-widgets .widget_tag_cloud .tagcloud a:active {
+	color: #fff;
+}
+
+.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi {
+	border-top: 1px solid rgba(255,255,255,0.08);
+	border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:link, 
+.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:visited  {
+	color: rgba(255,255,255,0.5);
+}
+
+.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:hover, 
+.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:active, 
+.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
+	color: #eee;
+}
+
 /*--------------------------------------------------------------
 # Footer Navigation
 --------------------------------------------------------------*/

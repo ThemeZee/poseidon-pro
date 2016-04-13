@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Poseidon Pro\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2016-01-29 12:19+0100\n"
-"PO-Revision-Date: 2016-01-29 12:20+0100\n"
+"POT-Creation-Date: 2016-04-13 16:02+0100\n"
+"PO-Revision-Date: 2016-04-13 16:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: ThemeZee <support@themezee.com>\n"
 "Language: en_US\n"
@@ -20,18 +20,18 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: poseidon-pro.php:172
+#: poseidon-pro.php:198
 msgid "Settings"
 msgstr ""
 
-#: poseidon-pro.php:194
+#: poseidon-pro.php:220
 #, php-format
 msgid ""
 "The %1$s add-on needs the %2$s theme activated in order to work. You should "
 "deactivate %1$s if you have switched to another theme permanently."
 msgstr ""
 
-#: poseidon-pro.php:216
+#: poseidon-pro.php:242
 #, php-format
 msgid ""
 "Please enter your license key for the %1$s add-on in order to receive "
@@ -139,51 +139,51 @@ msgstr ""
 msgid "Update Fonts"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-custom-colors.php:325
+#: includes/modules/class-poseidon-pro-custom-colors.php:331
 msgid "Theme Colors"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-custom-colors.php:344
+#: includes/modules/class-poseidon-pro-custom-colors.php:350
 msgctxt "color setting"
 msgid "Top Navigation"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-custom-colors.php:361
+#: includes/modules/class-poseidon-pro-custom-colors.php:367
 msgctxt "color setting"
 msgid "Links and Buttons"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-custom-colors.php:378
+#: includes/modules/class-poseidon-pro-custom-colors.php:384
 msgctxt "color setting"
 msgid "Navigation (primary)"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-custom-colors.php:395
+#: includes/modules/class-poseidon-pro-custom-colors.php:401
 msgctxt "color setting"
 msgid "Navigation (secondary)"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-custom-colors.php:412
+#: includes/modules/class-poseidon-pro-custom-colors.php:418
 msgctxt "color setting"
 msgid "Post Titles (primary)"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-custom-colors.php:429
+#: includes/modules/class-poseidon-pro-custom-colors.php:435
 msgctxt "color setting"
 msgid "Post Titles (secondary)"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-custom-colors.php:446
+#: includes/modules/class-poseidon-pro-custom-colors.php:452
 msgctxt "color setting"
 msgid "Widget Titles"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-custom-colors.php:463
+#: includes/modules/class-poseidon-pro-custom-colors.php:469
 msgctxt "color setting"
 msgid "Widget Links"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-custom-colors.php:480
+#: includes/modules/class-poseidon-pro-custom-colors.php:486
 msgctxt "color setting"
 msgid "Footer Widgets"
 msgstr ""
@@ -231,19 +231,19 @@ msgstr ""
 msgid "All Google Fonts (650)"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-footer-line.php:104
+#: includes/modules/class-poseidon-pro-footer-line.php:109
 msgid "Footer Settings"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-footer-line.php:119
+#: includes/modules/class-poseidon-pro-footer-line.php:124
 msgid "Footer Text"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-footer-line.php:136
+#: includes/modules/class-poseidon-pro-footer-line.php:141
 msgid "Display Credit Link to ThemeZee on footer line"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-footer-line.php:173
+#: includes/modules/class-poseidon-pro-footer-line.php:178
 msgid "Footer Navigation"
 msgstr ""
 
@@ -287,18 +287,102 @@ msgstr ""
 msgid "Social Icons"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-site-logo.php:136
-msgid "Site Logo"
+#: includes/modules/class-poseidon-pro-header-spacing.php:140
+msgid "Header Settings"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-site-logo.php:152
+#: includes/modules/class-poseidon-pro-header-spacing.php:158
 msgid "Logo Image (replaces Site Title)"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-site-logo.php:169
+#: includes/modules/class-poseidon-pro-header-spacing.php:177
 msgid "Logo Spacing (default: 10)"
 msgstr ""
 
-#: includes/modules/class-poseidon-pro-site-logo.php:186
+#: includes/modules/class-poseidon-pro-header-spacing.php:194
 msgid "Navigation Spacing (default: 10)"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-list.php:21
+#, php-format
+msgid "Magazine Posts: List (%s)"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-list.php:24
+msgid ""
+"Displays your posts from a selected category in a simple list layout. Please "
+"use this widget ONLY in the Magazine Homepage widget area."
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-list.php:230
+#: includes/widgets/widget-magazine-posts-sidebar.php:225
+#: includes/widgets/widget-magazine-posts-single.php:229
+#, php-format
+msgid "View all posts from category %s"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-list.php:284
+#: includes/widgets/widget-magazine-posts-sidebar.php:280
+#: includes/widgets/widget-magazine-posts-single.php:282
+msgid "Title:"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-list.php:290
+#: includes/widgets/widget-magazine-posts-sidebar.php:286
+#: includes/widgets/widget-magazine-posts-single.php:288
+msgid "Category:"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-list.php:293
+#: includes/widgets/widget-magazine-posts-sidebar.php:289
+#: includes/widgets/widget-magazine-posts-single.php:291
+msgid "All Categories"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-list.php:305
+#: includes/widgets/widget-magazine-posts-sidebar.php:301
+msgid "Number of posts:"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-list.php:313
+#: includes/widgets/widget-magazine-posts-sidebar.php:316
+#: includes/widgets/widget-magazine-posts-single.php:305
+msgid "Display post date"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-list.php:320
+#: includes/widgets/widget-magazine-posts-sidebar.php:323
+#: includes/widgets/widget-magazine-posts-single.php:312
+msgid "Display post author"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-list.php:327
+#: includes/widgets/widget-magazine-posts-single.php:319
+msgid "Display post category"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-sidebar.php:21
+#, php-format
+msgid "Magazine Posts: Sidebar (%s)"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-sidebar.php:24
+msgid ""
+"Displays your posts from a selected category. You can use this widget in the "
+"Sidebar widget area."
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-sidebar.php:309
+msgid "Display post excerpt"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-single.php:21
+#, php-format
+msgid "Magazine Posts: Single (%s)"
+msgstr ""
+
+#: includes/widgets/widget-magazine-posts-single.php:24
+msgid ""
+"Displays a single post from a selected category. Please use this widget ONLY "
+"in the Magazine Homepage widget area."
 msgstr ""

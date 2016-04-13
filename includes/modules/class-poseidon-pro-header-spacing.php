@@ -144,7 +144,7 @@ class Poseidon_Pro_Header_Spacing {
 		);
 		
 		// Add Upload logo image setting for WordPress 4.4 and earlier
-		if ( ! current_theme_supports( 'site-logo'  ) ) :
+		if ( ! current_theme_supports( 'custom-logo'  ) ) :
 		
 			$wp_customize->add_setting( 'poseidon_theme_options[header_logo]', array(
 				'default'           => '',
