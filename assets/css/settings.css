@@ -1,0 +1,38 @@
+/*
+ * Poseidon Settings CSS
+ *
+ * CSS Stylesheet for settings page on Appearance -> Pro Version
+ *
+ * @package Poseidon Pro
+ */
+
+/* License Settings */
+.poseidon-pro-settings-wrap {
+	margin: 25px 0 0;
+}
+
+.poseidon-pro-settings-wrap .license-status {
+	display: inline-block;
+	color: #fff;
+	background: #444;
+	margin: 0 12px 0 0;
+	padding: 4px 8px;
+	text-transform: uppercase;
+}
+
+.poseidon-pro-settings-wrap .license-active {
+	background: green;
+}
+
+.poseidon-pro-settings-wrap .license-invalid,
+.poseidon-pro-settings-wrap .license-expired {
+	background: red;
+}
+
+.poseidon-pro-settings-wrap .license-description {
+	margin: 16px 0 0;
+}
+
+.poseidon-pro-settings-wrap .license-renewal {
+	margin: 16px 0 0;
+}
