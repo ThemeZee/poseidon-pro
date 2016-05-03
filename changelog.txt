@@ -2,6 +2,11 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 1.0.3
+-----------------------------------
+[improved] styling of license settings page
+[added] dismiss links to admin notices
+
 Version 1.0.2
 -----------------------------------
 [removed] site logo setting for sites using WP 4.5 or higher
