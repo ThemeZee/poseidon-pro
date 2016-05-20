@@ -21,7 +21,8 @@ class Poseidon_Pro_Magazine_Posts_Single_Widget extends WP_Widget {
 			sprintf( esc_html__( 'Magazine Posts: Single (%s)', 'poseidon-pro' ), 'Poseidon Pro' ), // Name
 			array( 
 				'classname' => 'poseidon_magazine_posts_single', 
-				'description' => esc_html__( 'Displays a single post from a selected category. Please use this widget ONLY in the Magazine Homepage widget area.', 'poseidon-pro' ) 
+				'description' => esc_html__( 'Displays a single post from a selected category. Please use this widget ONLY in the Magazine Homepage widget area.', 'poseidon-pro' ),
+				'customize_selective_refresh' => true,  
 			) // Args
 		);
 

@@ -21,7 +21,8 @@ class Poseidon_Pro_Magazine_Posts_Sidebar_Widget extends WP_Widget {
 			sprintf( esc_html__( 'Magazine Posts: Sidebar (%s)', 'poseidon-pro' ), 'Poseidon Pro' ), // Name
 			array( 
 				'classname' => 'poseidon_magazine_posts_sidebar', 
-				'description' => esc_html__( 'Displays your posts from a selected category. You can use this widget in the Sidebar widget area.', 'poseidon-pro' ) 
+				'description' => esc_html__( 'Displays your posts from a selected category. You can use this widget in the Sidebar widget area.', 'poseidon-pro' ),
+				'customize_selective_refresh' => true,  
 			) // Args
 		);
 		

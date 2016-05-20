@@ -36,7 +36,7 @@ class Poseidon_Pro_Header_Spacing {
 		add_filter( 'poseidon_pro_custom_css_stylesheet', array( __CLASS__, 'custom_spacing_css' ) ); 
 		
 		// Add Site Logo Settings
-		add_action( 'customize_register', array( __CLASS__, 'site_logo_settings' ) );
+		add_action( 'customize_register', array( __CLASS__, 'header_settings' ) );
 	}
 	
 	/**
@@ -133,7 +133,7 @@ class Poseidon_Pro_Header_Spacing {
 	 *
 	 * @param object $wp_customize / Customizer Object
 	 */
-	static function site_logo_settings( $wp_customize ) {
+	static function header_settings( $wp_customize ) {
 
 		// Add Section for Header Settings
 		$wp_customize->add_section( 'poseidon_pro_section_header', array(
