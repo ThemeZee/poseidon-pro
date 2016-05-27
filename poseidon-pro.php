@@ -103,29 +103,29 @@ class Poseidon_Pro {
 	static function includes() {
 	
 		// Include Admin Classes
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-plugin-updater.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-settings.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-settings-page.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/admin/class-poseidon-pro-admin-notices.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/admin/class-plugin-updater.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/admin/class-settings.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/admin/class-settings-page.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/admin/class-admin-notices.php';
 		
 		// Include Customizer Classes
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/customizer/class-poseidon-pro-customizer.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/customizer/class-customizer.php';
 		
 		// Include Pro Features
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-custom-colors.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-custom-fonts.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-footer-line.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-footer-widgets.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-header-bar.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-poseidon-pro-header-spacing.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/modules/class-custom-colors.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/modules/class-custom-fonts.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/modules/class-footer-line.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/modules/class-footer-widgets.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/modules/class-header-bar.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/modules/class-header-spacing.php';
 		
 		// Include Magazine Widgets
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-list.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-sidebar.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/widgets/widget-magazine-posts-single.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-list.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-sidebar.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-single.php';
 		
 		// Include Custom Stylesheet class
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/class-poseidon-pro-custom-stylesheet.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/class-custom-stylesheet.php';
 
 	}
 	
@@ -137,7 +137,7 @@ class Poseidon_Pro {
 	 */
 	static function setup_actions() {
 		
-		// Enqueue Frontend Widget Styles
+		// Enqueue Poseidon Pro Stylesheet
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_styles' ), 11 );
 		
 		// Register additional Magazine Post Widgets

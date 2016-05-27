@@ -29,9 +29,9 @@ class Poseidon_Pro_Custom_Fonts {
 		}
 		
 		// Include Font List Control Files
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/customizer/class-poseidon-pro-font-list.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/customizer/class-poseidon-pro-customize-font-control.php';
-		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/customizer/class-poseidon-pro-customize-font-list-control.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/customizer/class-font-list.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/customizer/class-customize-font-control.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/customizer/class-customize-font-list-control.php';
 		
 		// Add Custom Color CSS code to custom stylesheet output
 		add_filter( 'poseidon_pro_custom_css_stylesheet', array( __CLASS__, 'custom_fonts_css' ) ); 
