@@ -284,7 +284,7 @@ class Poseidon_Pro_Custom_Fonts {
 			'default'           => 'favorites',
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
-			'sanitize_callback' => array( 'Poseidon_Pro_Custom_Fonts', 'poseidon_pro_sanitize_available_fonts' ),
+			'sanitize_callback' => array( 'Poseidon_Pro_Custom_Fonts', 'sanitize_available_fonts' ),
 			)
 		);
 		$wp_customize->add_control( new Poseidon_Pro_Customize_Font_List_Control(
