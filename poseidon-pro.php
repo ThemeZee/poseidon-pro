@@ -121,9 +121,6 @@ class Poseidon_Pro {
 		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-sidebar.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-single.php';
 
-		// Include Custom Stylesheet class.
-		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/class-custom-stylesheet.php';
-
 	}
 
 	/**
@@ -162,6 +159,18 @@ class Poseidon_Pro {
 
 		// Enqueue Plugin Stylesheet.
 		wp_enqueue_style( 'poseidon-pro', POSEIDON_PRO_PLUGIN_URL . 'assets/css/poseidon-pro.css', array(), POSEIDON_PRO_VERSION );
+
+		// Get Custom CSS.
+		$custom_css = apply_filters( 'poseidon_pro_custom_css_stylesheet', '' );
+
+		// Sanitize Custom CSS.
+		$custom_css = wp_kses( $custom_css, array( '\'', '\"' ) );
+		$custom_css = str_replace( '&gt;', '>', $custom_css );
+		$custom_css = preg_replace( '/\n/', '', $custom_css );
+		$custom_css = preg_replace( '/\t/', '', $custom_css );
+
+		// Add Custom CSS.
+		wp_add_inline_style( 'poseidon-pro', $custom_css );
 
 	}
 

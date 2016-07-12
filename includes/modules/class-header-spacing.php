@@ -87,9 +87,9 @@ class Poseidon_Pro_Header_Spacing {
 			$margin = $theme_options['logo_spacing'] / 10;
 
 			$custom_css .= '
-                .site-branding {
+				.site-branding {
 					margin: '. $margin .'em 0;
-                }
+				}
 				';
 
 		}
@@ -100,20 +100,20 @@ class Poseidon_Pro_Header_Spacing {
 			$margin = $theme_options['navi_spacing'] / 10;
 
 			$custom_css .= '
-                .primary-navigation {
+				.primary-navigation {
 					margin: '. $margin .'em 0;
-                }
+				}
 
-                @media only screen and (max-width: 60em) {
+				@media only screen and (max-width: 60em) {
 
-                    .primary-navigation {
-                        margin: 0;
-                    }
+					.primary-navigation {
+					    margin: 0;
+					}
 
-                    .main-navigation-toggle {
+					.main-navigation-toggle {
 						margin: '. $margin .'em 0;
-                    }
-                }
+					}
+				}
 				';
 
 		}

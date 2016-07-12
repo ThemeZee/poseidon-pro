@@ -20,11 +20,15 @@ class Poseidon_Pro_Settings {
 	/** Singleton *************************************************************/
 
 	/**
+	 * Class instance
+	 *
 	 * @var instance The one true Poseidon_Pro_Settings instance
 	 */
 	private static $instance;
 
 	/**
+	 * License Settings
+	 *
 	 * @var options Plugin options array
 	 */
 	private $options;
