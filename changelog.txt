@@ -2,6 +2,11 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 1.0.6
+-----------------------------------
+[added] RTL language support for all Pro features
+[added] 18 new Google Fonts to font settings
+
 Version 1.0.5
 -----------------------------------
 [added] custom styling for mega menu plugin
