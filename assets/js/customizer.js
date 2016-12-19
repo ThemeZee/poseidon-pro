@@ -91,7 +91,7 @@
 
 			// Embed Font.
 			var fontFamilyUrl = newval.split( " " ).join( "+" );
-			var googleFontPath = "http://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
+			var googleFontPath = "https://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
 			var googleFontSource = "<link id='poseidon-pro-custom-text-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
 			var checkLink = $( "head" ).find( "#poseidon-pro-custom-text-font" ).length;
 
@@ -112,7 +112,7 @@
 
 			// Embed Font.
 			var fontFamilyUrl = newval.split( " " ).join( "+" );
-			var googleFontPath = "http://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
+			var googleFontPath = "https://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
 			var googleFontSource = "<link id='poseidon-pro-custom-title-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
 			var checkLink = $( "head" ).find( "#poseidon-pro-custom-title-font" ).length;
 
@@ -133,7 +133,7 @@
 
 			// Embed Font.
 			var fontFamilyUrl = newval.split( " " ).join( "+" );
-			var googleFontPath = "http://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
+			var googleFontPath = "https://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
 			var googleFontSource = "<link id='poseidon-pro-custom-navi-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
 			var checkLink = $( "head" ).find( "#poseidon-pro-custom-navi-font" ).length;
 
@@ -154,7 +154,7 @@
 
 			// Embed Font.
 			var fontFamilyUrl = newval.split( " " ).join( "+" );
-			var googleFontPath = "http://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
+			var googleFontPath = "https://fonts.googleapis.com/css?family=" + fontFamilyUrl + ":400,700";
 			var googleFontSource = "<link id='poseidon-pro-custom-widget-title-font' href='" + googleFontPath + "' rel='stylesheet' type='text/css'>";
 			var checkLink = $( "head" ).find( "#poseidon-pro-custom-widget-title-font" ).length;
 
@@ -164,7 +164,7 @@
 			$( "head" ).append( googleFontSource );
 
 			// Set CSS.
-			$( 'button, input[type="button"], input[type="reset"], input[type="submit"], .more-link, .widget-title, .post-pagination a, .post-pagination .current, .page-header .archive-title, .comments-header .comments-title, .comment-reply-title span, .tzwb-tabbed-content .tzwb-tabnavi li a' )
+			$( 'button, input[type="button"], input[type="reset"], input[type="submit"], .more-link, .widget-title, .pagination a, .pagination .current, .page-header .archive-title, .comments-header .comments-title, .comment-reply-title span, .tzwb-tabbed-content .tzwb-tabnavi li a' )
 				.css( 'font-family', newval );
 
 		} );
