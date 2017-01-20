@@ -2,42 +2,47 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 1.0.7
+-----------------------------------
+* changed Google Font URL to https in Customizer
+* updated EDD Plugin Updater class to version 1.6.9
+
 Version 1.0.6
 -----------------------------------
-[added] RTL language support for all Pro features
-[added] 18 new Google Fonts to font settings
+* added RTL language support for all Pro features
+* added 18 new Google Fonts to font settings
 
 Version 1.0.5
 -----------------------------------
-[added] custom styling for mega menu plugin
-[improved] browser prefixing of CSS stylesheets
+* added custom styling for mega menu plugin
+* improved browser prefixing of CSS stylesheets
 
 Version 1.0.4
 -----------------------------------
-[added] loading of custom colors and custom fonts CSS with wp_add_inline_style()
-[updated] plugin uploader class
-[improved] code formatting
+* added loading of custom colors and custom fonts CSS with wp_add_inline_style()
+* updated plugin uploader class
+* improved code formatting
 
 Version 1.0.3
 -----------------------------------
-[improved] styling of license settings page
-[added] dismiss links to admin notices
+* improved styling of license settings page
+* added dismiss links to admin notices
 
 Version 1.0.2
 -----------------------------------
-[removed] site logo setting for sites using WP 4.5 or higher
-[added] support for new custom logo feature from WordPress 4.5
-[added] Magazine Posts List widget
-[added] Magazine Posts Sidebar widget
-[added] Magazine Posts Single widget
-[fixed] styling of footer widgets and footer mobile toggle
+* removed site logo setting for sites using WP 4.5 or higher
+* added support for new custom logo feature from WordPress 4.5
+* added Magazine Posts List widget
+* added Magazine Posts Sidebar widget
+* added Magazine Posts Single widget
+* fixed styling of footer widgets and footer mobile toggle
 
 Please update the Poseidon theme to v1.0.6 and set a new logo image on Appearance -> Customize -> Site Identity!
 
 Version 1.0.1
 -----------------------------------
-[improved] HTML markup of site title
-[updated] color settings for site title
+* improved HTML markup of site title
+* updated color settings for site title
 
 Version 1.0
 -----------------------------------
