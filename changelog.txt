@@ -4,6 +4,7 @@ Poseidon Pro Changelog
 
 Version 1.0.7
 -----------------------------------
+* improved styling of footer navigation menu
 * changed Google Font URL to https in Customizer
 * updated EDD Plugin Updater class to version 1.6.9
 

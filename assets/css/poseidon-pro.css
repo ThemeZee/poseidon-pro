@@ -263,8 +263,7 @@
 }
 
 .footer-navigation-menu {
-	position: relative;
-	display: inline;
+	display: block;
 	margin: 0;
 	padding: 2em 0;
 	list-style-position: outside;
@@ -272,7 +271,6 @@
 }
 
 .footer-navigation-menu li {
-	position: relative;
 	float: left;
 }
 
@@ -499,61 +497,20 @@
 		margin: 0 0 2em;
 	}
 
-	/*** Mobile Footer Navigation ***/
-
-	/* Footer Navigation Toggle */
-	.footer-navigation-toggle {
-		display: inline-block;
-		float: right;
-		margin: 1em 0 0;
-		padding: 1em;
-		background: none;
-	}
-
-	.footer-navigation-toggle:hover,
-	.footer-navigation-toggle:active,
-	.footer-navigation-toggle:focus {
-		background: none;
-		cursor: pointer;
-	}
-
-	.footer-navigation-toggle:after {
-		display: inline-block;
-		float: left;
-		color: #404040;
-		content: '\f419';
-		vertical-align: middle;
-		text-decoration: inherit;
-		font-weight: normal;
-		font-size: 24px;
-		font-family: 'Genericons';
-		line-height: 1;
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
-	}
-
-	.footer-navigation-toggle:hover:after {
-		color: #22aadd;
-	}
-
-	/* Footer Navigation Menu */
+	/* Footer Navigation */
 	.footer-navigation {
-		display: block;
-		width: 100%;
+		float: none;
+		text-align: center;
 	}
 
 	.footer-navigation-menu {
-		display: none;
-		float: left;
-		padding: 1.5em 0;
-		width: 100%;
-		border-top: 2px solid #404040;
+		padding-bottom: 0;
 	}
 
-	.site-footer .site-info {
-		max-width: 75%;
+	.footer-navigation-menu li {
+		float: none;
+		display: inline-block;
 	}
-
 }
 
 /*--------------------------------------------------------------
@@ -566,19 +523,14 @@
 	}
 
 	/* Footer Navigation Menu */
-	.footer-navigation-menu {
-		padding-top: 0;
-	}
-
-	.footer-navigation-menu li {
-		float: none;
+	.footer-navigation-menu li,
+	.footer-navigation-menu a {
+		display: block;
 	}
 
 	.footer-navigation-menu a {
-		padding: 0.8em 1em;
-		border-bottom: 1px dotted #ccc;
+		padding: 0.8em 0;
 	}
-
 }
 
 /*--------------------------------------------------------------
@@ -658,7 +610,7 @@
 
 /* Ensure footer navigation is visible on desktop view */
 @media only screen and (min-width: 60.001em) {
-	.top-navigation-menu, .footer-navigation-menu {
+	.top-navigation-menu {
 		display: block !important;
 	}
 
