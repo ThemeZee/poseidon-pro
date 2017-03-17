@@ -67,7 +67,7 @@ class Poseidon_Pro_Custom_Fonts {
 				input,
 				select,
 				textarea {
-					font-family: "'.esc_attr( $theme_options['text_font'] ).'";
+					font-family: "' . esc_attr( $theme_options['text_font'] ) . '";
 				}
 				';
 
@@ -81,7 +81,7 @@ class Poseidon_Pro_Custom_Fonts {
 				.site-title,
 				.page-title,
 				.entry-title {
-					font-family: "'.esc_attr( $theme_options['title_font'] ).'";
+					font-family: "' . esc_attr( $theme_options['title_font'] ) . '";
 				}
 				';
 
@@ -95,7 +95,7 @@ class Poseidon_Pro_Custom_Fonts {
 				.top-navigation-menu a,
 				.main-navigation-menu a,
 				.footer-navigation-menu a {
-					font-family: "'.esc_attr( $theme_options['navi_font'] ).'";
+					font-family: "' . esc_attr( $theme_options['navi_font'] ) . '";
 				}
 				';
 
@@ -118,7 +118,7 @@ class Poseidon_Pro_Custom_Fonts {
 				.comments-header .comments-title,
 				.comment-reply-title span,
 				.tzwb-tabbed-content .tzwb-tabnavi li a {
-					font-family: "'.esc_attr( $theme_options['widget_title_font'] ).'";
+					font-family: "' . esc_attr( $theme_options['widget_title_font'] ) . '";
 				}
 				';
 

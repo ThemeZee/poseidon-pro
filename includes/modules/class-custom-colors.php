@@ -57,7 +57,7 @@ class Poseidon_Pro_Custom_Colors {
 				a:link,
 				a:visited,
 				.more-link {
-					color: '. $theme_options['link_color'] .';
+					color: ' . $theme_options['link_color'] . ';
 				}
 
 				a:hover,
@@ -78,7 +78,7 @@ class Poseidon_Pro_Custom_Colors {
 				.entry-tags .meta-tags a:hover,
 				.entry-tags .meta-tags a:active {
 					color: #fff;
-					background: '. $theme_options['link_color'] .';
+					background: ' . $theme_options['link_color'] . ';
 				}
 
 				button:hover,
@@ -106,7 +106,7 @@ class Poseidon_Pro_Custom_Colors {
 				/* Top Navigation Color Setting */
 				.header-bar-wrap,
 				.top-navigation-menu ul {
-					background: '. $theme_options['top_navi_color'] .';
+					background: ' . $theme_options['top_navi_color'] . ';
 				}';
 
 		}
@@ -122,7 +122,7 @@ class Poseidon_Pro_Custom_Colors {
 				.main-navigation-menu ul .menu-item-has-children > a:after,
 				.footer-navigation-menu a:link,
 				.footer-navigation-menu a:visited {
-					color: '. $theme_options['navi_primary_color'] .';
+					color: ' . $theme_options['navi_primary_color'] . ';
 				}
 
 				.main-navigation-menu a:hover,
@@ -135,7 +135,7 @@ class Poseidon_Pro_Custom_Colors {
 				}
 
 				.main-navigation-menu ul {
-					border-top: 4px solid '. $theme_options['navi_primary_color'] .';
+					border-top: 4px solid ' . $theme_options['navi_primary_color'] . ';
 				}
 
 				@media only screen and (max-width: 60em) {
@@ -143,11 +143,11 @@ class Poseidon_Pro_Custom_Colors {
 					.main-navigation-toggle:after,
 					.main-navigation-menu .submenu-dropdown-toggle:before,
 					.footer-navigation-toggle:after {
-						color: '. $theme_options['navi_primary_color'] .';
+						color: ' . $theme_options['navi_primary_color'] . ';
 					}
 
 					.main-navigation-menu {
-						border-top: 4px solid '. $theme_options['navi_primary_color'] .';
+						border-top: 4px solid ' . $theme_options['navi_primary_color'] . ';
 					}
 
 					.main-navigation-menu ul {
@@ -155,7 +155,7 @@ class Poseidon_Pro_Custom_Colors {
 					}
 
 					.footer-navigation-menu {
-						border-top: 2px solid '. $theme_options['navi_primary_color'] .';
+						border-top: 2px solid ' . $theme_options['navi_primary_color'] . ';
 					}
 				}
 				';
@@ -174,7 +174,7 @@ class Poseidon_Pro_Custom_Colors {
 				.main-navigation-menu ul .menu-item-has-children > a:hover:after,
 				.footer-navigation-menu a:hover,
 				.footer-navigation-menu a:active {
-					color: '. $theme_options['navi_secondary_color'] .';
+					color: ' . $theme_options['navi_secondary_color'] . ';
 				}
 
 				@media only screen and (max-width: 60em) {
@@ -182,7 +182,7 @@ class Poseidon_Pro_Custom_Colors {
 					.main-navigation-toggle:hover:after,
 					.main-navigation-menu .submenu-dropdown-toggle:hover:before,
 					.footer-navigation-toggle:hover:after {
-						color: '. $theme_options['navi_secondary_color'] .';
+						color: ' . $theme_options['navi_secondary_color'] . ';
 					}
 
 				}
@@ -202,7 +202,7 @@ class Poseidon_Pro_Custom_Colors {
 				.entry-title,
 				.entry-title a:link,
 				.entry-title a:visited {
-					color: '. $theme_options['post_primary_color'] .';
+					color: ' . $theme_options['post_primary_color'] . ';
 				}
 
 				.site-title a:hover,
@@ -225,7 +225,7 @@ class Poseidon_Pro_Custom_Colors {
 				.site-title a:active,
 				.entry-title a:hover,
 				.entry-title a:active {
-					color: '. $theme_options['post_secondary_color'] .';
+					color: ' . $theme_options['post_secondary_color'] . ';
 				}
 				';
 
@@ -245,7 +245,7 @@ class Poseidon_Pro_Custom_Colors {
 				.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
 				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
 				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
-					color: '. $theme_options['widget_title_color'] .';
+					color: ' . $theme_options['widget_title_color'] . ';
 				}
 
 				.widget-title a:hover,
@@ -265,7 +265,7 @@ class Poseidon_Pro_Custom_Colors {
 				.sidebar .widget a:visited,
 				.widget-title a:hover,
 				.widget-title a:active {
-					color: '. $theme_options['widget_link_color'] .';
+					color: ' . $theme_options['widget_link_color'] . ';
 				}
 
 				.sidebar .widget a:hover,
@@ -289,7 +289,7 @@ class Poseidon_Pro_Custom_Colors {
 				.sidebar .widget_tag_cloud .tagcloud a:active,
 				.tzwb-social-icons .social-icons-menu li a {
 					color: #fff;
-					background: '. $theme_options['widget_link_color'] .';
+					background: ' . $theme_options['widget_link_color'] . ';
 				}
 
 				.tzwb-social-icons .social-icons-menu li a:hover {
@@ -304,7 +304,7 @@ class Poseidon_Pro_Custom_Colors {
 			$custom_css .= '
 				/* Footer Widget Color Setting */
 				.footer-widgets-background {
-					background: '. $theme_options['footer_color'] .';
+					background: ' . $theme_options['footer_color'] . ';
 				}
 				';
 

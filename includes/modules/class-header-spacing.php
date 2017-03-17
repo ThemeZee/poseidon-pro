@@ -88,7 +88,7 @@ class Poseidon_Pro_Header_Spacing {
 
 			$custom_css .= '
 				.site-branding {
-					margin: '. $margin .'em 0;
+					margin: ' . $margin . 'em 0;
 				}
 				';
 
@@ -101,7 +101,7 @@ class Poseidon_Pro_Header_Spacing {
 
 			$custom_css .= '
 				.primary-navigation {
-					margin: '. $margin .'em 0;
+					margin: ' . $margin . 'em 0;
 				}
 
 				@media only screen and (max-width: 60em) {
@@ -111,7 +111,7 @@ class Poseidon_Pro_Header_Spacing {
 					}
 
 					.main-navigation-toggle {
-						margin: '. $margin .'em 0;
+						margin: ' . $margin . 'em 0;
 					}
 				}
 				';
