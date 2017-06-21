@@ -76,7 +76,10 @@ class Poseidon_Pro_Custom_Colors {
 				input[type="reset"],
 				input[type="submit"],
 				.entry-tags .meta-tags a:hover,
-				.entry-tags .meta-tags a:active {
+				.entry-tags .meta-tags a:active,
+				.scroll-to-top-button,
+				.scroll-to-top-button:focus,
+				.scroll-to-top-button:active {
 					color: #fff;
 					background: ' . $theme_options['link_color'] . ';
 				}
@@ -92,7 +95,8 @@ class Poseidon_Pro_Custom_Colors {
 				button:active,
 				input[type="button"]:active,
 				input[type="reset"]:active,
-				input[type="submit"]:active {
+				input[type="submit"]:active,
+				.scroll-to-top-button:hover {
 					background: #404040;
 				}
 				';

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Poseidon Pro\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2017-03-17 17:11+0100\n"
+"POT-Creation-Date: 2017-06-21 17:37+0200\n"
 "PO-Revision-Date: 2016-05-03 17:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: ThemeZee <support@themezee.com>\n"
@@ -21,38 +21,30 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/admin/class-admin-notices.php:55
+#: includes/admin/class-admin-notices.php:52
 #, php-format
 msgid ""
 "Please enter your license key for the %1$s add-on in order to receive "
 "updates and support. <a href=\"%2$s\">Enter License Key</a>"
 msgstr ""
 
-#: includes/admin/class-admin-notices.php:60
-#: includes/admin/class-admin-notices.php:89
-#: includes/admin/class-admin-notices.php:114
+#: includes/admin/class-admin-notices.php:57
+#: includes/admin/class-admin-notices.php:86
 msgid "Dismiss Notice"
 msgstr ""
 
-#: includes/admin/class-admin-notices.php:84
+#: includes/admin/class-admin-notices.php:81
 #, php-format
 msgid ""
 "Your license for %1$s has expired. Please <a href=\"%2$s\">renew</a> to "
 "continue getting updates and support!"
 msgstr ""
 
-#: includes/admin/class-admin-notices.php:110
-#, php-format
-msgid ""
-"The %1$s add-on needs the %2$s theme activated in order to work. You should "
-"deactivate %1$s if you have switched to another theme permanently."
-msgstr ""
-
-#: includes/admin/class-admin-notices.php:137
+#: includes/admin/class-admin-notices.php:108
 msgid "Security check failed"
 msgstr ""
 
-#: includes/admin/class-admin-notices.php:137
+#: includes/admin/class-admin-notices.php:108
 #: includes/admin/class-plugin-updater.php:395
 msgid "Error"
 msgstr ""
@@ -334,6 +326,14 @@ msgstr ""
 msgid "Navigation Spacing (default: 10)"
 msgstr ""
 
+#: includes/modules/class-scroll-to-top.php:65
+msgid "Scroll to Top"
+msgstr ""
+
+#: includes/modules/class-scroll-to-top.php:81
+msgid "Display Scroll to Top Button"
+msgstr ""
+
 #: includes/widgets/widget-magazine-posts-list.php:24
 msgid "Magazine (List)"
 msgstr ""
@@ -344,26 +344,26 @@ msgid ""
 "use this widget ONLY in the Magazine Homepage widget area."
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-list.php:192
-#: includes/widgets/widget-magazine-posts-sidebar.php:197
-#: includes/widgets/widget-magazine-posts-single.php:190
+#: includes/widgets/widget-magazine-posts-list.php:194
+#: includes/widgets/widget-magazine-posts-sidebar.php:199
+#: includes/widgets/widget-magazine-posts-single.php:192
 msgid "Title:"
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-list.php:198
-#: includes/widgets/widget-magazine-posts-sidebar.php:203
-#: includes/widgets/widget-magazine-posts-single.php:196
+#: includes/widgets/widget-magazine-posts-list.php:200
+#: includes/widgets/widget-magazine-posts-sidebar.php:205
+#: includes/widgets/widget-magazine-posts-single.php:198
 msgid "Category:"
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-list.php:201
-#: includes/widgets/widget-magazine-posts-sidebar.php:206
-#: includes/widgets/widget-magazine-posts-single.php:199
+#: includes/widgets/widget-magazine-posts-list.php:203
+#: includes/widgets/widget-magazine-posts-sidebar.php:208
+#: includes/widgets/widget-magazine-posts-single.php:201
 msgid "All Categories"
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-list.php:213
-#: includes/widgets/widget-magazine-posts-sidebar.php:218
+#: includes/widgets/widget-magazine-posts-list.php:215
+#: includes/widgets/widget-magazine-posts-sidebar.php:220
 msgid "Number of posts:"
 msgstr ""
 
@@ -377,7 +377,7 @@ msgid ""
 "Main Sidebar widget area."
 msgstr ""
 
-#: includes/widgets/widget-magazine-posts-sidebar.php:226
+#: includes/widgets/widget-magazine-posts-sidebar.php:228
 msgid "Display post excerpt"
 msgstr ""
 
@@ -391,6 +391,6 @@ msgid ""
 "in the Magazine Homepage widget area."
 msgstr ""
 
-#: poseidon-pro.php:207
+#: poseidon-pro.php:208
 msgid "Settings"
 msgstr ""
