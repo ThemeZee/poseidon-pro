@@ -6,8 +6,13 @@
  * @package Poseidon Pro
  */
 
-#customize-control-poseidon_theme_options-navi_spacing {
+#customize-control-poseidon_theme_options-navi_spacing,
+#customize-control-poseidon_theme_options-footer_text {
 	margin-top: 16px;
+}
+
+#customize-control-poseidon_theme_options-scroll_top_title {
+	margin-bottom: 0;
 }
 
 #customize-control-poseidon_theme_options-footer_text textarea {
