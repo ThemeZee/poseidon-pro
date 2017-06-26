@@ -48,3 +48,16 @@
 .customize-control-poseidon_pro_custom_font .actions .button:hover {
 	cursor: pointer;
 }
+
+/* Magazine Sections */
+.adding-magazine-section #available-widgets #available-widgets-list [id*='widget-tpl-poseidon-magazine-posts-sidebar'] {
+	display: none !important;
+}
+
+.adding-magazine-section #available-widgets [id*='widget-tpl-poseidon-magazine-posts-list'] .widget-top::before {
+	background-image: url( '../images/magazine-list.png' );
+}
+
+.adding-magazine-section #available-widgets [id*='widget-tpl-poseidon-magazine-posts-single'] .widget-top::before {
+	background-image: url( '../images/magazine-single.png' );
+}
