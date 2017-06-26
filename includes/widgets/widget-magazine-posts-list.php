@@ -36,7 +36,7 @@ class Poseidon_Pro_Magazine_Posts_List_Widget extends WP_Widget {
 	private function default_settings() {
 
 		$defaults = array(
-			'title'    => '',
+			'title'    => esc_html__( 'Magazine (List)', 'poseidon-pro' ),
 			'category' => 0,
 			'number'   => 3,
 		);
