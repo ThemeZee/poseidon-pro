@@ -50,14 +50,14 @@
 }
 
 /* Magazine Sections */
-.adding-magazine-section #available-widgets #available-widgets-list [id*='widget-tpl-poseidon-magazine-posts-sidebar'] {
+.adding-magazine-widget #available-widgets #available-widgets-list [id*='widget-tpl-poseidon-magazine-posts-sidebar'] {
 	display: none !important;
 }
 
-.adding-magazine-section #available-widgets [id*='widget-tpl-poseidon-magazine-posts-list'] .widget-top::before {
+.adding-magazine-widget #available-widgets [id*='widget-tpl-poseidon-magazine-posts-list'] .widget-top::before {
 	background-image: url( '../images/magazine-list.png' );
 }
 
-.adding-magazine-section #available-widgets [id*='widget-tpl-poseidon-magazine-posts-single'] .widget-top::before {
+.adding-magazine-widget #available-widgets [id*='widget-tpl-poseidon-magazine-posts-single'] .widget-top::before {
 	background-image: url( '../images/magazine-single.png' );
 }
