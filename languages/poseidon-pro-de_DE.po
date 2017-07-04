@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Poseidon Pro\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2017-06-21 17:37+0200\n"
-"PO-Revision-Date: 2017-06-21 17:42+0200\n"
+"POT-Creation-Date: 2017-07-04 15:27+0200\n"
+"PO-Revision-Date: 2017-07-04 15:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: ThemeZee <support@themezee.com>\n"
 "Language: de_DE\n"
@@ -175,51 +175,51 @@ msgstr "Standard"
 msgid "Update Fonts"
 msgstr "Schriftarten aktualisieren"
 
-#: includes/modules/class-custom-colors.php:326
+#: includes/modules/class-custom-colors.php:330
 msgid "Theme Colors"
 msgstr "Theme Farben"
 
-#: includes/modules/class-custom-colors.php:345
+#: includes/modules/class-custom-colors.php:349
 msgctxt "color setting"
 msgid "Top Navigation"
 msgstr "Obere Navigation"
 
-#: includes/modules/class-custom-colors.php:362
+#: includes/modules/class-custom-colors.php:366
 msgctxt "color setting"
 msgid "Links and Buttons"
 msgstr "Links und Buttons"
 
-#: includes/modules/class-custom-colors.php:379
+#: includes/modules/class-custom-colors.php:383
 msgctxt "color setting"
 msgid "Navigation (primary)"
 msgstr "Navigation (primär)"
 
-#: includes/modules/class-custom-colors.php:396
+#: includes/modules/class-custom-colors.php:400
 msgctxt "color setting"
 msgid "Navigation (secondary)"
 msgstr "Navigation (sekundär)"
 
-#: includes/modules/class-custom-colors.php:413
+#: includes/modules/class-custom-colors.php:417
 msgctxt "color setting"
 msgid "Post Titles (primary)"
 msgstr "Content Bereich (primär)"
 
-#: includes/modules/class-custom-colors.php:430
+#: includes/modules/class-custom-colors.php:434
 msgctxt "color setting"
 msgid "Post Titles (secondary)"
 msgstr "Content Bereich (sekundär)"
 
-#: includes/modules/class-custom-colors.php:447
+#: includes/modules/class-custom-colors.php:451
 msgctxt "color setting"
 msgid "Widget Titles"
 msgstr "Widget Titel"
 
-#: includes/modules/class-custom-colors.php:464
+#: includes/modules/class-custom-colors.php:468
 msgctxt "color setting"
 msgid "Widget Links"
 msgstr "Widget Links"
 
-#: includes/modules/class-custom-colors.php:481
+#: includes/modules/class-custom-colors.php:485
 msgctxt "color setting"
 msgid "Footer Widgets"
 msgstr "Footer Widgets"
@@ -348,16 +348,13 @@ msgid "Display Scroll to Top Button"
 msgstr "Button zum Nach oben Scrollen anzeigen"
 
 #: includes/widgets/widget-magazine-posts-list.php:24
+#: includes/widgets/widget-magazine-posts-list.php:39
 msgid "Magazine (List)"
 msgstr "Magazin (Liste)"
 
 #: includes/widgets/widget-magazine-posts-list.php:27
-msgid ""
-"Displays your posts from a selected category in a simple list layout. Please "
-"use this widget ONLY in the Magazine Homepage widget area."
-msgstr ""
-"Zeigt die Beiträge einer gewählten Kategorie in einer Liste. Bitte verwende "
-"dieses Widget NUR in dem Magazin Startseite Widgetbereich."
+msgid "Displays your posts from a selected category in a list layout."
+msgstr "Zeigt die Beiträge einer gewählten Kategorie in einer Liste."
 
 #: includes/widgets/widget-magazine-posts-list.php:194
 #: includes/widgets/widget-magazine-posts-sidebar.php:199
@@ -383,6 +380,7 @@ msgid "Number of posts:"
 msgstr "Anzahl der Beiträge:"
 
 #: includes/widgets/widget-magazine-posts-sidebar.php:24
+#: includes/widgets/widget-magazine-posts-sidebar.php:39
 msgid "Magazine (Sidebar)"
 msgstr "Magazin (Sidebar)"
 
@@ -399,16 +397,13 @@ msgid "Display post excerpt"
 msgstr "Zeige Auszug des Beitrags"
 
 #: includes/widgets/widget-magazine-posts-single.php:24
+#: includes/widgets/widget-magazine-posts-single.php:39
 msgid "Magazine (Single Post)"
 msgstr "Magazin (Einzelner Beitrag)"
 
 #: includes/widgets/widget-magazine-posts-single.php:27
-msgid ""
-"Displays a single post from a selected category. Please use this widget ONLY "
-"in the Magazine Homepage widget area."
-msgstr ""
-"Zeigt einen einzelnen Beitrag einer gewählten Kategorie. Bitte verwende "
-"dieses Widget NUR in dem Magazin Startseite Widgetbereich."
+msgid "Displays a single post from a selected category."
+msgstr "Zeigt einen einzelnen Beitrag einer gewählten Kategorie."
 
 #: poseidon-pro.php:208
 msgid "Settings"
