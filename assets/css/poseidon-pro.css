@@ -188,6 +188,46 @@
 }
 
 /*--------------------------------------------------------------
+# Author Bio
+--------------------------------------------------------------*/
+.entry-author {
+	margin: 0 0 2em;
+	padding: 2em 0 0;
+	border-top: 1px solid #ddd;
+}
+
+.entry-author .author-avatar {
+	float: left;
+	margin: 0 1.5em 0.15em 0;
+	max-width: 25%;
+}
+
+.entry-author .author-avatar img {
+	vertical-align: top;
+}
+
+.entry-author .author-heading .author-title {
+	display: inline-block;
+	margin: 0 1em 0.25em 0;
+	padding: 0;
+	font-size: 17px;
+	font-size: 1.0625rem;
+}
+
+.entry-author .author-heading .author-link {
+	display: inline-block;
+	margin: 0 0 0.5em;
+	font-size: 16px;
+	font-size: 1rem;
+}
+
+.entry-author .author-bio {
+	margin: 0;
+	font-size: 17px;
+	font-size: 1.0625rem;
+}
+
+/*--------------------------------------------------------------
 # Footer Widget Area
 --------------------------------------------------------------*/
 .footer-widgets-background {
@@ -598,6 +638,22 @@
 ## Mobile Medium ( < 480px )
 --------------------------------------------------------------*/
 @media only screen and (max-width: 30em) {
+	/* Author Bio */
+	.entry-author .author-avatar {
+		float: none;
+		margin: 0 0 1em;
+		max-width: 100%;
+	}
+
+	.entry-author .author-heading .author-title {
+		display: block;
+		margin: 0 0 0.25em;
+	}
+
+	.entry-author .author-heading .author-link {
+		display: block;
+	}
+
 	/* Magazine Posts */
 	.widget-magazine-posts-list .type-post .entry-title {
 		font-size: 20px;
