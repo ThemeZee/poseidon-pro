@@ -152,6 +152,55 @@
 }
 
 /*--------------------------------------------------------------
+# Header Search
+--------------------------------------------------------------*/
+.header-search .header-search-form {
+	position: absolute;
+	right: 0;
+	display: none;
+	margin: 0;
+	padding: 1em;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+.header-search .header-search-form .search-form {
+	min-width: 300px;
+}
+
+.header-search .header-search-icon {
+	padding: 1em;
+}
+
+.header-search .header-search-icon {
+	color: #404040;
+}
+
+.header-search .header-search-icon:hover {
+	cursor: pointer;
+}
+
+.header-search .header-search-icon:focus {
+	outline: none;
+}
+
+.header-search .header-search-icon .genericon-search {
+	display: inline-block;
+	margin: 0.1em 0 0;
+	padding: 0;
+	content: '\f400';
+	vertical-align: middle;
+	text-decoration: inherit;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 26px;
+	font-family: 'Genericons';
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/*--------------------------------------------------------------
 # Site Logo
 --------------------------------------------------------------*/
 .site-branding .site-logo {
@@ -414,6 +463,25 @@
 @media only screen and (max-width: 60em) {
 	.header-bar-wrap .header-bar {
 		padding: 0;
+	}
+
+	/* Header Search */
+	.header-search .header-search-form {
+		position: static;
+		display: block !important;
+		visibility: visible;
+		margin: 2em 0 1em;
+		padding: 0;
+		background: none;
+		border: none;
+	}
+
+	.header-search .header-search-form .search-form {
+		min-width: auto;
+	}
+
+	.header-search .header-search-icon {
+		display: none;
 	}
 
 	/* Magazine Posts */

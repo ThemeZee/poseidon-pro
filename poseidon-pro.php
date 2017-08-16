@@ -115,6 +115,7 @@ class Poseidon_Pro {
 		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/modules/class-footer-line.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/modules/class-footer-widgets.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/modules/class-header-bar.php';
+		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-header-search.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/modules/class-header-spacing.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . '/includes/modules/class-scroll-to-top.php';
 
