@@ -1,7 +1,7 @@
 /**
  * Header Search JS
  *
- * @package Gridbox Pro
+ * @package Poseidon Pro
  */
 
 ( function( $ ) {

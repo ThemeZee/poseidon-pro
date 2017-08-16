@@ -62,6 +62,7 @@ class Poseidon_Pro_Customizer {
 			'header_logo'          => '',
 			'logo_spacing'         => 10,
 			'navi_spacing'         => 10,
+			'header_search'        => false,
 			'author_bio'           => false,
 			'scroll_to_top'        => false,
 			'footer_text'          => '',
