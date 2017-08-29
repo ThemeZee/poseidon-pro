@@ -27,47 +27,11 @@ class Poseidon_Pro_Header_Spacing {
 			return;
 		}
 
-		// Replace default site title function with new site logo function.
-		remove_action( 'poseidon_site_title', 'poseidon_site_title' );
-		add_action( 'poseidon_site_title', array( __CLASS__, 'display_site_logo' ) );
-
 		// Add Custom Spacing CSS code to custom stylesheet output.
 		add_filter( 'poseidon_pro_custom_css_stylesheet', array( __CLASS__, 'custom_spacing_css' ) );
 
 		// Add Site Logo Settings.
 		add_action( 'customize_register', array( __CLASS__, 'header_settings' ) );
-	}
-
-	/**
-	 * Display Site Logo if user uploaded a logo image or shows Site Title as default if not
-	 * Hooks into the poseidon_site_title action hook in the on header area.
-	 */
-	static function display_site_logo() {
-
-		// Get Theme Options from Database.
-		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
-
-		// Display Logo Image or Site Title.
-		if ( isset( $theme_options['header_logo'] ) and '' !== $theme_options['header_logo'] ) : ?>
-
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-					<img class="site-logo" src="<?php echo esc_url( $theme_options['header_logo'] ); ?>" alt="<?php esc_attr( bloginfo( 'name' ) ); ?>" />
-				</a>
-
-		<?php else : ?>
-
-				<?php if ( is_home() or is_page_template( 'template-magazine.php' )  ) : ?>
-
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-
-				<?php else : ?>
-
-					<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-
-				<?php endif; ?>
-
-		<?php endif;
-
 	}
 
 	/**
@@ -90,8 +54,7 @@ class Poseidon_Pro_Header_Spacing {
 				.site-branding {
 					margin: ' . $margin . 'em 0;
 				}
-				';
-
+			';
 		}
 
 		// Set Navigation Spacing.
@@ -114,12 +77,10 @@ class Poseidon_Pro_Header_Spacing {
 						margin: ' . $margin . 'em 0;
 					}
 				}
-				';
-
+			';
 		}
 
 		return $custom_css;
-
 	}
 
 	/**
@@ -134,29 +95,7 @@ class Poseidon_Pro_Header_Spacing {
 			'title'    => __( 'Header Settings', 'poseidon-pro' ),
 			'priority' => 20,
 			'panel' => 'poseidon_options_panel',
-			)
-		);
-
-		// Add Upload logo image setting for WordPress 4.4 and earlier.
-		if ( ! current_theme_supports( 'custom-logo' ) ) :
-
-			$wp_customize->add_setting( 'poseidon_theme_options[header_logo]', array(
-				'default'           => '',
-				'type'           	=> 'option',
-				'transport'         => 'refresh',
-				'sanitize_callback' => 'esc_url',
-				)
-			);
-			$wp_customize->add_control( new WP_Customize_Image_Control(
-				$wp_customize, 'poseidon_theme_options[header_logo]', array(
-					'label'    => __( 'Logo Image (replaces Site Title)', 'poseidon-pro' ),
-					'section'  => 'poseidon_pro_section_header',
-					'settings' => 'poseidon_theme_options[header_logo]',
-					'priority' => 1,
-				)
-			) );
-
-		endif;
+		) );
 
 		// Add Logo Spacing setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[logo_spacing]', array(
@@ -164,16 +103,15 @@ class Poseidon_Pro_Header_Spacing {
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
 			'sanitize_callback' => 'absint',
-			)
-		);
+		) );
+
 		$wp_customize->add_control( 'poseidon_theme_options[logo_spacing]', array(
 			'label'    => __( 'Logo Spacing (default: 10)', 'poseidon-pro' ),
 			'section'  => 'poseidon_pro_section_header',
 			'settings' => 'poseidon_theme_options[logo_spacing]',
 			'type'     => 'text',
-			'priority' => 2,
-			)
-		);
+			'priority' => 10,
+		) );
 
 		// Add Navigation Spacing setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[navi_spacing]', array(
@@ -181,17 +119,15 @@ class Poseidon_Pro_Header_Spacing {
 			'type'           	=> 'option',
 			'transport'         => 'refresh',
 			'sanitize_callback' => 'absint',
-			)
-		);
+		) );
+
 		$wp_customize->add_control( 'poseidon_theme_options[navi_spacing]', array(
 			'label'    => __( 'Navigation Spacing (default: 10)', 'poseidon-pro' ),
 			'section'  => 'poseidon_pro_section_header',
 			'settings' => 'poseidon_theme_options[navi_spacing]',
 			'type'     => 'text',
-			'priority' => 3,
-			)
-		);
-
+			'priority' => 20,
+		) );
 	}
 }
 
