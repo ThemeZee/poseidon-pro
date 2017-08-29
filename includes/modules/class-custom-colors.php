@@ -114,7 +114,48 @@ class Poseidon_Pro_Custom_Colors {
 					background: ' . $theme_options['top_navi_color'] . ';
 				}
 			';
-		}
+
+			// Check if a dark background color was chosen.
+			if ( self::is_color_light( $theme_options['top_navi_color'] ) ) {
+				$custom_css .= '
+					.header-bar-wrap,
+					.top-navigation-menu a,
+					.top-navigation-menu a:link,
+					.top-navigation-menu a:visited,
+					.top-navigation-toggle,
+					.top-navigation-toggle:focus,
+					.top-navigation-menu .submenu-dropdown-toggle,
+					.header-bar .social-icons-menu li a,
+					.header-bar .social-icons-menu li a:link,
+					.header-bar .social-icons-menu li a:visited {
+					    color: rgba(0,0,0,0.75);
+					}
+
+					.top-navigation-menu a:hover,
+					.top-navigation-menu a:active,
+					.top-navigation-toggle:hover,
+					.top-navigation-toggle:active,
+					.top-navigation-menu .submenu-dropdown-toggle:hover,
+					.top-navigation-menu .submenu-dropdown-toggle:active,
+					.header-bar .social-icons-menu li a:hover,
+					.header-bar .social-icons-menu li a:active {
+						color: rgba(0,0,0,0.6);
+					}
+
+					.top-navigation-menu,
+					.top-navigation-menu a,
+					.top-navigation-menu ul,
+					.top-navigation-menu ul a,
+					.top-navigation-menu ul li:last-child > a {
+						border-color: rgba(0,0,0,0.15);
+					}
+
+					.header-bar-wrap {
+						border-bottom: 1px solid rgba(0,0,0,0.1);
+					}
+				';
+			} // End if().
+		} // End if().
 
 		// Set Primary Navigation Color.
 		if ( $theme_options['navi_primary_color'] !== $default_options['navi_primary_color'] ) {
@@ -123,8 +164,7 @@ class Poseidon_Pro_Custom_Colors {
 				/* Navigation Primary Color Setting */
 				.main-navigation-menu a:link,
 				.main-navigation-menu a:visited,
-				.main-navigation-menu > .menu-item-has-children > a:after,
-				.main-navigation-menu ul .menu-item-has-children > a:after,
+				.main-navigation-menu .submenu-dropdown-toggle,
 				.footer-navigation-menu a:link,
 				.footer-navigation-menu a:visited,
 				.header-search .header-search-icon {
@@ -133,8 +173,7 @@ class Poseidon_Pro_Custom_Colors {
 
 				.main-navigation-menu a:hover,
 				.main-navigation-menu a:active,
-				.main-navigation-menu > .menu-item-has-children > a:hover:after,
-				.main-navigation-menu ul .menu-item-has-children > a:hover:after,
+				.main-navigation-menu .submenu-dropdown-toggle:hover,
 				.footer-navigation-menu a:hover,
 				.footer-navigation-menu a:active {
 					color: #22aadd;
@@ -145,9 +184,8 @@ class Poseidon_Pro_Custom_Colors {
 				}
 
 				@media only screen and (max-width: 60em) {
-					.main-navigation-toggle:after,
-					.main-navigation-menu .submenu-dropdown-toggle:before,
-					.footer-navigation-toggle:after {
+					.main-navigation-toggle,
+					.footer-navigation-toggle {
 						color: ' . $theme_options['navi_primary_color'] . ';
 					}
 
@@ -174,17 +212,15 @@ class Poseidon_Pro_Custom_Colors {
 				.main-navigation-menu a:hover,
 				.main-navigation-menu a:active,
 				.main-navigation-menu li.current-menu-item > a,
-				.main-navigation-menu > .menu-item-has-children > a:hover:after,
-				.main-navigation-menu ul .menu-item-has-children > a:hover:after,
 				.footer-navigation-menu a:hover,
 				.footer-navigation-menu a:active {
 					color: ' . $theme_options['navi_secondary_color'] . ';
 				}
 
 				@media only screen and (max-width: 60em) {
-					.main-navigation-toggle:hover:after,
-					.main-navigation-menu .submenu-dropdown-toggle:hover:before,
-					.footer-navigation-toggle:hover:after {
+					.main-navigation-toggle:hover,
+					.main-navigation-menu .submenu-dropdown-toggle:hover,
+					.footer-navigation-toggle:hover {
 						color: ' . $theme_options['navi_secondary_color'] . ';
 					}
 				}
@@ -271,6 +307,55 @@ class Poseidon_Pro_Custom_Colors {
 					background: ' . $theme_options['footer_color'] . ';
 				}
 			';
+
+			// Check if a dark background color was chosen.
+			if ( self::is_color_light( $theme_options['footer_color'] ) ) {
+				$custom_css .= '
+					.footer-widgets-background {
+						border-top: 1px solid rgba(0,0,0,0.1);
+					}
+
+					.footer-widgets .widget-title,
+					.footer-widgets .widget a:link,
+					.footer-widgets .widget a:visited {
+					    color: rgba(0,0,0,0.8);
+					}
+
+					.footer-widgets .widget,
+					.footer-widgets .widget a:hover,
+					.footer-widgets .widget a:active {
+						color: rgba(0,0,0,0.6);
+					}
+
+					#footer-widgets .tzwb-social-icons .social-icons-menu li a,
+					#footer-widgets .widget_tag_cloud .tagcloud a {
+						background: rgba(0,0,0,0.1);
+					}
+
+					#footer-widgets .tzwb-social-icons .social-icons-menu li a:hover,
+					#footer-widgets .widget_tag_cloud .tagcloud a:hover,
+					#footer-widgets .widget_tag_cloud .tagcloud a:active {
+						color: rgba(0,0,0,0.8);
+						background:  rgba(0,0,0,0.2);
+					}
+
+					.footer-widgets .widget-title,
+					.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi {
+						border-color: rgba(0,0,0,0.08);
+					}
+
+					.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:link,
+					.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:visited  {
+						color: rgba(0,0,0,0.6);
+					}
+
+					.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:hover,
+					.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:active,
+					.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
+						color: rgba(0,0,0,0.8);
+					}
+				';
+			}
 		}
 
 		return $custom_css;
