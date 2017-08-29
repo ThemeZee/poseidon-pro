@@ -164,6 +164,7 @@ class Poseidon_Pro_Custom_Colors {
 				/* Navigation Primary Color Setting */
 				.main-navigation-menu a:link,
 				.main-navigation-menu a:visited,
+				.main-navigation-toggle,
 				.main-navigation-menu .submenu-dropdown-toggle,
 				.footer-navigation-menu a:link,
 				.footer-navigation-menu a:visited,
@@ -173,33 +174,16 @@ class Poseidon_Pro_Custom_Colors {
 
 				.main-navigation-menu a:hover,
 				.main-navigation-menu a:active,
+				.main-navigation-toggle:hover,
 				.main-navigation-menu .submenu-dropdown-toggle:hover,
 				.footer-navigation-menu a:hover,
 				.footer-navigation-menu a:active {
 					color: #22aadd;
 				}
 
+				.main-navigation-menu,
 				.main-navigation-menu ul {
-					border-top: 4px solid ' . $theme_options['navi_primary_color'] . ';
-				}
-
-				@media only screen and (max-width: 60em) {
-					.main-navigation-toggle,
-					.footer-navigation-toggle {
-						color: ' . $theme_options['navi_primary_color'] . ';
-					}
-
-					.main-navigation-menu {
-						border-top: 4px solid ' . $theme_options['navi_primary_color'] . ';
-					}
-
-					.main-navigation-menu ul {
-					    border: none;
-					}
-
-					.footer-navigation-menu {
-						border-top: 2px solid ' . $theme_options['navi_primary_color'] . ';
-					}
+					border-top-color: ' . $theme_options['navi_primary_color'] . ';
 				}
 			';
 		} // End if().
@@ -212,17 +196,11 @@ class Poseidon_Pro_Custom_Colors {
 				.main-navigation-menu a:hover,
 				.main-navigation-menu a:active,
 				.main-navigation-menu li.current-menu-item > a,
+				.main-navigation-toggle:hover,
+				.main-navigation-menu .submenu-dropdown-toggle:hover,
 				.footer-navigation-menu a:hover,
 				.footer-navigation-menu a:active {
 					color: ' . $theme_options['navi_secondary_color'] . ';
-				}
-
-				@media only screen and (max-width: 60em) {
-					.main-navigation-toggle:hover,
-					.main-navigation-menu .submenu-dropdown-toggle:hover,
-					.footer-navigation-toggle:hover {
-						color: ' . $theme_options['navi_secondary_color'] . ';
-					}
 				}
 			';
 		}
@@ -256,7 +234,6 @@ class Poseidon_Pro_Custom_Colors {
 
 			$custom_css .= '
 				/* Post Titles Secondary Color Setting */
-				.site-branding a:hover .site-title,
 				.site-title a:hover,
 				.site-title a:active,
 				.entry-title a:hover,
@@ -327,6 +304,11 @@ class Poseidon_Pro_Custom_Colors {
 						color: rgba(0,0,0,0.6);
 					}
 
+					.footer-widgets .widget-title,
+					.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi {
+						border-color: rgba(0,0,0,0.08);
+					}
+
 					#footer-widgets .tzwb-social-icons .social-icons-menu li a,
 					#footer-widgets .widget_tag_cloud .tagcloud a {
 						background: rgba(0,0,0,0.1);
@@ -339,13 +321,8 @@ class Poseidon_Pro_Custom_Colors {
 						background:  rgba(0,0,0,0.2);
 					}
 
-					.footer-widgets .widget-title,
-					.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi {
-						border-color: rgba(0,0,0,0.08);
-					}
-
 					.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:link,
-					.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:visited  {
+					.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:visited {
 						color: rgba(0,0,0,0.6);
 					}
 
@@ -355,8 +332,8 @@ class Poseidon_Pro_Custom_Colors {
 						color: rgba(0,0,0,0.8);
 					}
 				';
-			}
-		}
+			} // End if().
+		} // End if().
 
 		return $custom_css;
 	}
@@ -414,7 +391,7 @@ class Poseidon_Pro_Custom_Colors {
 		$wp_customize->add_setting( 'poseidon_theme_options[navi_primary_color]', array(
 			'default'           => $default_options['navi_primary_color'],
 			'type'           	=> 'option',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
@@ -430,7 +407,7 @@ class Poseidon_Pro_Custom_Colors {
 		$wp_customize->add_setting( 'poseidon_theme_options[navi_secondary_color]', array(
 			'default'           => $default_options['navi_secondary_color'],
 			'type'           	=> 'option',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
@@ -446,7 +423,7 @@ class Poseidon_Pro_Custom_Colors {
 		$wp_customize->add_setting( 'poseidon_theme_options[post_primary_color]', array(
 			'default'           => $default_options['post_primary_color'],
 			'type'           	=> 'option',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
@@ -462,7 +439,7 @@ class Poseidon_Pro_Custom_Colors {
 		$wp_customize->add_setting( 'poseidon_theme_options[post_secondary_color]', array(
 			'default'           => $default_options['post_secondary_color'],
 			'type'           	=> 'option',
-			'transport'         => 'refresh',
+			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
