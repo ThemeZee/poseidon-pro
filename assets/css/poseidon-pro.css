@@ -162,6 +162,7 @@
 	padding: 1em;
 	background: #fff;
 	border: 1px solid #ddd;
+	z-index: 10;
 }
 
 .header-search .header-search-form .search-form {
