@@ -243,6 +243,56 @@ class Poseidon_Pro_Custom_Colors {
 			';
 		}
 
+		// Set Header Color.
+		if ( $theme_options['header_color'] !== $default_options['header_color'] ) {
+
+			$custom_css .= '
+				/* Header Color Setting */
+				.site-header,
+				.main-navigation-menu ul,
+				.footer-wrap {
+					background: ' . $theme_options['header_color'] . ';
+				}
+			';
+
+			// Check if a dark background color was chosen.
+			if ( self::is_color_dark( $theme_options['header_color'] ) ) {
+				$custom_css .= '
+					.site-header,
+					.footer-wrap {
+						border-color: rgba(255,255,255,0.12);
+					}
+
+					.main-navigation-menu ul {
+						border-left-color: rgba(255,255,255,0.12);
+						border-right-color: rgba(255,255,255,0.12);
+						border-bottom-color: rgba(255,255,255,0.12);
+					}
+
+					.main-navigation-menu ul a {
+						border-color: rgba(255,255,255,0.24);
+					}
+
+					.site-branding,
+					.site-title,
+					.site-title a:link,
+					.site-title a:visited,
+					.site-info a:link,
+					.site-info a:visited {
+						color: #ffffff;
+					}
+
+					.site-title a:hover,
+					.site-title a:active,
+					.site-info,
+					.site-info a:hover,
+					.site-info a:active {
+						color: rgba(255,255,255,0.6);
+					}
+				';
+			} // End if().
+		} // End if().
+
 		// Set Widget Title Color.
 		if ( $theme_options['widget_title_color'] !== $default_options['widget_title_color'] ) {
 
@@ -371,18 +421,18 @@ class Poseidon_Pro_Custom_Colors {
 			)
 		) );
 
-		// Add Link and Button Color setting.
-		$wp_customize->add_setting( 'poseidon_theme_options[link_color]', array(
-			'default'           => $default_options['link_color'],
+		// Add Header Color setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[header_color]', array(
+			'default'           => $default_options['header_color'],
 			'type'           	=> 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'poseidon_theme_options[link_color]', array(
-				'label'      => _x( 'Links and Buttons', 'color setting', 'poseidon-pro' ),
+			$wp_customize, 'poseidon_theme_options[header_color]', array(
+				'label'      => _x( 'Header', 'color setting', 'poseidon-pro' ),
 				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[link_color]',
+				'settings'   => 'poseidon_theme_options[header_color]',
 				'priority' => 20,
 			)
 		) );
@@ -451,6 +501,22 @@ class Poseidon_Pro_Custom_Colors {
 			)
 		) );
 
+		// Add Link and Button Color setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[link_color]', array(
+			'default'           => $default_options['link_color'],
+			'type'           	=> 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+		) );
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'poseidon_theme_options[link_color]', array(
+				'label'      => _x( 'Links and Buttons', 'color setting', 'poseidon-pro' ),
+				'section'    => 'poseidon_pro_section_colors',
+				'settings'   => 'poseidon_theme_options[link_color]',
+				'priority' => 70,
+			)
+		) );
+
 		// Add Widget Title Color setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[widget_title_color]', array(
 			'default'           => $default_options['widget_title_color'],
@@ -463,7 +529,7 @@ class Poseidon_Pro_Custom_Colors {
 				'label'      => _x( 'Widget Titles', 'color setting', 'poseidon-pro' ),
 				'section'    => 'poseidon_pro_section_colors',
 				'settings'   => 'poseidon_theme_options[widget_title_color]',
-				'priority' => 70,
+				'priority' => 80,
 			)
 		) );
 
