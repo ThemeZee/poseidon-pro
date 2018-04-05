@@ -81,7 +81,6 @@ class Poseidon_Pro_Customizer {
 			'title_font'           => 'Raleway',
 			'navi_font'            => 'Raleway',
 			'widget_title_font'    => 'Raleway',
-			'available_fonts'      => 'favorites',
 		);
 
 		return $default_options;
