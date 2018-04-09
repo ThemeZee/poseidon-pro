@@ -38,7 +38,21 @@ class Poseidon_Pro_Custom_Fonts {
 
 		// Add Font Settings in Customizer.
 		add_action( 'customize_register', array( __CLASS__, 'font_settings' ) );
+	}
 
+	/**
+	 * Get the font family string.
+	 *
+	 * @param String $font Name of selected font.
+	 * @return string Fonts string.
+	 */
+	static function get_font_family( $font ) {
+
+		// Set System Font Stack.
+		$system_fonts = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
+
+		// Return Font Family string.
+		return $font === 'SystemFontStack' ? $system_fonts : '"' . esc_attr( $font ) . '", Arial, Helvetica, sans-serif';
 	}
 
 	/**
@@ -55,13 +69,8 @@ class Poseidon_Pro_Custom_Fonts {
 		// Get Default Fonts from settings.
 		$default_options = Poseidon_Pro_Customizer::get_default_options();
 
-		// Set System Font Stack.
-		$system_fonts = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
-
 		// Set Default Text Font.
 		if ( $theme_options['text_font'] !== $default_options['text_font'] ) {
-
-			$text_font = $theme_options['text_font'] === 'SystemFontStack' ? $system_fonts : esc_attr( $theme_options['text_font'] ) . ', Arial, Helvetica, sans-serif';
 
 			$custom_css .= '
 				/* Base Font Setting */
@@ -70,7 +79,7 @@ class Poseidon_Pro_Custom_Fonts {
 				input,
 				select,
 				textarea {
-					font-family: ' . $text_font . ';
+					font-family: ' . self::get_font_family( $theme_options['text_font'] ) . ';
 				}
 			';
 		}
@@ -78,14 +87,12 @@ class Poseidon_Pro_Custom_Fonts {
 		// Set Title Font.
 		if ( $theme_options['title_font'] !== $default_options['title_font'] ) {
 
-			$title_font = $theme_options['title_font'] === 'SystemFontStack' ? $system_fonts : esc_attr( $theme_options['title_font'] ) . ', Arial, Helvetica, sans-serif';
-
 			$custom_css .= '
 				/* Headings Font Setting */
 				.site-title,
 				.page-title,
 				.entry-title {
-					font-family: ' . $title_font . ';
+					font-family: ' . self::get_font_family( $theme_options['title_font'] ) . ';
 				}
 			';
 		}
@@ -93,22 +100,18 @@ class Poseidon_Pro_Custom_Fonts {
 		// Set Navigation Font.
 		if ( $theme_options['navi_font'] !== $default_options['navi_font'] ) {
 
-			$navi_font = $theme_options['navi_font'] === 'SystemFontStack' ? $system_fonts : esc_attr( $theme_options['navi_font'] ) . ', Arial, Helvetica, sans-serif';
-
 			$custom_css .= '
 				/* Navigation Font Setting */
 				.top-navigation-menu a,
 				.main-navigation-menu a,
 				.footer-navigation-menu a {
-					font-family: ' . $navi_font . ';
+					font-family: ' . self::get_font_family( $theme_options['navi_font'] ) . ';
 				}
 			';
 		}
 
 		// Set Widget Title Font.
 		if ( $theme_options['widget_title_font'] !== $default_options['widget_title_font'] ) {
-
-			$widget_title_font = $theme_options['widget_title_font'] === 'SystemFontStack' ? $system_fonts : esc_attr( $theme_options['widget_title_font'] ) . ', Arial, Helvetica, sans-serif';
 
 			$custom_css .= '
 				/* Widget Titles Font Setting */
@@ -124,7 +127,7 @@ class Poseidon_Pro_Custom_Fonts {
 				.comments-header .comments-title,
 				.comment-reply-title span,
 				.tzwb-tabbed-content .tzwb-tabnavi li a {
-					font-family: ' . $widget_title_font . ';
+					font-family: ' . self::get_font_family( $theme_options['widget_title_font'] ) . ';
 				}
 			';
 		}
