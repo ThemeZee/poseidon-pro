@@ -8,7 +8,9 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Custom Colors Class
@@ -29,6 +31,9 @@ class Poseidon_Pro_Custom_Colors {
 
 		// Add Custom Color CSS code to custom stylesheet output.
 		add_filter( 'poseidon_pro_custom_css_stylesheet', array( __CLASS__, 'custom_colors_css' ) );
+
+		// Add Custom Color CSS code to the Gutenberg editor.
+		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'custom_editor_colors_css' ) );
 
 		// Add Custom Color Settings.
 		add_action( 'customize_register', array( __CLASS__, 'color_settings' ) );
@@ -60,7 +65,8 @@ class Poseidon_Pro_Custom_Colors {
 				.widget-title a:active,
 				.tzwb-tabbed-content .tzwb-tabnavi li a:hover,
 				.tzwb-tabbed-content .tzwb-tabnavi li a:active,
-				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
+				.tzwb-tabbed-content .tzwb-tabnavi li a.current-tab,
+				.has-primary-color {
 					color: ' . $theme_options['link_color'] . ';
 				}
 
@@ -100,6 +106,10 @@ class Poseidon_Pro_Custom_Colors {
 				input[type="submit"]:active,
 				.scroll-to-top-button:hover {
 					background: #404040;
+				}
+
+				.has-primary-background-color {
+					background-color: ' . $theme_options['link_color'] . ';
 				}
 			';
 		} // End if().
@@ -389,6 +399,56 @@ class Poseidon_Pro_Custom_Colors {
 	}
 
 	/**
+	 * Adds Color CSS styles in the Gutenberg Editor to override default colors
+	 *
+	 * @return void
+	 */
+	static function custom_editor_colors_css() {
+
+		// Get Theme Options from Database.
+		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
+
+		// Get Default Fonts from settings.
+		$default_options = Poseidon_Pro_Customizer::get_default_options();
+
+		// Set Primary Color.
+		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
+
+			$custom_css = '
+				.has-primary-color,
+				.edit-post-visual-editor .editor-block-list__block a {
+					color: ' . $theme_options['link_color'] . ';
+				}
+				.has-primary-background-color {
+					background-color: ' . $theme_options['link_color'] . ';
+				}
+			';
+
+			wp_add_inline_style( 'poseidon-editor-styles', $custom_css );
+		}
+	}
+
+	/**
+	 * Change primary color in Gutenberg Editor.
+	 *
+	 * @return array $editor_settings
+	 */
+	static function change_primary_color( $color ) {
+		// Get Theme Options from Database.
+		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
+
+		// Get Default Fonts from settings.
+		$default_options = Poseidon_Pro_Customizer::get_default_options();
+
+		// Set Primary Color.
+		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
+			$color = $theme_options['link_color'];
+		}
+
+		return $color;
+	}
+
+	/**
 	 * Adds all color settings in the Customizer
 	 *
 	 * @param object $wp_customize / Customizer Object.
@@ -399,7 +459,7 @@ class Poseidon_Pro_Custom_Colors {
 		$wp_customize->add_section( 'poseidon_pro_section_colors', array(
 			'title'    => __( 'Theme Colors', 'poseidon-pro' ),
 			'priority' => 60,
-			'panel' => 'poseidon_options_panel',
+			'panel'    => 'poseidon_options_panel',
 		) );
 
 		// Get Default Colors from settings.
@@ -408,15 +468,15 @@ class Poseidon_Pro_Custom_Colors {
 		// Add Top Navigation Color setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[top_navi_color]', array(
 			'default'           => $default_options['top_navi_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[top_navi_color]', array(
-				'label'      => _x( 'Top Navigation', 'color setting', 'poseidon-pro' ),
-				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[top_navi_color]',
+				'label'    => _x( 'Top Navigation', 'color setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[top_navi_color]',
 				'priority' => 10,
 			)
 		) );
@@ -424,15 +484,15 @@ class Poseidon_Pro_Custom_Colors {
 		// Add Header Color setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[header_color]', array(
 			'default'           => $default_options['header_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[header_color]', array(
-				'label'      => _x( 'Header', 'color setting', 'poseidon-pro' ),
-				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[header_color]',
+				'label'    => _x( 'Header', 'color setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[header_color]',
 				'priority' => 20,
 			)
 		) );
@@ -440,15 +500,15 @@ class Poseidon_Pro_Custom_Colors {
 		// Add Navigation Primary Color setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[navi_primary_color]', array(
 			'default'           => $default_options['navi_primary_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[navi_primary_color]', array(
-				'label'      => _x( 'Navigation (primary)', 'color setting', 'poseidon-pro' ),
-				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[navi_primary_color]',
+				'label'    => _x( 'Navigation (primary)', 'color setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[navi_primary_color]',
 				'priority' => 30,
 			)
 		) );
@@ -456,15 +516,15 @@ class Poseidon_Pro_Custom_Colors {
 		// Add Navigation Secondary Color setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[navi_secondary_color]', array(
 			'default'           => $default_options['navi_secondary_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[navi_secondary_color]', array(
-				'label'      => _x( 'Navigation (secondary)', 'color setting', 'poseidon-pro' ),
-				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[navi_secondary_color]',
+				'label'    => _x( 'Navigation (secondary)', 'color setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[navi_secondary_color]',
 				'priority' => 40,
 			)
 		) );
@@ -472,15 +532,15 @@ class Poseidon_Pro_Custom_Colors {
 		// Add Post Primary Color setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[post_primary_color]', array(
 			'default'           => $default_options['post_primary_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[post_primary_color]', array(
-				'label'      => _x( 'Post Titles (primary)', 'color setting', 'poseidon-pro' ),
-				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[post_primary_color]',
+				'label'    => _x( 'Post Titles (primary)', 'color setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[post_primary_color]',
 				'priority' => 50,
 			)
 		) );
@@ -488,15 +548,15 @@ class Poseidon_Pro_Custom_Colors {
 		// Add Post Secondary Color setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[post_secondary_color]', array(
 			'default'           => $default_options['post_secondary_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[post_secondary_color]', array(
-				'label'      => _x( 'Post Titles (secondary)', 'color setting', 'poseidon-pro' ),
-				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[post_secondary_color]',
+				'label'    => _x( 'Post Titles (secondary)', 'color setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[post_secondary_color]',
 				'priority' => 60,
 			)
 		) );
@@ -504,15 +564,15 @@ class Poseidon_Pro_Custom_Colors {
 		// Add Link and Button Color setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[link_color]', array(
 			'default'           => $default_options['link_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[link_color]', array(
-				'label'      => _x( 'Links and Buttons', 'color setting', 'poseidon-pro' ),
-				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[link_color]',
+				'label'    => _x( 'Links and Buttons', 'color setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[link_color]',
 				'priority' => 70,
 			)
 		) );
@@ -520,15 +580,15 @@ class Poseidon_Pro_Custom_Colors {
 		// Add Widget Title Color setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[widget_title_color]', array(
 			'default'           => $default_options['widget_title_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[widget_title_color]', array(
-				'label'      => _x( 'Widget Titles', 'color setting', 'poseidon-pro' ),
-				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[widget_title_color]',
+				'label'    => _x( 'Widget Titles', 'color setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[widget_title_color]',
 				'priority' => 80,
 			)
 		) );
@@ -536,15 +596,15 @@ class Poseidon_Pro_Custom_Colors {
 		// Add Footer Widgets Color setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[footer_color]', array(
 			'default'           => $default_options['footer_color'],
-			'type'           	=> 'option',
+			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'sanitize_hex_color',
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[footer_color]', array(
-				'label'      => _x( 'Footer Widgets', 'color setting', 'poseidon-pro' ),
-				'section'    => 'poseidon_pro_section_colors',
-				'settings'   => 'poseidon_theme_options[footer_color]',
+				'label'    => _x( 'Footer Widgets', 'color setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[footer_color]',
 				'priority' => 90,
 			)
 		) );
@@ -589,3 +649,4 @@ class Poseidon_Pro_Custom_Colors {
 
 // Run Class.
 add_action( 'init', array( 'Poseidon_Pro_Custom_Colors', 'setup' ) );
+add_filter( 'poseidon_primary_color', array( 'Poseidon_Pro_Custom_Colors', 'change_primary_color' ) );

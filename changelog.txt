@@ -2,6 +2,11 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 1.6
+-----------------------------------
+* updated color settings to set primary color for the Gutenberg Editor
+* adjusted font settings to load custom fonts in the Gutenberg Editor
+
 Version 1.5
 -----------------------------------
 * added Local Fonts to the Typography settings in the Customizer

@@ -5,11 +5,11 @@ Plugin URI: http://themezee.com/addons/poseidon-pro/
 Description: Adds additional features like footer widgets, custom colors, fonts and logo upload to the Poseidon theme.
 Author: ThemeZee
 Author URI: https://themezee.com/
-Version: 1.5
+Version: 1.6
 Text Domain: poseidon-pro
 Domain Path: /languages/
-License: GPL v3
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Poseidon Pro
 Copyright(C) 2015, ThemeZee.com - support@themezee.com
@@ -17,7 +17,9 @@ Copyright(C) 2015, ThemeZee.com - support@themezee.com
 */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 
 /**
@@ -48,7 +50,6 @@ class Poseidon_Pro {
 
 		// Setup Action Hooks.
 		self::setup_actions();
-
 	}
 
 	/**
@@ -62,7 +63,7 @@ class Poseidon_Pro {
 		define( 'POSEIDON_PRO_NAME', 'Poseidon Pro' );
 
 		// Define Version Number.
-		define( 'POSEIDON_PRO_VERSION', '1.5' );
+		define( 'POSEIDON_PRO_VERSION', '1.6' );
 
 		// Define Plugin Name.
 		define( 'POSEIDON_PRO_PRODUCT_ID', 53694 );
@@ -78,7 +79,6 @@ class Poseidon_Pro {
 
 		// Plugin Root File.
 		define( 'POSEIDON_PRO_PLUGIN_FILE', __FILE__ );
-
 	}
 
 	/**
@@ -123,7 +123,6 @@ class Poseidon_Pro {
 		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-list.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-sidebar.php';
 		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/widgets/widget-magazine-posts-single.php';
-
 	}
 
 	/**
@@ -145,7 +144,6 @@ class Poseidon_Pro {
 
 		// Add automatic plugin updater from ThemeZee Store API.
 		add_action( 'admin_init', array( __CLASS__, 'plugin_updater' ), 0 );
-
 	}
 
 	/**
@@ -178,7 +176,6 @@ class Poseidon_Pro {
 
 		// Add Custom CSS.
 		wp_add_inline_style( 'poseidon-pro', $custom_css );
-
 	}
 
 	/**
@@ -196,7 +193,6 @@ class Poseidon_Pro {
 		register_widget( 'Poseidon_Pro_Magazine_Posts_List_Widget' );
 		register_widget( 'Poseidon_Pro_Magazine_Posts_Sidebar_Widget' );
 		register_widget( 'Poseidon_Pro_Magazine_Posts_Single_Widget' );
-
 	}
 
 	/**
@@ -227,16 +223,14 @@ class Poseidon_Pro {
 
 			// Setup the updater.
 			$poseidon_pro_updater = new Poseidon_Pro_Plugin_Updater( POSEIDON_PRO_STORE_API_URL, __FILE__, array(
-					'version' 	=> POSEIDON_PRO_VERSION,
-					'license' 	=> $license_key,
-					'item_name' => POSEIDON_PRO_NAME,
-					'item_id'   => POSEIDON_PRO_PRODUCT_ID,
-					'author' 	=> 'ThemeZee',
-				)
-			);
+				'version'   => POSEIDON_PRO_VERSION,
+				'license'   => $license_key,
+				'item_name' => POSEIDON_PRO_NAME,
+				'item_id'   => POSEIDON_PRO_PRODUCT_ID,
+				'author'    => 'ThemeZee',
+			) );
 
 		endif;
-
 	}
 }
 
