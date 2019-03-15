@@ -2,6 +2,10 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 1.6.1
+-----------------------------------
+* display Scroll-to-Top button on all screen sizes
+
 Version 1.6
 -----------------------------------
 * updated color settings to set primary color for the Gutenberg Editor

@@ -4,7 +4,8 @@
   "description": "Poseidon Pro plugin",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+	"export": "git archive HEAD -9 --prefix poseidon-pro/ --format=zip > ../../poseidon-pro.zip",
+	"test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
