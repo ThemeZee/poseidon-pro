@@ -1,26 +1,63 @@
 {
   "name": "poseidon-pro",
   "version": "1.0.0",
-  "description": "Poseidon Pro plugin",
-  "main": "index.js",
+  "description": "",
+  "main": "gulpfile.js",
   "scripts": {
-	"export": "git archive HEAD -9 --prefix poseidon-pro/ --format=zip > ../../poseidon-pro.zip",
-	"test": "echo \"Error: no test specified\" && exit 1"
+    "export": "git archive HEAD -9 --prefix poseidon-pro/ --format=zip > ../../poseidon-pro.zip",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://ThemeZee@bitbucket.org/ThemeZee/poseidon-pro.git"
+    "url": "git+https://github.com/ThemeZee/poseidon-pro.git"
   },
   "author": "Thomas Weichselbaumer <contact@themezee.com> (https://themezee.com)",
-  "license": "ISC",
-  "homepage": "https://bitbucket.org/ThemeZee/poseidon-pro#readme",
+  "license": "GPL-2.0-or-later",
+  "homepage": "https://github.com/ThemeZee/poseidon-pro.git#readme",
   "devDependencies": {
-    "autoprefixer": "^6.5.2",
-    "gulp": "^3.9.1",
-    "gulp-postcss": "^6.2.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-rtlcss": "^1.0.0",
-    "gulp-uglify": "^2.0.0",
-    "postcss-sorting": "^1.7.0"
+    "autoprefixer": "^9.6.1",
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-rtlcss": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-uglify": "^3.0.2",
+    "postcss-sorting": "^5.0.1",
+    "stylelint": "^11.0.0",
+    "stylelint-config-wordpress": "^14.0.0"
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-wordpress",
+      "stylelint-config-wordpress/scss"
+    ],
+    "rules": {
+      "indentation": "tab",
+      "no-descending-specificity": null,
+      "font-weight-notation": "named-where-possible",
+      "rule-empty-line-before": [
+        "always",
+        {
+          "ignore": [
+            "first-nested",
+            "after-comment"
+          ]
+        }
+      ],
+      "at-rule-empty-line-before": [
+        "always",
+        {
+          "except": [
+            "inside-block"
+          ],
+          "ignore": [
+            "after-comment",
+            "blockless-after-same-name-blockless"
+          ]
+        }
+      ]
+    }
   }
 }

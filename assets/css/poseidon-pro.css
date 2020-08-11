@@ -1,13 +1,16 @@
 /*
  * Poseidon Pro CSS
  *
- * Copyright(C) 2015, ThemeZee.com - support@themezee.com
- * License: GPL v3
- * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ * Copyright(C) 2020, ThemeZee.com - support@themezee.com
+ * License: GNU General Public License v2 or later
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
  * @package Poseidon Pro
  */
 
+/*--------------------------------------------------------------
+# - CSS Variables
+--------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
 # Header Bar
@@ -73,7 +76,7 @@
 
 .top-navigation-menu a:hover,
 .top-navigation-menu a:active {
-	color: rgba(255,255,255,0.6);
+	color: rgba(255, 255, 255, 0.6);
 }
 
 .top-navigation-menu ul {
@@ -82,7 +85,7 @@
 	display: none;
 	margin: 0;
 	padding: 0;
-	border-top: 4px solid rgba(255,255,255,0.15);
+	border-top: 4px solid rgba(255, 255, 255, 0.15);
 	background: #404040;
 	list-style-position: outside;
 	list-style-type: none;
@@ -98,7 +101,7 @@
 	padding: 0.8em 1em;
 	min-width: 250px;
 	min-width: 16rem;
-	border-bottom: 1px dotted rgba(255,255,255,0.15);
+	border-bottom: 1px dotted rgba(255, 255, 255, 0.15);
 	-webkit-transition: none;
 	transition: none;
 }
@@ -143,7 +146,7 @@
 
 /* Mega Menu Styling */
 .top-navigation-menu .mega-menu-content .mega-menu-widget ul li {
-	border-top: 1px dotted rgba(255,255,255,0.15);
+	border-top: 1px dotted rgba(255, 255, 255, 0.15);
 }
 
 /* Social Icons */
@@ -160,8 +163,18 @@
 }
 
 .header-bar .social-icons-menu li a:hover {
-	color: rgba(255,255,255,0.6);
+	color: rgba(255, 255, 255, 0.6);
 	text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+# Site Logo
+--------------------------------------------------------------*/
+.site-branding .site-logo {
+	max-width: 100%;
+	height: auto;
+	border: 0;
+	vertical-align: top;
 }
 
 /*--------------------------------------------------------------
@@ -184,9 +197,6 @@
 
 .header-search .header-search-icon {
 	padding: 1em;
-}
-
-.header-search .header-search-icon {
 	color: #404040;
 }
 
@@ -215,17 +225,7 @@
 }
 
 /*--------------------------------------------------------------
-# Site Logo
---------------------------------------------------------------*/
-.site-branding .site-logo {
-	max-width: 100%;
-	height: auto;
-	border: 0;
-	vertical-align: top;
-}
-
-/*--------------------------------------------------------------
-# Magazine Post Widgets
+# Magazine Widgets
 --------------------------------------------------------------*/
 
 /* Magazine Posts List */
@@ -291,7 +291,7 @@
 }
 
 /*--------------------------------------------------------------
-# Footer Widget Area
+# Footer Widgets
 --------------------------------------------------------------*/
 .footer-widgets-background {
 	padding: 3em 0 0;
@@ -310,11 +310,11 @@
 }
 
 .footer-widgets .widget {
-	color: rgba(255,255,255,0.6)
+	color: rgba(255, 255, 255, 0.6);
 }
 
 .footer-widgets .widget-title {
-	border-bottom: 4px solid rgba(255,255,255,0.08);
+	border-bottom: 4px solid rgba(255, 255, 255, 0.08);
 	color: #fff;
 }
 
@@ -325,30 +325,30 @@
 
 .footer-widgets .widget a:hover,
 .footer-widgets .widget a:active {
-	color: rgba(255,255,255,0.6);
+	color: rgba(255, 255, 255, 0.6);
 }
 
 /* Custom Footer Widgets */
 #footer-widgets .tzwb-social-icons .social-icons-menu li a,
 #footer-widgets .widget_tag_cloud .tagcloud a {
-	background: rgba(255,255,255,0.1);
+	background: rgba(255, 255, 255, 0.1);
 }
 
 #footer-widgets .tzwb-social-icons .social-icons-menu li a:hover,
 #footer-widgets .widget_tag_cloud .tagcloud a:hover,
 #footer-widgets .widget_tag_cloud .tagcloud a:active {
 	color: #fff;
-	background: rgba(255,255,255,0.2);
+	background: rgba(255, 255, 255, 0.2);
 }
 
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi {
-	border-top: 1px solid rgba(255,255,255,0.08);
-	border-bottom: 1px solid rgba(255,255,255,0.08);
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:link,
-.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:visited  {
-	color: rgba(255,255,255,0.6);
+.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:visited {
+	color: rgba(255, 255, 255, 0.6);
 }
 
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:hover,
@@ -358,7 +358,7 @@
 }
 
 /*--------------------------------------------------------------
-# Footer Navigation
+# Footer Menu
 --------------------------------------------------------------*/
 .footer-navigation {
 	float: right;
@@ -457,7 +457,6 @@
 		font-size: 26px;
 		font-size: 1.625rem;
 	}
-
 }
 
 /*--------------------------------------------------------------
@@ -471,7 +470,6 @@
 	.footer-widget-column:nth-child(3) {
 		clear: left;
 	}
-
 }
 
 /*--------------------------------------------------------------
@@ -514,11 +512,11 @@
 	}
 
 	/*** Mobile Top Navigation ***/
-
 	/* Reset */
 	.top-navigation-menu {
 		margin: 0;
 	}
+
 	.top-navigation-menu li {
 		position: static;
 		float: none;
@@ -563,7 +561,7 @@
 
 	.top-navigation-toggle:hover,
 	.top-navigation-toggle:active {
-		color: rgba(255,255,255,0.6);
+		color: rgba(255, 255, 255, 0.6);
 		background: none;
 		cursor: pointer;
 	}
@@ -591,14 +589,14 @@
 		display: none;
 		float: left;
 		width: 100%;
-		border-top: 4px solid rgba(255,255,255,0.15);
+		border-top: 4px solid rgba(255, 255, 255, 0.15);
 	}
 
 	.top-navigation-menu a {
 		display: block;
 		clear: left;
 		padding: 1em 1.25em;
-		border-bottom: 1px dotted rgba(255,255,255,0.15);
+		border-bottom: 1px dotted rgba(255, 255, 255, 0.15);
 		font-size: 13px;
 		font-size: 0.8125rem;
 	}
@@ -627,7 +625,7 @@
 	}
 
 	.top-navigation-menu ul li:last-child > a {
-		border-bottom: 1px dotted rgba(255,255,255,0.15);
+		border-bottom: 1px dotted rgba(255, 255, 255, 0.15);
 	}
 
 	/* Mobile Submenu Dropdowns */
@@ -640,7 +638,7 @@
 	}
 
 	.top-navigation-menu .submenu-dropdown-toggle:hover {
-		color: rgba(255,255,255,0.6);
+		color: rgba(255, 255, 255, 0.6);
 		cursor: pointer;
 	}
 
@@ -721,7 +719,6 @@
 		padding-right: 0;
 		width: 100%;
 	}
-
 }
 
 /*--------------------------------------------------------------
@@ -772,7 +769,6 @@
 	.footer-widgets .widget {
 		margin: 0 0 1.5em;
 	}
-
 }
 
 /*--------------------------------------------------------------
@@ -785,14 +781,12 @@
 		padding: 0;
 		max-width: 100%;
 	}
-
 }
 
 @media only screen and (max-width: 20em) {
 	.header-bar .social-icons-navigation {
 		display: none;
 	}
-
 }
 
 /*--------------------------------------------------------------
@@ -804,5 +798,4 @@
 	.top-navigation-menu {
 		display: block !important;
 	}
-
 }
