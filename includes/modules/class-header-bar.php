@@ -69,27 +69,51 @@ class Poseidon_Pro_Header_Bar {
 			}
 
 			// Check if there is a top navigation menu.
-			if ( has_nav_menu( 'secondary' ) ) {
+			if ( has_nav_menu( 'secondary' ) ) : ?>
 
-				echo '<nav id="top-navigation" class="secondary-navigation navigation clearfix" role="navigation">';
+				<button class="secondary-menu-toggle menu-toggle" aria-controls="secondary-menu" aria-expanded="false">
+					<?php
+					echo self::get_svg( 'menu' );
+					echo self::get_svg( 'close' );
+					?>
+					<span class="menu-toggle-text screen-reader-text"><?php esc_html_e( 'Menu', 'poseidon-pro' ); ?></span>
+				</button>
 
-				// Display Top Navigation.
-				wp_nav_menu( array(
-					'theme_location' => 'secondary',
-					'container' => false,
-					'menu_class' => 'top-navigation-menu',
-					'echo' => true,
-					'fallback_cb' => '',
-					)
-				);
+				<div class="secondary-navigation">
 
-				echo '</nav>';
+					<nav class="top-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Secondary Menu', 'poseidon-pro' ); ?>">
 
-			}
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'secondary',
+								'menu_id'        => 'secondary-menu',
+								'container'      => false,
+							)
+						);
+						?>
+
+					</nav>
+
+				</div><!-- .secondary-navigation -->
+
+				<?php
+			endif;
 
 			echo '</div>';
 			echo '</div>';
 
+		}
+	}
+
+	/**
+	 * Get SVG icon.
+	 *
+	 * @return void
+	 */
+	static function get_svg( $icon ) {
+		if ( function_exists( 'poseidon_get_svg' ) ) {
+			return poseidon_get_svg( $icon );
 		}
 	}
 
