@@ -117,7 +117,7 @@ class Poseidon_Pro_Header_Search {
 		) );
 
 		$wp_customize->add_control( 'poseidon_theme_options[header_search]', array(
-			'label'    => esc_html__( 'Enable search field in header', 'poseidon-pro' ),
+			'label'    => esc_html__( 'Enable search field in main navigation', 'poseidon-pro' ),
 			'section'  => 'poseidon_pro_section_header',
 			'settings' => 'poseidon_theme_options[header_search]',
 			'type'     => 'checkbox',
@@ -138,7 +138,7 @@ class Poseidon_Pro_Header_Search {
 
 		// Hide Header Search?
 		if ( false === $theme_options['header_search'] ) {
-			$elements[] = '.primary-navigation .main-navigation-menu li.header-search';
+			$elements[] = '.primary-navigation .main-navigation li.header-search';
 		}
 
 		return $elements;
