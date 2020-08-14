@@ -50,7 +50,7 @@
 				link_color = wp.customize.value( 'poseidon_theme_options[link_color]' ).get();
 			}
 
-			custom_css = '.site-header, .main-navigation-menu ul, .footer-wrap { background: ' + newval + '; }';
+			custom_css = '.site-header, .main-navigation ul ul, .footer-wrap { background: ' + newval + '; }';
 
 			if( isColorDark( newval ) ) {
 				text_color = '#ffffff';
@@ -76,8 +76,8 @@
 			}
 
 			custom_css += '.site-header, .footer-wrap { border-color: ' + border_color + '; }';
-			custom_css += '.main-navigation-menu ul { border-left-color: ' + border_color + '; border-right-color: ' + border_color + '; border-bottom-color: ' + border_color + '; }';
-			custom_css += '.main-navigation-menu ul a { border-color: ' + dotted_color + '; }';
+			custom_css += '.main-navigation ul ul { border-left-color: ' + border_color + '; border-right-color: ' + border_color + '; border-bottom-color: ' + border_color + '; }';
+			custom_css += '.main-navigation ul ul a { border-color: ' + dotted_color + '; }';
 
 			addColorStyles( custom_css, 1 );
 		} );
@@ -110,7 +110,7 @@
 		value.bind( function( newval ) {
 			var custom_css, text_color, hover_color, border_color, border;
 
-			custom_css = '.header-bar-wrap, .top-navigation-menu ul { background: ' + newval + '; }';
+			custom_css = '.header-bar-wrap, .top-navigation ul ul { background: ' + newval + '; }';
 
 			if( isColorLight( newval ) ) {
 				text_color = 'rgba(0,0,0,0.75)';
@@ -124,9 +124,11 @@
 				border = '.header-bar-wrap { border-bottom: none }';
 			}
 
-			custom_css += '.header-bar-wrap, .top-navigation-menu a, .top-navigation-menu a:link, .top-navigation-menu a:visited, .top-navigation-toggle, .top-navigation-toggle:focus, .top-navigation-menu .submenu-dropdown-toggle, .header-bar .social-icons-menu li a, .header-bar .social-icons-menu li a:link, .header-bar .social-icons-menu li a:visited { color: ' + text_color + '; }';
-			custom_css += '.top-navigation-menu a:hover, .top-navigation-menu a:active, .top-navigation-toggle:hover, .top-navigation-toggle:active, .top-navigation-menu .submenu-dropdown-toggle:hover, .top-navigation-menu .submenu-dropdown-toggle:active, .header-bar .social-icons-menu li a:hover, .header-bar .social-icons-menu li a:active { color: ' + hover_color + '; }';
-			custom_css += '.top-navigation-menu, .top-navigation-menu a, .top-navigation-menu ul, .top-navigation-menu ul a, .top-navigation-menu ul li:last-child > a { border-color: ' + border_color + '; }';
+			custom_css += '.header-bar-wrap, .top-navigation ul a, .top-navigation ul a:link, .top-navigation ul a:visited, .secondary-menu-toggle, .secondary-menu-toggle:focus, .header-bar .social-icons-menu li a, .header-bar .social-icons-menu li a:link, .header-bar .social-icons-menu li a:visited { color: ' + text_color + '; }';
+			custom_css += '.top-navigation ul a:hover, .top-navigation ul a:active, .secondary-menu-toggle:hover, .secondary-menu-toggle:active, .header-bar .social-icons-menu li a:hover, .header-bar .social-icons-menu li a:active { color: ' + hover_color + '; }';
+			custom_css += '.secondary-menu-toggle .icon, .top-navigation .dropdown-toggle .icon, .top-navigation ul .menu-item-has-children > a > .icon { fill: ' + text_color + '; }';
+			custom_css += '.secondary-menu-toggle:hover .icon, .secondary-menu-toggle:active .icon, .top-navigation .dropdown-toggle:hover .icon, .top-navigation .dropdown-toggle:active .icon, .top-navigation ul .menu-item-has-children > a:hover > .icon, .top-navigation ul .menu-item-has-children > a:active > .icon { fill: ' + hover_color + '; }';
+			custom_css += '.top-navigation ul, .top-navigation ul a, .top-navigation ul ul, .top-navigation ul ul a, .top-navigation ul ul li:last-child > a { border-color: ' + border_color + '; }';
 			custom_css += border;
 
 			addColorStyles( custom_css, 3 );
@@ -143,9 +145,11 @@
 				navi_secondary_color = wp.customize.value( 'poseidon_theme_options[navi_secondary_color]' ).get();
 			}
 
-			custom_css = '.main-navigation-menu a:link, .main-navigation-menu a:visited, .main-navigation-toggle, .main-navigation-menu .submenu-dropdown-toggle, .footer-navigation-menu a:link, .footer-navigation-menu a:visited, .header-search .header-search-icon { color: ' + newval + '; }';
-			custom_css += '.main-navigation-menu a:hover, .main-navigation-menu a:active, .main-navigation-toggle:hover, .main-navigation-menu .submenu-dropdown-toggle:hover, .footer-navigation-menu a:hover, .footer-navigation-menu a:active { color: ' + navi_secondary_color + '; }';
-			custom_css += '.main-navigation-menu, .main-navigation-menu ul { border-top-color: ' + newval + '; }';
+			custom_css = '.main-navigation ul a:link, .main-navigation ul a:visited, .primary-menu-toggle, .footer-navigation-menu a:link, .footer-navigation-menu a:visited, .header-search .header-search-icon { color: ' + newval + '; }';
+			custom_css += '.main-navigation ul a:hover, .main-navigation ul a:active, .primary-menu-toggle:hover, .footer-navigation-menu a:hover, .footer-navigation-menu a:active { color: ' + navi_secondary_color + '; }';
+			custom_css += '.primary-menu-toggle .icon, .main-navigation .dropdown-toggle .icon, .main-navigation ul .menu-item-has-children > a > .icon { fill: ' + newval + '; }';
+			custom_css += '.primary-menu-toggle:hover .icon, .primary-menu-toggle:active .icon, .main-navigation .dropdown-toggle:hover .icon, .main-navigation .dropdown-toggle:active .icon, .main-navigation ul .menu-item-has-children > a:hover > .icon, .main-navigation ul .menu-item-has-children > a:active > .icon { fill: ' + navi_secondary_color + '; }';
+			custom_css += '.main-navigation ul, .main-navigation ul ul { border-top-color: ' + newval + '; }';
 
 			addColorStyles( custom_css, 4 );
 		} );
@@ -156,8 +160,8 @@
 		value.bind( function( newval ) {
 			var custom_css;
 
-			custom_css = '.main-navigation-menu a:hover, .main-navigation-menu a:active, .main-navigation-menu li.current-menu-item > a, .main-navigation-toggle:hover, .main-navigation-menu .submenu-dropdown-toggle:hover, .footer-navigation-menu a:hover, .footer-navigation-menu a:active { color: ' + newval + '; }';
-
+			custom_css = '.main-navigation ul a:hover, .main-navigation ul a:active, .main-navigation ul li.current-menu-item > a, .primary-menu-toggle:hover, .footer-navigation-menu a:hover, .footer-navigation-menu a:active { color: ' + newval + '; }';
+			custom_css += '.primary-menu-toggle:hover .icon, .primary-menu-toggle:active .icon, .main-navigation .dropdown-toggle:hover .icon, .main-navigation .dropdown-toggle:active .icon, .main-navigation ul .menu-item-has-children > a:hover > .icon, .main-navigation ul .menu-item-has-children > a:active > .icon { fill: ' + newval + '; }';
 			addColorStyles( custom_css, 5 );
 		} );
 	} );
@@ -314,7 +318,7 @@
 			var newFont = newval === 'SystemFontStack' ? systemFont : newval;
 
 			// Set CSS.
-			$( '.top-navigation-menu a, .main-navigation-menu a, .footer-navigation-menu a' )
+			$( '.top-navigation ul a, .main-navigation ul a, .footer-navigation-menu a' )
 				.css( 'font-family', newFont );
 
 		} );

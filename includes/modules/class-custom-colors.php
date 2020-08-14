@@ -120,7 +120,7 @@ class Poseidon_Pro_Custom_Colors {
 			$custom_css .= '
 				/* Top Navigation Color Setting */
 				.header-bar-wrap,
-				.top-navigation-menu ul {
+				.top-navigation ul ul {
 					background: ' . $theme_options['top_navi_color'] . ';
 				}
 			';
@@ -129,39 +129,51 @@ class Poseidon_Pro_Custom_Colors {
 			if ( self::is_color_light( $theme_options['top_navi_color'] ) ) {
 				$custom_css .= '
 					.header-bar-wrap,
-					.top-navigation-menu a,
-					.top-navigation-menu a:link,
-					.top-navigation-menu a:visited,
-					.top-navigation-toggle,
-					.top-navigation-toggle:focus,
-					.top-navigation-menu .submenu-dropdown-toggle,
+					.top-navigation ul a,
+					.top-navigation ul a:link,
+					.top-navigation ul a:visited,
+					.secondary-menu-toggle,
+					.secondary-menu-toggle:focus,
 					.header-bar .social-icons-menu li a,
 					.header-bar .social-icons-menu li a:link,
 					.header-bar .social-icons-menu li a:visited {
 					    color: rgba(0,0,0,0.75);
 					}
 
-					.top-navigation-menu a:hover,
-					.top-navigation-menu a:active,
-					.top-navigation-toggle:hover,
-					.top-navigation-toggle:active,
-					.top-navigation-menu .submenu-dropdown-toggle:hover,
-					.top-navigation-menu .submenu-dropdown-toggle:active,
+					.top-navigation ul a:hover,
+					.top-navigation ul a:active,
+					.secondary-menu-toggle:hover,
+					.secondary-menu-toggle:active,
 					.header-bar .social-icons-menu li a:hover,
 					.header-bar .social-icons-menu li a:active {
 						color: rgba(0,0,0,0.6);
 					}
 
-					.top-navigation-menu,
-					.top-navigation-menu a,
-					.top-navigation-menu ul,
-					.top-navigation-menu ul a,
-					.top-navigation-menu ul li:last-child > a {
+					.top-navigation ul,
+					.top-navigation ul a,
+					.top-navigation ul ul,
+					.top-navigation ul ul a,
+					.top-navigation ul ul li:last-child > a {
 						border-color: rgba(0,0,0,0.15);
 					}
 
 					.header-bar-wrap {
 						border-bottom: 1px solid rgba(0,0,0,0.1);
+					}
+
+					.secondary-menu-toggle .icon,
+					.top-navigation .dropdown-toggle .icon,
+					.top-navigation ul .menu-item-has-children > a > .icon {
+					    fill: rgba(0,0,0,0.75);
+					}
+
+					.secondary-menu-toggle:hover .icon,
+					.secondary-menu-toggle:active .icon,
+					.top-navigation .dropdown-toggle:hover .icon,
+					.top-navigation .dropdown-toggle:active .icon,
+					.top-navigation ul .menu-item-has-children > a:hover > .icon,
+					.top-navigation ul .menu-item-has-children > a:active > .icon {
+						fill: rgba(0,0,0,0.6);
 					}
 				';
 			} // End if().
@@ -172,27 +184,40 @@ class Poseidon_Pro_Custom_Colors {
 
 			$custom_css .= '
 				/* Navigation Primary Color Setting */
-				.main-navigation-menu a:link,
-				.main-navigation-menu a:visited,
-				.main-navigation-toggle,
-				.main-navigation-menu .submenu-dropdown-toggle,
+				.main-navigation ul a:link,
+				.main-navigation ul a:visited,
+				.primary-menu-toggle,
 				.footer-navigation-menu a:link,
 				.footer-navigation-menu a:visited,
 				.header-search .header-search-icon {
 					color: ' . $theme_options['navi_primary_color'] . ';
 				}
 
-				.main-navigation-menu a:hover,
-				.main-navigation-menu a:active,
-				.main-navigation-toggle:hover,
-				.main-navigation-menu .submenu-dropdown-toggle:hover,
+				.main-navigation ul a:hover,
+				.main-navigation ul a:active,
+				.primary-menu-toggle:hover,
 				.footer-navigation-menu a:hover,
 				.footer-navigation-menu a:active {
 					color: #22aadd;
 				}
 
-				.main-navigation-menu,
-				.main-navigation-menu ul {
+				.primary-menu-toggle .icon,
+				.main-navigation .dropdown-toggle .icon,
+				.main-navigation ul .menu-item-has-children > a > .icon {
+					fill: ' . $theme_options['navi_primary_color'] . ';
+				}
+
+				.primary-menu-toggle:hover .icon,
+				.primary-menu-toggle:active .icon,
+				.main-navigation .dropdown-toggle:hover .icon,
+				.main-navigation .dropdown-toggle:active .icon,
+				.main-navigation ul .menu-item-has-children > a:hover > .icon,
+				.main-navigation ul .menu-item-has-children > a:active > .icon {
+					fill: #22aadd;
+				}
+
+				.main-navigation ul,
+				.main-navigation ul ul {
 					border-top-color: ' . $theme_options['navi_primary_color'] . ';
 				}
 			';
@@ -203,14 +228,22 @@ class Poseidon_Pro_Custom_Colors {
 
 			$custom_css .= '
 				/* Navigation Secondary Color Setting */
-				.main-navigation-menu a:hover,
-				.main-navigation-menu a:active,
-				.main-navigation-menu li.current-menu-item > a,
-				.main-navigation-toggle:hover,
-				.main-navigation-menu .submenu-dropdown-toggle:hover,
+				.main-navigation ul a:hover,
+				.main-navigation ul a:active,
+				.main-navigation ul li.current-menu-item > a,
+				.primary-menu-toggle:hover,
 				.footer-navigation-menu a:hover,
 				.footer-navigation-menu a:active {
 					color: ' . $theme_options['navi_secondary_color'] . ';
+				}
+
+				.primary-menu-toggle:hover .icon,
+				.primary-menu-toggle:active .icon,
+				.main-navigation .dropdown-toggle:hover .icon,
+				.main-navigation .dropdown-toggle:active .icon,
+				.main-navigation ul .menu-item-has-children > a:hover > .icon,
+				.main-navigation ul .menu-item-has-children > a:active > .icon {
+					fill: ' . $theme_options['navi_secondary_color'] . ';
 				}
 			';
 		}
@@ -259,7 +292,7 @@ class Poseidon_Pro_Custom_Colors {
 			$custom_css .= '
 				/* Header Color Setting */
 				.site-header,
-				.main-navigation-menu ul,
+				.main-navigation ul ul,
 				.footer-wrap {
 					background: ' . $theme_options['header_color'] . ';
 				}
@@ -273,13 +306,13 @@ class Poseidon_Pro_Custom_Colors {
 						border-color: rgba(255,255,255,0.12);
 					}
 
-					.main-navigation-menu ul {
+					.main-navigation ul ul {
 						border-left-color: rgba(255,255,255,0.12);
 						border-right-color: rgba(255,255,255,0.12);
 						border-bottom-color: rgba(255,255,255,0.12);
 					}
 
-					.main-navigation-menu ul a {
+					.main-navigation ul ul a {
 						border-color: rgba(255,255,255,0.24);
 					}
 
