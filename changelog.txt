@@ -2,6 +2,12 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 1.7
+-----------------------------------
+* updated styles and scripts of top navigation menu
+* updated header search functionality
+* updated color settings for new navigation menus
+
 Version 1.6.1
 -----------------------------------
 * display Scroll-to-Top button on all screen sizes

@@ -5,14 +5,14 @@ Plugin URI: http://themezee.com/addons/poseidon-pro/
 Description: Adds additional features like footer widgets, custom colors, fonts and logo upload to the Poseidon theme.
 Author: ThemeZee
 Author URI: https://themezee.com/
-Version: 1.6.3
+Version: 1.7
 Text Domain: poseidon-pro
 Domain Path: /languages/
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Poseidon Pro
-Copyright(C) 2015, ThemeZee.com - support@themezee.com
+Copyright(C) 2020, ThemeZee.com - support@themezee.com
 
 */
 
@@ -63,7 +63,7 @@ class Poseidon_Pro {
 		define( 'POSEIDON_PRO_NAME', 'Poseidon Pro' );
 
 		// Define Version Number.
-		define( 'POSEIDON_PRO_VERSION', '1.6.3' );
+		define( 'POSEIDON_PRO_VERSION', '1.7' );
 
 		// Define Plugin Name.
 		define( 'POSEIDON_PRO_PRODUCT_ID', 53694 );
