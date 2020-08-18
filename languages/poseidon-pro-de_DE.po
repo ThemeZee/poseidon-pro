@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Poseidon Pro\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2018-04-13 10:02+0200\n"
-"PO-Revision-Date: 2018-04-13 10:02+0200\n"
+"POT-Creation-Date: 2020-08-18 14:22+0200\n"
+"PO-Revision-Date: 2020-08-18 14:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: ThemeZee <support@themezee.com>\n"
 "Language: de_DE\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: includes/admin/class-admin-notices.php:52
@@ -192,74 +192,74 @@ msgstr "Alle Beiträge ansehen"
 msgid "Display Author Bio"
 msgstr "Autor Bio anzeigen"
 
-#: includes/modules/class-custom-colors.php:400
+#: includes/modules/class-custom-colors.php:493
 msgid "Theme Colors"
 msgstr "Theme Farben"
 
-#: includes/modules/class-custom-colors.php:417
+#: includes/modules/class-custom-colors.php:510
 msgctxt "color setting"
 msgid "Top Navigation"
 msgstr "Obere Navigation"
 
-#: includes/modules/class-custom-colors.php:433
+#: includes/modules/class-custom-colors.php:526
 msgctxt "color setting"
 msgid "Header"
 msgstr "Header"
 
-#: includes/modules/class-custom-colors.php:449
+#: includes/modules/class-custom-colors.php:542
 msgctxt "color setting"
 msgid "Navigation (primary)"
 msgstr "Navigation (primär)"
 
-#: includes/modules/class-custom-colors.php:465
+#: includes/modules/class-custom-colors.php:558
 msgctxt "color setting"
 msgid "Navigation (secondary)"
 msgstr "Navigation (sekundär)"
 
-#: includes/modules/class-custom-colors.php:481
+#: includes/modules/class-custom-colors.php:574
 msgctxt "color setting"
 msgid "Post Titles (primary)"
 msgstr "Content Bereich (primär)"
 
-#: includes/modules/class-custom-colors.php:497
+#: includes/modules/class-custom-colors.php:590
 msgctxt "color setting"
 msgid "Post Titles (secondary)"
 msgstr "Content Bereich (sekundär)"
 
-#: includes/modules/class-custom-colors.php:513
+#: includes/modules/class-custom-colors.php:606
 msgctxt "color setting"
 msgid "Links and Buttons"
 msgstr "Links und Buttons"
 
-#: includes/modules/class-custom-colors.php:529
+#: includes/modules/class-custom-colors.php:622
 msgctxt "color setting"
 msgid "Widget Titles"
 msgstr "Widget Titel"
 
-#: includes/modules/class-custom-colors.php:545
+#: includes/modules/class-custom-colors.php:638
 msgctxt "color setting"
 msgid "Footer Widgets"
 msgstr "Footer Widgets"
 
-#: includes/modules/class-custom-fonts.php:214
+#: includes/modules/class-custom-fonts.php:262
 msgid "Theme Fonts"
 msgstr "Theme Schriftarten"
 
-#: includes/modules/class-custom-fonts.php:232
+#: includes/modules/class-custom-fonts.php:280
 msgid "Base Font"
 msgstr "Basis Schriftart"
 
-#: includes/modules/class-custom-fonts.php:248
+#: includes/modules/class-custom-fonts.php:296
 msgctxt "font setting"
 msgid "Headings"
 msgstr "Überschriften"
 
-#: includes/modules/class-custom-fonts.php:264
+#: includes/modules/class-custom-fonts.php:311
 msgctxt "font setting"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: includes/modules/class-custom-fonts.php:280
+#: includes/modules/class-custom-fonts.php:327
 msgctxt "font setting"
 msgid "Widget Titles"
 msgstr "Widget Titel"
@@ -312,11 +312,19 @@ msgstr "Footer Rechts"
 msgid "Appears on footer on the right hand side."
 msgstr "Erscheint im Footer auf der rechten Seite."
 
-#: includes/modules/class-header-bar.php:109
+#: includes/modules/class-header-bar.php:79
+msgid "Menu"
+msgstr "Menü"
+
+#: includes/modules/class-header-bar.php:84
+msgid "Secondary Menu"
+msgstr "Sekundäres Menü"
+
+#: includes/modules/class-header-bar.php:133
 msgid "Top Navigation"
 msgstr "Obere Navigation"
 
-#: includes/modules/class-header-bar.php:110
+#: includes/modules/class-header-bar.php:134
 msgid "Social Icons"
 msgstr "Social Icons"
 
@@ -330,8 +338,8 @@ msgid "Header Search"
 msgstr "Header Suche"
 
 #: includes/modules/class-header-search.php:120
-msgid "Enable search field in header"
-msgstr "Suchfeld im Header anzeigen"
+msgid "Enable search field in main navigation"
+msgstr "Suchfeld in Hauptnavigation anzeigen"
 
 #: includes/modules/class-header-spacing.php:95
 msgid "Header Settings"
@@ -411,7 +419,7 @@ msgstr "Magazin (Einzelner Beitrag)"
 msgid "Displays a single post from a selected category."
 msgstr "Zeigt einen einzelnen Beitrag einer gewählten Kategorie."
 
-#: poseidon-pro.php:210
+#: poseidon-pro.php:206
 msgid "Settings"
 msgstr "Einstellungen"
 

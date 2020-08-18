@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Poseidon Pro\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2018-04-13 10:02+0200\n"
+"POT-Creation-Date: 2020-08-18 14:22+0200\n"
 "PO-Revision-Date: 2016-05-03 17:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: ThemeZee <support@themezee.com>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.3\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Poedit-KeywordsList: __;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;"
 "_nx_noop:1,2,3c;esc_attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;"
 "esc_html_x:1,2c\n"
@@ -179,74 +179,74 @@ msgstr ""
 msgid "Display Author Bio"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:400
+#: includes/modules/class-custom-colors.php:493
 msgid "Theme Colors"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:417
+#: includes/modules/class-custom-colors.php:510
 msgctxt "color setting"
 msgid "Top Navigation"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:433
+#: includes/modules/class-custom-colors.php:526
 msgctxt "color setting"
 msgid "Header"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:449
+#: includes/modules/class-custom-colors.php:542
 msgctxt "color setting"
 msgid "Navigation (primary)"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:465
+#: includes/modules/class-custom-colors.php:558
 msgctxt "color setting"
 msgid "Navigation (secondary)"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:481
+#: includes/modules/class-custom-colors.php:574
 msgctxt "color setting"
 msgid "Post Titles (primary)"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:497
+#: includes/modules/class-custom-colors.php:590
 msgctxt "color setting"
 msgid "Post Titles (secondary)"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:513
+#: includes/modules/class-custom-colors.php:606
 msgctxt "color setting"
 msgid "Links and Buttons"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:529
+#: includes/modules/class-custom-colors.php:622
 msgctxt "color setting"
 msgid "Widget Titles"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:545
+#: includes/modules/class-custom-colors.php:638
 msgctxt "color setting"
 msgid "Footer Widgets"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:214
+#: includes/modules/class-custom-fonts.php:262
 msgid "Theme Fonts"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:232
+#: includes/modules/class-custom-fonts.php:280
 msgid "Base Font"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:248
+#: includes/modules/class-custom-fonts.php:296
 msgctxt "font setting"
 msgid "Headings"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:264
+#: includes/modules/class-custom-fonts.php:311
 msgctxt "font setting"
 msgid "Navigation"
 msgstr ""
 
-#: includes/modules/class-custom-fonts.php:280
+#: includes/modules/class-custom-fonts.php:327
 msgctxt "font setting"
 msgid "Widget Titles"
 msgstr ""
@@ -299,11 +299,19 @@ msgstr ""
 msgid "Appears on footer on the right hand side."
 msgstr ""
 
-#: includes/modules/class-header-bar.php:109
+#: includes/modules/class-header-bar.php:79
+msgid "Menu"
+msgstr ""
+
+#: includes/modules/class-header-bar.php:84
+msgid "Secondary Menu"
+msgstr ""
+
+#: includes/modules/class-header-bar.php:133
 msgid "Top Navigation"
 msgstr ""
 
-#: includes/modules/class-header-bar.php:110
+#: includes/modules/class-header-bar.php:134
 msgid "Social Icons"
 msgstr ""
 
@@ -317,7 +325,7 @@ msgid "Header Search"
 msgstr ""
 
 #: includes/modules/class-header-search.php:120
-msgid "Enable search field in header"
+msgid "Enable search field in main navigation"
 msgstr ""
 
 #: includes/modules/class-header-spacing.php:95
@@ -396,6 +404,6 @@ msgstr ""
 msgid "Displays a single post from a selected category."
 msgstr ""
 
-#: poseidon-pro.php:210
+#: poseidon-pro.php:206
 msgid "Settings"
 msgstr ""
