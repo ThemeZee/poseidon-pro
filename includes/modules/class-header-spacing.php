@@ -52,7 +52,8 @@ class Poseidon_Pro_Header_Spacing {
 
 			$custom_css .= '
 				.site-branding {
-					margin: ' . $margin . 'em 0;
+					margin-top: ' . $margin . 'em;
+					margin-bottom: ' . $margin . 'em;
 				}
 			';
 		}
@@ -64,20 +65,36 @@ class Poseidon_Pro_Header_Spacing {
 
 			$custom_css .= '
 				.primary-navigation {
-					margin: ' . $margin . 'em 0;
+					margin-top: ' . $margin . 'em;
+					margin-bottom: ' . $margin . 'em;
 				}
 
 				@media only screen and (max-width: 60em) {
 
 					.primary-navigation {
-					    margin: 0;
+						margin-top: 0;
+						margin-bottom: 0;
 					}
 
-					.main-navigation-toggle {
-						margin: ' . $margin . 'em 0;
+					.primary-menu-toggle {
+						margin-top: ' . $margin . 'em;
+						margin-bottom: ' . $margin . 'em;
 					}
 				}
 			';
+		}
+
+		// Set Header alignment.
+		if ( 10 !== $theme_options['logo_spacing'] || 10 !== $theme_options['navi_spacing'] ) {
+
+			$custom_css .= '
+				@media only screen and (min-width: 60em) {
+					.header-main,
+					.primary-navigation {
+						align-items: initial;
+					}
+				}
+				';
 		}
 
 		return $custom_css;

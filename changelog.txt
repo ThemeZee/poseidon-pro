@@ -2,6 +2,10 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 1.7.1
+-----------------------------------
+* fixed styling issue of navigation menu if custom header spacing was set
+
 Version 1.7
 -----------------------------------
 * updated styles and scripts of top navigation menu
