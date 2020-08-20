@@ -108,8 +108,10 @@ class Poseidon_Pro_Custom_Fonts {
 
 			$custom_css .= '
 				/* Navigation Font Setting */
-				.top-navigation-menu a,
-				.main-navigation-menu a,
+				.top-navigation ul,
+				.secondary-menu-toggle,
+				.main-navigation ul,
+				.primary-menu-toggle,
 				.footer-navigation-menu a {
 					font-family: ' . self::get_font_family( $theme_options['navi_font'] ) . ';
 				}
