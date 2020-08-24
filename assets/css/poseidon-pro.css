@@ -149,6 +149,7 @@
 	text-decoration: none;
 }
 
+.top-navigation ul a,
 .top-navigation ul a:link,
 .top-navigation ul a:visited {
 	color: #fff;

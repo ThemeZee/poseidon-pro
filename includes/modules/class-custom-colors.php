@@ -184,6 +184,7 @@ class Poseidon_Pro_Custom_Colors {
 
 			$custom_css .= '
 				/* Navigation Primary Color Setting */
+				.main-navigation ul a,
 				.main-navigation ul a:link,
 				.main-navigation ul a:visited,
 				.primary-menu-toggle,
