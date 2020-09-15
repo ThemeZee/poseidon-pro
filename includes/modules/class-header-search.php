@@ -8,7 +8,9 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) { exit; }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Header Search Class
@@ -51,7 +53,7 @@ class Poseidon_Pro_Header_Search {
 		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
 
 		// Embed header search JS if enabled.
-		if ( true === $theme_options['header_search'] || is_customize_preview() ) :
+		if ( ( true === $theme_options['header_search'] || is_customize_preview() ) && ! self::is_amp() ) :
 
 			wp_enqueue_script( 'poseidon-pro-header-search', POSEIDON_PRO_PLUGIN_URL . 'assets/js/header-search.js', array( 'jquery' ), POSEIDON_PRO_VERSION, true );
 
@@ -77,11 +79,11 @@ class Poseidon_Pro_Header_Search {
 		if ( true === $theme_options['header_search'] || is_customize_preview() ) :
 
 			$items .= '<li class="header-search menu-item menu-item-search">';
-			$items .= '<a class="header-search-icon">';
+			$items .= '<a class="header-search-icon" aria-expanded="false" ' . self::amp_search_toggle() . '>';
 			$items .= '<span class="genericon-search"></span>';
 			$items .= '<span class="screen-reader-text">' . esc_html_x( 'Search', 'poseidon-pro' ) . '</span>';
 			$items .= '</a>';
-			$items .= '<div class="header-search-form">';
+			$items .= '<div class="header-search-form" ' . self::amp_search_is_toggled() . '>';
 			$items .= get_search_form( false );
 			$items .= '</div>';
 			$items .= '</li>';
@@ -142,6 +144,31 @@ class Poseidon_Pro_Header_Search {
 		}
 
 		return $elements;
+	}
+
+	/**
+	 * Checks if AMP page is rendered.
+	 */
+	static function is_amp() {
+		return function_exists( 'is_amp_endpoint' ) && is_amp_endpoint();
+	}
+
+	/**
+	 * Adds amp support for search toggle.
+	 */
+	static function amp_search_toggle() {
+		if ( self::is_amp() ) {
+			return "[aria-expanded]=\"headerSearchExpanded? 'true' : 'false'\" on=\"tap:AMP.setState({headerSearchExpanded: !headerSearchExpanded})\"";
+		}
+	}
+
+	/**
+	 * Adds amp support for search form.
+	 */
+	static function amp_search_is_toggled() {
+		if ( self::is_amp() ) {
+			return "[class]=\"'header-search-form' + ( headerSearchExpanded ? ' toggled-on' : '' )\"";
+		}
 	}
 }
 

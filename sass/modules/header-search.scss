@@ -9,6 +9,10 @@
 	z-index: 10;
 }
 
+.header-search .header-search-form.toggled-on {
+	display: block;
+}
+
 .header-search .header-search-form .search-form {
 	min-width: 300px;
 	font-weight: normal;
