@@ -2,6 +2,10 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 1.8
+-----------------------------------
+* added support for the official AMP plugin
+
 Version 1.7.2
 -----------------------------------
 * fixed typography settings for navigation menus
