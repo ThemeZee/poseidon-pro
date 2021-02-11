@@ -29,18 +29,14 @@ class Poseidon_Pro_Custom_Fonts {
 			return;
 		}
 
-		// Include Font Control.
+		// Include Customizer Control Files.
 		require_once POSEIDON_PRO_PLUGIN_DIR . 'includes/customizer/class-customize-font-control.php';
 
 		// Add Custom Fonts CSS code to custom stylesheet output.
-		add_filter( 'poseidon_pro_custom_css_stylesheet', array( __CLASS__, 'custom_fonts_css' ) );
+		add_filter( 'poseidon_pro_custom_css_stylesheet', array( __CLASS__, 'get_custom_fonts_css' ) );
 
-		// Add Custom Fonts CSS code to the Gutenberg editor.
-		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'custom_editor_fonts_css' ) );
-
-		// Load custom fonts from Google web font API.
-		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'load_google_fonts' ), 1 );
-		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'load_google_fonts' ), 1 );
+		// Load Custom Fonts with the built-in theme functions.
+		add_filter( 'poseidon_get_fonts_url', array( __CLASS__, 'get_custom_fonts_url' ) );
 
 		// Add Font Settings in Customizer.
 		add_action( 'customize_register', array( __CLASS__, 'font_settings' ) );
@@ -55,10 +51,10 @@ class Poseidon_Pro_Custom_Fonts {
 	static function get_font_family( $font ) {
 
 		// Set System Font Stack.
-		$system_fonts = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
+		$system_fonts = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif; ';
 
 		// Return Font Family string.
-		return 'SystemFontStack' === $font ? $system_fonts : '"' . esc_attr( $font ) . '", Arial, Helvetica, sans-serif';
+		return 'SystemFontStack' === $font ? $system_fonts : '"' . esc_attr( $font ) . '", Arial, Helvetica, sans-serif; ';
 	}
 
 	/**
@@ -67,7 +63,7 @@ class Poseidon_Pro_Custom_Fonts {
 	 * @param String $custom_css Custom Styling CSS.
 	 * @return string CSS code
 	 */
-	static function custom_fonts_css( $custom_css ) {
+	static function get_custom_fonts_css( $custom_css ) {
 
 		// Get Theme Options from Database.
 		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
@@ -75,112 +71,65 @@ class Poseidon_Pro_Custom_Fonts {
 		// Get Default Fonts from settings.
 		$default_options = Poseidon_Pro_Customizer::get_default_options();
 
-		// Set Default Text Font.
-		if ( $theme_options['text_font'] !== $default_options['text_font'] ) {
+		// Font Variables.
+		$font_variables = '';
 
-			$custom_css .= '
-				/* Base Font Setting */
-				body,
-				button,
-				input,
-				select,
-				textarea {
-					font-family: ' . self::get_font_family( $theme_options['text_font'] ) . ';
-				}
-			';
+		// Set Text Font.
+		if ( $theme_options['text_font'] !== $default_options['text_font'] ) {
+			$font_variables .= '--text-font: ' . self::get_font_family( $theme_options['text_font'] );
 		}
 
 		// Set Title Font.
 		if ( $theme_options['title_font'] !== $default_options['title_font'] ) {
-
-			$custom_css .= '
-				/* Headings Font Setting */
-				.site-title,
-				.page-title,
-				.entry-title {
-					font-family: ' . self::get_font_family( $theme_options['title_font'] ) . ';
-				}
-			';
+			$font_variables .= '--title-font: ' . self::get_font_family( $theme_options['title_font'] );
 		}
 
-		// Set Navigation Font.
-		if ( $theme_options['navi_font'] !== $default_options['navi_font'] ) {
+		// Set Title Font Weight.
+		if ( $theme_options['title_is_bold'] !== $default_options['title_is_bold'] ) {
+			$font_variables .= '--title-font-weight: ' . ( $theme_options['title_is_bold'] ? 'bold' : 'normal' ) . '; ';
+		}
 
-			$custom_css .= '
-				/* Navigation Font Setting */
-				.top-navigation ul,
-				.secondary-menu-toggle,
-				.main-navigation ul,
-				.primary-menu-toggle,
-				.footer-navigation-menu a {
-					font-family: ' . self::get_font_family( $theme_options['navi_font'] ) . ';
-				}
-			';
+		// Set Title Text Transform.
+		if ( $theme_options['title_is_uppercase'] !== $default_options['title_is_uppercase'] ) {
+			$font_variables .= '--title-text-transform: ' . ( $theme_options['title_is_uppercase'] ? 'uppercase' : 'none' ) . '; ';
+		}
+
+		// Set Navi Font.
+		if ( $theme_options['navi_font'] !== $default_options['navi_font'] ) {
+			$font_variables .= '--navi-font: ' . self::get_font_family( $theme_options['navi_font'] );
+		}
+
+		// Set Navi Font Weight.
+		if ( $theme_options['navi_is_bold'] !== $default_options['navi_is_bold'] ) {
+			$font_variables .= '--navi-font-weight: ' . ( $theme_options['navi_is_bold'] ? 'bold' : 'normal' ) . '; ';
+		}
+
+		// Set Navi Text Transform.
+		if ( $theme_options['navi_is_uppercase'] !== $default_options['navi_is_uppercase'] ) {
+			$font_variables .= '--navi-text-transform: ' . ( $theme_options['navi_is_uppercase'] ? 'uppercase' : 'none' ) . '; ';
 		}
 
 		// Set Widget Title Font.
 		if ( $theme_options['widget_title_font'] !== $default_options['widget_title_font'] ) {
+			$font_variables .= '--widget-title-font: ' . self::get_font_family( $theme_options['widget_title_font'] );
+		}
 
-			$custom_css .= '
-				/* Widget Titles Font Setting */
-				button,
-				input[type="button"],
-				input[type="reset"],
-				input[type="submit"],
-				.more-link,
-				.widget-title,
-				.post-pagination a,
-				.post-pagination .current,
-				.page-header .archive-title,
-				.comments-header .comments-title,
-				.comment-reply-title span,
-				.tzwb-tabbed-content .tzwb-tabnavi li a {
-					font-family: ' . self::get_font_family( $theme_options['widget_title_font'] ) . ';
-				}
-			';
+		// Set Widget Title Font Weight.
+		if ( $theme_options['widget_title_is_bold'] !== $default_options['widget_title_is_bold'] ) {
+			$font_variables .= '--widget-title-font-weight: ' . ( $theme_options['widget_title_is_bold'] ? 'bold' : 'normal' ) . '; ';
+		}
+
+		// Set Widget Title Text Transform.
+		if ( $theme_options['widget_title_is_uppercase'] !== $default_options['widget_title_is_uppercase'] ) {
+			$font_variables .= '--widget-title-text-transform: ' . ( $theme_options['widget_title_is_uppercase'] ? 'uppercase' : 'none' ) . '; ';
+		}
+
+		// Add Font Variables.
+		if ( '' !== $font_variables ) {
+			$custom_css .= ':root {' . $font_variables . '}';
 		}
 
 		return $custom_css;
-	}
-
-	/**
-	 * Adds Font Family CSS styles in the Gutenberg Editor to override default typography
-	 *
-	 * @return void
-	 */
-	static function custom_editor_fonts_css() {
-		$custom_css = '';
-
-		// Get Theme Options from Database.
-		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
-
-		// Get Default Fonts from settings.
-		$default_options = Poseidon_Pro_Customizer::get_default_options();
-
-		// Set Default Text Font.
-		if ( $theme_options['text_font'] !== $default_options['text_font'] ) {
-
-			$custom_css .= '
-				.edit-post-visual-editor .editor-block-list__block {
-					font-family: ' . self::get_font_family( $theme_options['text_font'] ) . ';
-				}
-			';
-		}
-
-		// Set Title Font.
-		if ( $theme_options['title_font'] !== $default_options['title_font'] ) {
-
-			$custom_css .= '
-				.edit-post-visual-editor .editor-post-title__block .editor-post-title__input {
-					font-family: ' . self::get_font_family( $theme_options['title_font'] ) . ';
-				}
-			';
-		}
-
-		// Add Custom CSS.
-		if ( '' !== $custom_css ) {
-			wp_add_inline_style( 'poseidon-editor-styles', $custom_css );
-		}
 	}
 
 	/**
@@ -188,68 +137,69 @@ class Poseidon_Pro_Custom_Fonts {
 	 *
 	 * @return void
 	 */
-	static function load_google_fonts() {
+	static function get_custom_fonts_url( $fonts_url ) {
 
 		// Get Theme Options from Database.
 		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
 
-		// Get Local Fonts which haven't to be load from Google.
-		$local_fonts = self::get_local_fonts();
+		// Get Default Fonts from settings.
+		$default_options = Poseidon_Pro_Customizer::get_default_options();
 
-		// Set Google Font Array.
-		$google_font_families = array();
+		// Return early if no font was changed.
+		if ( $theme_options['text_font'] === $default_options['text_font']
+			&& $theme_options['title_font'] === $default_options['title_font']
+			&& $theme_options['navi_font'] === $default_options['navi_font']
+			&& $theme_options['widget_title_font'] === $default_options['widget_title_font']
+		) {
+			return $fonts_url;
+		}
+
+		// Get Browser Fonts which haven't to be load from Google.
+		$system_fonts = self::get_system_fonts();
+
+		// Set Font Families Array.
+		$font_families = array();
 
 		// Set Font Styles.
 		$font_styles = ':400,400italic,700,700italic';
 
 		// Add Text Font.
-		if ( isset( $theme_options['text_font'] ) and ! array_key_exists( $theme_options['text_font'], $local_fonts ) ) {
-
-			$google_font_families[] = $theme_options['text_font'] . $font_styles;
-			$local_fonts[]          = $theme_options['text_font']; // Make sure font is not loaded twice.
-
+		if ( isset( $theme_options['text_font'] ) and ! array_key_exists( $theme_options['text_font'], $system_fonts ) ) {
+			$font_families[] = $theme_options['text_font'] . $font_styles;
+			$system_fonts[]  = $theme_options['text_font']; // Make sure font is not loaded twice.
 		}
 
 		// Add Title Font.
-		if ( isset( $theme_options['title_font'] ) and ! array_key_exists( $theme_options['title_font'], $local_fonts ) ) {
-
-			$google_font_families[] = $theme_options['title_font'] . $font_styles;
-			$local_fonts[]          = $theme_options['title_font']; // Make sure font is not loaded twice.
-
+		if ( isset( $theme_options['title_font'] ) and ! array_key_exists( $theme_options['title_font'], $system_fonts ) ) {
+			$font_families[] = $theme_options['title_font'] . $font_styles;
+			$system_fonts[]  = $theme_options['title_font']; // Make sure font is not loaded twice.
 		}
 
 		// Add Navigation Font.
-		if ( isset( $theme_options['navi_font'] ) and ! array_key_exists( $theme_options['navi_font'], $local_fonts ) ) {
-
-			$google_font_families[] = $theme_options['navi_font'] . $font_styles;
-			$local_fonts[]          = $theme_options['navi_font']; // Make sure font is not loaded twice.
-
+		if ( isset( $theme_options['navi_font'] ) and ! array_key_exists( $theme_options['navi_font'], $system_fonts ) ) {
+			$font_families[] = $theme_options['navi_font'] . $font_styles;
+			$system_fonts[]  = $theme_options['navi_font']; // Make sure font is not loaded twice.
 		}
 
 		// Add Widget Title Font.
-		if ( isset( $theme_options['widget_title_font'] ) and ! array_key_exists( $theme_options['widget_title_font'], $local_fonts ) ) {
-
-			$google_font_families[] = $theme_options['widget_title_font'] . $font_styles;
-			$local_fonts[]          = $theme_options['widget_title_font']; // Make sure font is not loaded twice.
-
+		if ( isset( $theme_options['widget_title_font'] ) and ! array_key_exists( $theme_options['widget_title_font'], $system_fonts ) ) {
+			$font_families[] = $theme_options['widget_title_font'] . $font_styles;
+			$system_fonts[]  = $theme_options['widget_title_font']; // Make sure font is not loaded twice.
 		}
 
-		// Return early if google font array is empty.
-		if ( empty( $google_font_families ) ) {
-			return;
+		// Return early if font family array is empty.
+		if ( empty( $font_families ) ) {
+			return false;
 		}
 
 		// Setup Google Font URLs.
 		$query_args = array(
-			'family'  => urlencode( implode( '|', $google_font_families ) ),
+			'family'  => urlencode( implode( '|', $font_families ) ),
 			'subset'  => urlencode( 'latin,latin-ext' ),
 			'display' => urlencode( 'swap' ),
 		);
 
-		$google_fonts_url = add_query_arg( $query_args, '//fonts.googleapis.com/css' );
-
-		// Register and Enqueue Google Fonts.
-		wp_enqueue_style( 'poseidon-pro-custom-fonts', $google_fonts_url, array(), null );
+		return add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
 	}
 
 	/**
@@ -260,8 +210,8 @@ class Poseidon_Pro_Custom_Fonts {
 	static function font_settings( $wp_customize ) {
 
 		// Add Section for Theme Fonts.
-		$wp_customize->add_section( 'poseidon_pro_section_fonts', array(
-			'title'    => esc_html__( 'Theme Fonts', 'poseidon-pro' ),
+		$wp_customize->add_section( 'poseidon_pro_section_typography', array(
+			'title'    => __( 'Typography', 'poseidon-pro' ),
 			'priority' => 70,
 			'panel'    => 'poseidon_options_panel',
 		) );
@@ -269,7 +219,7 @@ class Poseidon_Pro_Custom_Fonts {
 		// Get Default Fonts from settings.
 		$default_options = Poseidon_Pro_Customizer::get_default_options();
 
-		// Add settings and controls for theme fonts.
+		// Add Text Font setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[text_font]', array(
 			'default'           => $default_options['text_font'],
 			'type'              => 'option',
@@ -279,13 +229,14 @@ class Poseidon_Pro_Custom_Fonts {
 
 		$wp_customize->add_control( new Poseidon_Pro_Customize_Font_Control(
 			$wp_customize, 'text_font', array(
-				'label'    => esc_html__( 'Base Font', 'poseidon-pro' ),
-				'section'  => 'poseidon_pro_section_fonts',
+				'label'    => esc_html__( 'Body Font', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_typography',
 				'settings' => 'poseidon_theme_options[text_font]',
 				'priority' => 10,
 			)
 		) );
 
+		// Add Title Font setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[title_font]', array(
 			'default'           => $default_options['title_font'],
 			'type'              => 'option',
@@ -295,28 +246,95 @@ class Poseidon_Pro_Custom_Fonts {
 
 		$wp_customize->add_control( new Poseidon_Pro_Customize_Font_Control(
 			$wp_customize, 'title_font', array(
-				'label'    => esc_html_x( 'Headings', 'font setting', 'poseidon-pro' ),
-				'section'  => 'poseidon_pro_section_fonts',
+				'label'    => esc_html_x( 'Headings', 'Font Setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_typography',
 				'settings' => 'poseidon_theme_options[title_font]',
 				'priority' => 20,
 			)
 		) );
 
+		// Add Title Font Weight setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[title_is_bold]', array(
+			'default'           => $default_options['title_is_bold'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'poseidon_sanitize_checkbox',
+		) );
+
+		$wp_customize->add_control( 'poseidon_theme_options[title_is_bold]', array(
+			'label'    => esc_html_x( 'Bold', 'Font Setting', 'poseidon-pro' ),
+			'section'  => 'poseidon_pro_section_typography',
+			'settings' => 'poseidon_theme_options[title_is_bold]',
+			'type'     => 'checkbox',
+			'priority' => 30,
+		) );
+
+		// Add Title Uppercase setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[title_is_uppercase]', array(
+			'default'           => $default_options['title_is_uppercase'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'poseidon_sanitize_checkbox',
+		) );
+
+		$wp_customize->add_control( 'poseidon_theme_options[title_is_uppercase]', array(
+			'label'    => esc_html_x( 'Uppercase', 'Font Setting', 'poseidon-pro' ),
+			'section'  => 'poseidon_pro_section_typography',
+			'settings' => 'poseidon_theme_options[title_is_uppercase]',
+			'type'     => 'checkbox',
+			'priority' => 40,
+		) );
+
+		// Add Navigation Font setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[navi_font]', array(
 			'default'           => $default_options['navi_font'],
 			'type'              => 'option',
 			'transport'         => 'postMessage',
 			'sanitize_callback' => 'esc_attr',
 		) );
+
 		$wp_customize->add_control( new Poseidon_Pro_Customize_Font_Control(
 			$wp_customize, 'navi_font', array(
-				'label'    => esc_html_x( 'Navigation', 'font setting', 'poseidon-pro' ),
-				'section'  => 'poseidon_pro_section_fonts',
+				'label'    => esc_html_x( 'Navigation', 'Font Setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_typography',
 				'settings' => 'poseidon_theme_options[navi_font]',
-				'priority' => 30,
+				'priority' => 50,
 			)
 		) );
 
+		// Add Navi Font Weight setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[navi_is_bold]', array(
+			'default'           => $default_options['navi_is_bold'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'poseidon_sanitize_checkbox',
+		) );
+
+		$wp_customize->add_control( 'poseidon_theme_options[navi_is_bold]', array(
+			'label'    => esc_html_x( 'Bold', 'Font Setting', 'poseidon-pro' ),
+			'section'  => 'poseidon_pro_section_typography',
+			'settings' => 'poseidon_theme_options[navi_is_bold]',
+			'type'     => 'checkbox',
+			'priority' => 60,
+		) );
+
+		// Add Navi Uppercase setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[navi_is_uppercase]', array(
+			'default'           => $default_options['navi_is_uppercase'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'poseidon_sanitize_checkbox',
+		) );
+
+		$wp_customize->add_control( 'poseidon_theme_options[navi_is_uppercase]', array(
+			'label'    => esc_html_x( 'Uppercase', 'Font Setting', 'poseidon-pro' ),
+			'section'  => 'poseidon_pro_section_typography',
+			'settings' => 'poseidon_theme_options[navi_is_uppercase]',
+			'type'     => 'checkbox',
+			'priority' => 70,
+		) );
+
+		// Add Widget Title Font setting.
 		$wp_customize->add_setting( 'poseidon_theme_options[widget_title_font]', array(
 			'default'           => $default_options['widget_title_font'],
 			'type'              => 'option',
@@ -326,22 +344,68 @@ class Poseidon_Pro_Custom_Fonts {
 
 		$wp_customize->add_control( new Poseidon_Pro_Customize_Font_Control(
 			$wp_customize, 'widget_title_font', array(
-				'label'    => esc_html_x( 'Widget Titles', 'font setting', 'poseidon-pro' ),
-				'section'  => 'poseidon_pro_section_fonts',
+				'label'    => esc_html_x( 'Widget Titles', 'Font Setting', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_typography',
 				'settings' => 'poseidon_theme_options[widget_title_font]',
-				'priority' => 40,
+				'priority' => 80,
 			)
+		) );
+
+		// Add Widget Title Font Weight setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[widget_title_is_bold]', array(
+			'default'           => $default_options['widget_title_is_bold'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'poseidon_sanitize_checkbox',
+		) );
+
+		$wp_customize->add_control( 'poseidon_theme_options[widget_title_is_bold]', array(
+			'label'    => esc_html_x( 'Bold', 'Font Setting', 'poseidon-pro' ),
+			'section'  => 'poseidon_pro_section_typography',
+			'settings' => 'poseidon_theme_options[widget_title_is_bold]',
+			'type'     => 'checkbox',
+			'priority' => 90,
+		) );
+
+		// Add Widget Title Uppercase setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[widget_title_is_uppercase]', array(
+			'default'           => $default_options['widget_title_is_uppercase'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'poseidon_sanitize_checkbox',
+		) );
+
+		$wp_customize->add_control( 'poseidon_theme_options[widget_title_is_uppercase]', array(
+			'label'    => esc_html_x( 'Uppercase', 'Font Setting', 'poseidon-pro' ),
+			'section'  => 'poseidon_pro_section_typography',
+			'settings' => 'poseidon_theme_options[widget_title_is_uppercase]',
+			'type'     => 'checkbox',
+			'priority' => 100,
 		) );
 	}
 
 	/**
-	 * Get local fonts
+	 * Get available fonts
 	 *
-	 * @return array List of local fonts.
+	 * @return array List of system fonts.
 	 */
-	static function get_local_fonts() {
+	static function get_available_fonts() {
+		// Combine System Fonts and Google Fonts.
+		$fonts = array_merge( self::get_system_fonts(), self::get_google_fonts() );
 
-		$fonts = array(
+		// Sort fonts alphabetically.
+		asort( $fonts );
+
+		return $fonts;
+	}
+
+	/**
+	 * Get system fonts
+	 *
+	 * @return array List of system fonts.
+	 */
+	static function get_system_fonts() {
+		return array(
 			'Arial'                       => 'Arial',
 			'Arial Black'                 => 'Arial Black',
 			'Courier New'                 => 'Courier New',
@@ -355,41 +419,15 @@ class Poseidon_Pro_Custom_Fonts {
 			'Times New Roman, Times'      => 'Times New Roman',
 			'Verdana'                     => 'Verdana',
 		);
-
-		// Get Theme Options from Database.
-		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
-
-		// Get Default Fonts from settings.
-		$default_options = Poseidon_Pro_Customizer::get_default_options();
-
-		// Add default fonts to local fonts.
-		if ( isset( $default_options['text_font'] ) and ! array_key_exists( $default_options['text_font'], $fonts ) ) :
-			$fonts[ trim( $default_options['text_font'] ) ] = esc_attr( trim( $default_options['text_font'] ) );
-		endif;
-		if ( isset( $default_options['title_font'] ) and ! array_key_exists( $default_options['title_font'], $fonts ) ) :
-			$fonts[ trim( $default_options['title_font'] ) ] = esc_attr( trim( $default_options['title_font'] ) );
-		endif;
-		if ( isset( $default_options['navi_font'] ) and ! array_key_exists( $default_options['navi_font'], $fonts ) ) :
-			$fonts[ trim( $default_options['navi_font'] ) ] = esc_attr( trim( $default_options['navi_font'] ) );
-		endif;
-		if ( isset( $default_options['widget_title_font'] ) and ! array_key_exists( $default_options['widget_title_font'], $fonts ) ) :
-			$fonts[ trim( $default_options['widget_title_font'] ) ] = esc_attr( trim( $default_options['widget_title_font'] ) );
-		endif;
-
-		// Sort fonts alphabetically.
-		asort( $fonts );
-
-		return $fonts;
 	}
 
 	/**
-	 * Get all google fonts
+	 * Get Google Fonts
 	 *
 	 * @return array List of Google Fonts.
 	 */
 	static function get_google_fonts() {
-
-		$fonts = array(
+		return array(
 			'ABeeZee'                  => 'ABeeZee',
 			'Abel'                     => 'Abel',
 			'Abril'                    => 'Abril',
@@ -460,12 +498,15 @@ class Poseidon_Pro_Custom_Fonts {
 			'Averia Sans Libre'        => 'Averia Sans Libre',
 			'Averia Serif Libre'       => 'Averia Serif Libre',
 			'Bad Script'               => 'Bad Script',
+			'Bai Jamjuree'             => 'Bai Jamjuree',
+			'Barlow'                   => 'Barlow',
 			'Balthazar'                => 'Balthazar',
 			'Bangers'                  => 'Bangers',
 			'Basic'                    => 'Basic',
 			'Battambang'               => 'Battambang',
 			'Baumans'                  => 'Baumans',
 			'Bayon'                    => 'Bayon',
+			'Be Vietnam'               => 'Be Vietnam',
 			'Belgrano'                 => 'Belgrano',
 			'Belleza'                  => 'Belleza',
 			'BenchNine'                => 'BenchNine',
@@ -550,6 +591,7 @@ class Poseidon_Pro_Custom_Fonts {
 			'Crafty Girls'             => 'Crafty Girls',
 			'Creepster'                => 'Creepster',
 			'Crete Round'              => 'Crete Round',
+			'Crimson Pro'              => 'Crimson Pro',
 			'Crimson Text'             => 'Crimson Text',
 			'Croissant One'            => 'Croissant One',
 			'Crushed'                  => 'Crushed',
@@ -603,6 +645,7 @@ class Poseidon_Pro_Custom_Fonts {
 			'Exo'                      => 'Exo',
 			'Exo 2'                    => 'Exo 2',
 			'Expletus Sans'            => 'Expletus Sans',
+			'Fahkwang'                 => 'Fahkwang',
 			'Fanwood Text'             => 'Fanwood Text',
 			'Fascinate'                => 'Fascinate',
 			'Fascinate Inline'         => 'Fascinate Inline',
@@ -671,12 +714,15 @@ class Poseidon_Pro_Custom_Fonts {
 			'Hanuman'                  => 'Hanuman',
 			'Happy Monkey'             => 'Happy Monkey',
 			'Headland One'             => 'Headland One',
+			'Heebo'                    => 'Heebo',
 			'Henny Penny'              => 'Henny Penny',
 			'Herr Von Muellerhoff'     => 'Herr Von Muellerhoff',
 			'Hind'                     => 'Hind',
 			'Holtwood One SC'          => 'Holtwood One SC',
 			'Homemade Apple'           => 'Homemade Apple',
 			'Homenaje'                 => 'Homenaje',
+			'IBM Plex Sans'            => 'IBM Plex Sans',
+			'IBM Plex Serif'           => 'IBM Plex Serif',
 			'IM Fell DW Pica'          => 'IM Fell DW Pica',
 			'IM Fell DW Pica SC'       => 'IM Fell DW Pica SC',
 			'IM Fell Double Pica'      => 'IM Fell Double Pica',
@@ -716,6 +762,7 @@ class Poseidon_Pro_Custom_Fonts {
 			'Just Me Again Down Here'  => 'Just Me Again Down Here',
 			'Kalam'                    => 'Kalam',
 			'Kameron'                  => 'Kameron',
+			'Kanit'                    => 'Kanit',
 			'Kantumruy'                => 'Kantumruy',
 			'Karla'                    => 'Karla',
 			'Karma'                    => 'Karma',
@@ -729,12 +776,15 @@ class Poseidon_Pro_Custom_Fonts {
 			'Khmer'                    => 'Khmer',
 			'Kite One'                 => 'Kite One',
 			'Knewave'                  => 'Knewave',
+			'Kodchasan'                => 'Kodchasan',
+			'Koho'                     => 'Koho',
 			'Kotta One'                => 'Kotta One',
 			'Koulen'                   => 'Koulen',
 			'Kranky'                   => 'Kranky',
 			'Kreon'                    => 'Kreon',
 			'Kristi'                   => 'Kristi',
 			'Krona One'                => 'Krona One',
+			'Krub'                     => 'Krub',
 			'La Belle Aurore'          => 'La Belle Aurore',
 			'Laila'                    => 'Laila',
 			'Lakki Reddy'              => 'Lakki Reddy',
@@ -752,6 +802,7 @@ class Poseidon_Pro_Custom_Fonts {
 			'Lily Script One'          => 'Lily Script One',
 			'Limelight'                => 'Limelight',
 			'Linden Hill'              => 'Linden Hill',
+			'Livvic'                   => 'Livvic',
 			'Lobster'                  => 'Lobster',
 			'Lobster Two'              => 'Lobster Two',
 			'Londrina Outline'         => 'Londrina Outline',
@@ -831,6 +882,7 @@ class Poseidon_Pro_Custom_Fonts {
 			'New Rocker'               => 'New Rocker',
 			'News Cycle'               => 'News Cycle',
 			'Niconne'                  => 'Niconne',
+			'Niramit'                  => 'Niramit',
 			'Nixie One'                => 'Nixie One',
 			'Nobile'                   => 'Nobile',
 			'Nokora'                   => 'Nokora',
@@ -867,6 +919,7 @@ class Poseidon_Pro_Custom_Fonts {
 			'Over the Rainbow'         => 'Over the Rainbow',
 			'Overlock'                 => 'Overlock',
 			'Overlock SC'              => 'Overlock SC',
+			'Overpass'                 => 'Overpass',
 			'Ovo'                      => 'Ovo',
 			'Oxygen'                   => 'Oxygen',
 			'Oxygen Mono'              => 'Oxygen Mono',
@@ -914,6 +967,7 @@ class Poseidon_Pro_Custom_Fonts {
 			'Press Start 2P'           => 'Press Start 2P',
 			'Princess Sofia'           => 'Princess Sofia',
 			'Prociono'                 => 'Prociono',
+			'Prompt'                   => 'Prompt',
 			'Prosto One'               => 'Prosto One',
 			'Proza Libre'              => 'Proza Libre',
 			'Puritan'                  => 'Puritan',
@@ -978,6 +1032,7 @@ class Poseidon_Pro_Custom_Fonts {
 			'Sanchez'                  => 'Sanchez',
 			'Sancreek'                 => 'Sancreek',
 			'Sansita One'              => 'Sansita One',
+			'Sarabun'                  => 'Sarabun',
 			'Sarina'                   => 'Sarina',
 			'Sarpanch'                 => 'Sarpanch',
 			'Satisfy'                  => 'Satisfy',
@@ -1020,6 +1075,7 @@ class Poseidon_Pro_Custom_Fonts {
 			'Source Sans Pro'          => 'Source Sans Pro',
 			'Source Serif Pro'         => 'Source Serif Pro',
 			'Special Elite'            => 'Special Elite',
+			'Spectral'                 => 'Spectral',
 			'Spicy Rice'               => 'Spicy Rice',
 			'Spinnaker'                => 'Spinnaker',
 			'Spirax'                   => 'Spirax',
@@ -1100,31 +1156,6 @@ class Poseidon_Pro_Custom_Fonts {
 			'Yesteryear'               => 'Yesteryear',
 			'Zeyada'                   => 'Zeyada',
 		);
-
-		// Get Theme Options from Database.
-		$theme_options = Poseidon_Pro_Customizer::get_theme_options();
-
-		// Get Default Fonts from settings.
-		$default_options = Poseidon_Pro_Customizer::get_default_options();
-
-		// Remove default theme fonts from Google fonts.
-		if ( isset( $default_options['text_font'] ) and array_key_exists( $default_options['text_font'], $fonts ) ) :
-			unset( $fonts[ trim( $default_options['text_font'] ) ] );
-		endif;
-		if ( isset( $default_options['title_font'] ) and array_key_exists( $default_options['title_font'], $fonts ) ) :
-			unset( $fonts[ trim( $default_options['title_font'] ) ] );
-		endif;
-		if ( isset( $default_options['navi_font'] ) and array_key_exists( $default_options['navi_font'], $fonts ) ) :
-			unset( $fonts[ trim( $default_options['navi_font'] ) ] );
-		endif;
-		if ( isset( $default_options['widget_title_font'] ) and array_key_exists( $default_options['widget_title_font'], $fonts ) ) :
-			unset( $fonts[ trim( $default_options['widget_title_font'] ) ] );
-		endif;
-
-		// Sort fonts alphabetically.
-		asort( $fonts );
-
-		return $fonts;
 	}
 }
 

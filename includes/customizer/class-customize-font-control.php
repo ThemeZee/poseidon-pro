@@ -30,18 +30,11 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 		public $l10n = array();
 
 		/**
-		 * Local Fonts Array
+		 * Custom Fonts Array
 		 *
 		 * @var array
 		 */
-		private $local_fonts = false;
-
-		/**
-		 * Google Fonts Array
-		 *
-		 * @var array
-		 */
-		private $google_fonts = false;
+		private $fonts = false;
 
 		/**
 		 * Setup Font Control
@@ -61,8 +54,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 			);
 
 			// Set Fonts.
-			$this->local_fonts = Poseidon_Pro_Custom_Fonts::get_local_fonts();
-			$this->google_fonts = Poseidon_Pro_Custom_Fonts::get_google_fonts();
+			$this->fonts = Poseidon_Pro_Custom_Fonts::get_available_fonts();
 
 			parent::__construct( $manager, $id, $args );
 		}
@@ -73,10 +65,8 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 		 * @return void
 		 */
 		public function enqueue() {
-
 			// Register and Enqueue Custom Font JS Constructor.
-			wp_enqueue_script( 'poseidon-pro-custom-font-control', POSEIDON_PRO_PLUGIN_URL . 'assets/js/custom-font-control.js', array( 'customize-controls' ), POSEIDON_PRO_VERSION, true );
-
+			wp_enqueue_script( 'poseidon-pro-custom-font-control', POSEIDON_PRO_PLUGIN_URL . 'assets/js/custom-font-control.js', array( 'customize-controls' ), '20201101', true );
 		}
 
 		/**
@@ -85,11 +75,9 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 		 * @return void
 		 */
 		public function render_content() {
-
 			$l10n = json_encode( $this->l10n );
 
-			if ( ! empty( $this->local_fonts ) && ! empty( $this->google_fonts ) ) :
-			?>
+			if ( ! empty( $this->fonts ) ) : ?>
 
 				<label>
 					<span class="customize-control-title" data-l10n="<?php echo esc_attr( $l10n ); ?>" data-font="<?php echo esc_attr( $this->setting->default ); ?>">
@@ -97,27 +85,17 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 					</span>
 					<div class="customize-font-select-control">
 						<select <?php $this->link(); ?>>
-							<optgroup label="<?php esc_html_e( 'Local Fonts', 'poseidon-pro' ); ?>">
-								<?php
-								foreach ( $this->local_fonts as $k => $v ) :
-									printf( '<option value="%s" %s>%s</option>', $k, selected( $this->value(), $k, false ), $v );
-								endforeach;
-								?>
-							</optgroup>
-
-							<optgroup label="<?php esc_html_e( 'Google Web Fonts', 'poseidon-pro' ); ?>">
-	  							<?php
-								foreach ( $this->google_fonts as $k => $v ) :
-									printf( '<option value="%s" %s>%s</option>', $k, selected( $this->value(), $k, false ), $v );
-								endforeach;
-								?>
-							</optgroup>
+							<?php
+							foreach ( $this->fonts as $k => $v ) :
+								printf( '<option value="%s" %s>%s</option>', $k, selected( $this->value(), $k, false ), $v );
+							endforeach;
+							?>
 						</select>
 					</div>
 					<div class="actions"></div>
 				</label>
 
-			<?php
+				<?php
 			endif;
 		}
 	}
