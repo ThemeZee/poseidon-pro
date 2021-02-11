@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Poseidon Pro\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2020-08-18 14:22+0200\n"
-"PO-Revision-Date: 2020-08-18 14:22+0200\n"
+"POT-Creation-Date: 2021-02-11 16:26+0100\n"
+"PO-Revision-Date: 2021-02-11 16:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: ThemeZee <support@themezee.com>\n"
 "Language: de_DE\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: includes/admin/class-admin-notices.php:52
@@ -158,26 +158,18 @@ msgstr "Lizenz deaktivieren"
 msgid "Activate License"
 msgstr "Lizenz aktivieren"
 
-#: includes/customizer/class-customize-font-control.php:58
+#: includes/customizer/class-customize-font-control.php:51
 msgid "Previous Font"
 msgstr "Vorherige Schriftart"
 
-#: includes/customizer/class-customize-font-control.php:59
+#: includes/customizer/class-customize-font-control.php:52
 msgid "Next Font"
 msgstr "Nächste Schriftart"
 
-#: includes/customizer/class-customize-font-control.php:60
+#: includes/customizer/class-customize-font-control.php:53
 msgctxt "default font button"
 msgid "Default"
 msgstr "Standard"
-
-#: includes/customizer/class-customize-font-control.php:100
-msgid "Local Fonts"
-msgstr "Lokale Schriftarten"
-
-#: includes/customizer/class-customize-font-control.php:108
-msgid "Google Web Fonts"
-msgstr "Google Schriftarten"
 
 #: includes/modules/class-author-bio.php:60
 #, php-format
@@ -192,77 +184,91 @@ msgstr "Alle Beiträge ansehen"
 msgid "Display Author Bio"
 msgstr "Autor Bio anzeigen"
 
-#: includes/modules/class-custom-colors.php:493
+#: includes/modules/class-custom-colors.php:494
 msgid "Theme Colors"
 msgstr "Theme Farben"
 
-#: includes/modules/class-custom-colors.php:510
+#: includes/modules/class-custom-colors.php:511
 msgctxt "color setting"
 msgid "Top Navigation"
 msgstr "Obere Navigation"
 
-#: includes/modules/class-custom-colors.php:526
+#: includes/modules/class-custom-colors.php:527
 msgctxt "color setting"
 msgid "Header"
 msgstr "Header"
 
-#: includes/modules/class-custom-colors.php:542
+#: includes/modules/class-custom-colors.php:543
 msgctxt "color setting"
 msgid "Navigation (primary)"
 msgstr "Navigation (primär)"
 
-#: includes/modules/class-custom-colors.php:558
+#: includes/modules/class-custom-colors.php:559
 msgctxt "color setting"
 msgid "Navigation (secondary)"
 msgstr "Navigation (sekundär)"
 
-#: includes/modules/class-custom-colors.php:574
+#: includes/modules/class-custom-colors.php:575
 msgctxt "color setting"
 msgid "Post Titles (primary)"
 msgstr "Content Bereich (primär)"
 
-#: includes/modules/class-custom-colors.php:590
+#: includes/modules/class-custom-colors.php:591
 msgctxt "color setting"
 msgid "Post Titles (secondary)"
 msgstr "Content Bereich (sekundär)"
 
-#: includes/modules/class-custom-colors.php:606
+#: includes/modules/class-custom-colors.php:607
 msgctxt "color setting"
 msgid "Links and Buttons"
 msgstr "Links und Buttons"
 
-#: includes/modules/class-custom-colors.php:622
+#: includes/modules/class-custom-colors.php:623
 msgctxt "color setting"
 msgid "Widget Titles"
-msgstr "Widget Titel"
+msgstr "Widget-Titel"
 
-#: includes/modules/class-custom-colors.php:638
+#: includes/modules/class-custom-colors.php:639
 msgctxt "color setting"
 msgid "Footer Widgets"
 msgstr "Footer Widgets"
 
-#: includes/modules/class-custom-fonts.php:262
-msgid "Theme Fonts"
-msgstr "Theme Schriftarten"
+#: includes/modules/class-custom-fonts.php:214
+msgid "Typography"
+msgstr "Typografie"
 
-#: includes/modules/class-custom-fonts.php:280
-msgid "Base Font"
+#: includes/modules/class-custom-fonts.php:232
+msgid "Body Font"
 msgstr "Basis Schriftart"
 
-#: includes/modules/class-custom-fonts.php:296
-msgctxt "font setting"
+#: includes/modules/class-custom-fonts.php:249
+msgctxt "Font Setting"
 msgid "Headings"
 msgstr "Überschriften"
 
-#: includes/modules/class-custom-fonts.php:311
-msgctxt "font setting"
+#: includes/modules/class-custom-fonts.php:265
+#: includes/modules/class-custom-fonts.php:314
+#: includes/modules/class-custom-fonts.php:363
+msgctxt "Font Setting"
+msgid "Bold"
+msgstr "Fett"
+
+#: includes/modules/class-custom-fonts.php:281
+#: includes/modules/class-custom-fonts.php:330
+#: includes/modules/class-custom-fonts.php:379
+msgctxt "Font Setting"
+msgid "Uppercase"
+msgstr "Großbuchstaben"
+
+#: includes/modules/class-custom-fonts.php:298
+msgctxt "Font Setting"
 msgid "Navigation"
 msgstr "Navigation"
 
-#: includes/modules/class-custom-fonts.php:327
-msgctxt "font setting"
+#: includes/modules/class-custom-fonts.php:347
+msgctxt "Font Setting"
 msgid "Widget Titles"
-msgstr "Widget Titel"
+msgstr "Widget-Titel"
 
 #: includes/modules/class-footer-line.php:110
 msgid "Footer Settings"
@@ -328,36 +334,36 @@ msgstr "Obere Navigation"
 msgid "Social Icons"
 msgstr "Social Icons"
 
-#: includes/modules/class-header-search.php:82
+#: includes/modules/class-header-search.php:84
 msgctxt "poseidon-pro"
 msgid "Search"
 msgstr "Suche"
 
-#: includes/modules/class-header-search.php:104
+#: includes/modules/class-header-search.php:106
 msgid "Header Search"
 msgstr "Header Suche"
 
-#: includes/modules/class-header-search.php:120
+#: includes/modules/class-header-search.php:122
 msgid "Enable search field in main navigation"
 msgstr "Suchfeld in Hauptnavigation anzeigen"
 
-#: includes/modules/class-header-spacing.php:95
+#: includes/modules/class-header-spacing.php:112
 msgid "Header Settings"
 msgstr "Header Einstellungen"
 
-#: includes/modules/class-header-spacing.php:109
+#: includes/modules/class-header-spacing.php:126
 msgid "Logo Spacing (default: 10)"
 msgstr "Logo Abstand (Standard: 10)"
 
-#: includes/modules/class-header-spacing.php:125
+#: includes/modules/class-header-spacing.php:142
 msgid "Navigation Spacing (default: 10)"
 msgstr "Navigationsmenü Abstand (Standard: 10)"
 
-#: includes/modules/class-scroll-to-top.php:65
+#: includes/modules/class-scroll-to-top.php:67
 msgid "Scroll to Top"
 msgstr "Nach oben scrollen"
 
-#: includes/modules/class-scroll-to-top.php:81
+#: includes/modules/class-scroll-to-top.php:83
 msgid "Display Scroll to Top Button"
 msgstr "Button zum Nach oben Scrollen anzeigen"
 
@@ -422,6 +428,19 @@ msgstr "Zeigt einen einzelnen Beitrag einer gewählten Kategorie."
 #: poseidon-pro.php:206
 msgid "Settings"
 msgstr "Einstellungen"
+
+#~ msgid "Local Fonts"
+#~ msgstr "Lokale Schriftarten"
+
+#~ msgid "Google Web Fonts"
+#~ msgstr "Google Schriftarten"
+
+#~ msgid "Theme Fonts"
+#~ msgstr "Theme Schriftarten"
+
+#~ msgctxt "font setting"
+#~ msgid "Widget Titles"
+#~ msgstr "Widget Titel"
 
 #~ msgid "Choose available Fonts"
 #~ msgstr "Verfügbare Schriftarten wählen"
