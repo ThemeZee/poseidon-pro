@@ -2,6 +2,13 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 1.9
+-----------------------------------
+* added CSS variables for font styles
+* updated Typography options
+* added minified JavaScript files
+* restructured CSS media queries
+
 Version 1.8.1
 -----------------------------------
 * added AMP dropdown toggles for sub menus
