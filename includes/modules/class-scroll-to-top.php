@@ -49,7 +49,7 @@ class Poseidon_Pro_Scroll_To_Top {
 		// Call Credit Link function of theme if credit link is activated.
 		if ( true === $theme_options['scroll_to_top'] && ! self::is_amp() ) :
 
-			wp_enqueue_script( 'poseidon-pro-scroll-to-top', POSEIDON_PRO_PLUGIN_URL . 'assets/js/scroll-to-top.js', array( 'jquery' ), POSEIDON_PRO_VERSION, true );
+			wp_enqueue_script( 'poseidon-pro-scroll-to-top', POSEIDON_PRO_PLUGIN_URL . 'assets/js/scroll-to-top.min.js', array( 'jquery' ), '20210212', true );
 
 		endif;
 	}

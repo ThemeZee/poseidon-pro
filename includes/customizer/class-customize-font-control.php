@@ -66,7 +66,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 		 */
 		public function enqueue() {
 			// Register and Enqueue Custom Font JS Constructor.
-			wp_enqueue_script( 'poseidon-pro-custom-font-control', POSEIDON_PRO_PLUGIN_URL . 'assets/js/custom-font-control.js', array( 'customize-controls' ), '20201101', true );
+			wp_enqueue_script( 'poseidon-pro-custom-font-control', POSEIDON_PRO_PLUGIN_URL . 'assets/js/custom-font-control.min.js', array( 'customize-controls' ), '20210212', true );
 		}
 
 		/**
