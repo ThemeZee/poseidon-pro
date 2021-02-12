@@ -34,3 +34,20 @@
 	font-size: 17px;
 	font-size: 1.0625rem;
 }
+
+@media only screen and (max-width: 30em) {
+	.entry-author .author-avatar {
+		float: none;
+		margin: 0 0 1em;
+		max-width: 100%;
+	}
+
+	.entry-author .author-heading .author-title {
+		display: block;
+		margin: 0 0 0.25em;
+	}
+
+	.entry-author .author-heading .author-link {
+		display: block;
+	}
+}

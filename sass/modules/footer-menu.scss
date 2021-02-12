@@ -41,3 +41,30 @@
 .footer-navigation-menu a:active {
 	color: #22aadd;
 }
+
+@media only screen and (max-width: 60em) {
+	.footer-navigation {
+		float: none;
+		text-align: center;
+	}
+
+	.footer-navigation-menu {
+		padding-bottom: 0;
+	}
+
+	.footer-navigation-menu li {
+		float: none;
+		display: inline-block;
+	}
+}
+
+@media only screen and (max-width: 40em) {
+	.footer-navigation-menu li,
+	.footer-navigation-menu a {
+		display: block;
+	}
+
+	.footer-navigation-menu a {
+		padding: 0.8em 0;
+	}
+}

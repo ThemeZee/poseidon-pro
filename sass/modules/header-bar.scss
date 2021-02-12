@@ -206,6 +206,12 @@
 	transform: rotate(-180deg);
 }
 
+@media only screen and (max-width: 60em) {
+	.header-bar-wrap .header-bar {
+		padding: 0;
+	}
+}
+
 @media only screen and (min-width: 60em) {
 	.secondary-menu-toggle,
 	.top-navigation .dropdown-toggle {
@@ -303,5 +309,11 @@
 
 	.top-navigation ul .menu-item-has-children > a:hover > .icon {
 		fill: rgba(255, 255, 255, 0.5);
+	}
+}
+
+@media only screen and (max-width: 20em) {
+	.header-bar .social-icons-navigation {
+		display: none;
 	}
 }

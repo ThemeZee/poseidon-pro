@@ -61,3 +61,53 @@
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
 	color: #fff;
 }
+
+@media only screen and (max-width: 65em) {
+	.footer-widget-column {
+		width: 50%;
+	}
+
+	.footer-widget-column:nth-child(3) {
+		clear: left;
+	}
+}
+
+@media only screen and (max-width: 60em) {
+	.footer-widgets-background {
+		padding: 2em 0 0;
+	}
+
+	.footer-widgets .widget {
+		margin: 0 0 2em;
+	}
+}
+
+@media only screen and (max-width: 35em) {
+	.footer-widgets {
+		margin-right: 0;
+	}
+
+	.footer-widget-column {
+		float: none;
+		padding-right: 0;
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 30em) {
+	.footer-widgets-background {
+		padding: 1.5em 0 0;
+	}
+
+	.footer-widgets {
+		margin-right: -1.5em;
+	}
+
+	.footer-widget-column {
+		padding-right: 1.5em;
+	}
+
+	.footer-widgets .widget {
+		margin: 0 0 1.5em;
+	}
+}

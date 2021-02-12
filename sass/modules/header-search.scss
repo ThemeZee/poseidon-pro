@@ -46,3 +46,23 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
+@media only screen and (max-width: 60em) {
+	.header-search .header-search-form {
+		position: static;
+		display: block !important;
+		visibility: visible;
+		margin: 2em 0 1em;
+		padding: 0;
+		background: none;
+		border: none;
+	}
+
+	.header-search .header-search-form .search-form {
+		min-width: auto;
+	}
+
+	.header-search .header-search-icon {
+		display: none;
+	}
+}
