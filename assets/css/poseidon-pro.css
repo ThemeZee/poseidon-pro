@@ -73,9 +73,12 @@
 	text-decoration: none;
 	font-size: 13px;
 	font-size: 0.8125rem;
-	font-family: 'Raleway', Tahoma, Arial;
+	font-family: "Raleway", arial, helvetica, sans-serif;
+	font-family: var(--navi-font);
 	font-weight: bold;
+	font-weight: var(--navi-font-weight);
 	text-transform: uppercase;
+	text-transform: var(--navi-text-transform);
 	text-align: left;
 	align-items: center;
 }
@@ -127,9 +130,12 @@
 	list-style: none;
 	font-size: 13px;
 	font-size: 0.8125rem;
-	font-family: 'Raleway', Tahoma, Arial;
+	font-family: "Raleway", arial, helvetica, sans-serif;
+	font-family: var(--navi-font);
 	font-weight: bold;
+	font-weight: var(--navi-font-weight);
 	text-transform: uppercase;
+	text-transform: var(--navi-text-transform);
 }
 
 .top-navigation > ul {
@@ -696,11 +702,14 @@
 	display: block;
 	padding: 0.1em 1em;
 	text-decoration: none;
-	text-transform: uppercase;
-	font-weight: bold;
 	font-size: 14px;
 	font-size: 0.875rem;
-	font-family: 'Raleway', Tahoma, Arial;
+	font-family: "Raleway", arial, helvetica, sans-serif;
+	font-family: var(--navi-font);
+	font-weight: bold;
+	font-weight: var(--navi-font-weight);
+	text-transform: uppercase;
+	text-transform: var(--navi-text-transform);
 	-webkit-transition: all 0.2s ease;
 	transition: all 0.2s ease;
 }
