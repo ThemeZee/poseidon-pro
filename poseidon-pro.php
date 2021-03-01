@@ -136,6 +136,9 @@ class Poseidon_Pro {
 		// Enqueue Poseidon Pro Stylesheet.
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue_styles' ), 11 );
 
+		// Add Custom CSS code to the Gutenberg editor.
+		add_action( 'enqueue_block_editor_assets', array( __CLASS__, 'enqueue_editor_styles' ), 11 );
+
 		// Register additional Magazine Widgets.
 		add_action( 'widgets_init', array( __CLASS__, 'register_widgets' ) );
 
@@ -165,6 +168,33 @@ class Poseidon_Pro {
 			wp_enqueue_style( 'poseidon-pro', POSEIDON_PRO_PLUGIN_URL . 'assets/css/poseidon-pro.css', array(), POSEIDON_PRO_VERSION );
 		}
 
+		// Enqueue Custom CSS.
+		wp_add_inline_style( 'poseidon-pro', self::get_custom_css() );
+	}
+
+	/**
+	 * Enqueue Editor Styles
+	 *
+	 * @return void
+	 */
+	static function enqueue_editor_styles() {
+
+		// Return early if Poseidon Theme is not active.
+		if ( ! current_theme_supports( 'poseidon-pro' ) ) {
+			return;
+		}
+
+		// Enqueue Custom CSS.
+		wp_add_inline_style( 'poseidon-editor-styles', self::get_custom_css() );
+	}
+
+	/**
+	 * Return custom CSS for color and font variables.
+	 *
+	 * @return void
+	 */
+	static function get_custom_css() {
+
 		// Get Custom CSS.
 		$custom_css = apply_filters( 'poseidon_pro_custom_css_stylesheet', '' );
 
@@ -174,8 +204,7 @@ class Poseidon_Pro {
 		$custom_css = preg_replace( '/\n/', '', $custom_css );
 		$custom_css = preg_replace( '/\t/', '', $custom_css );
 
-		// Add Custom CSS.
-		wp_add_inline_style( 'poseidon-pro', $custom_css );
+		return $custom_css;
 	}
 
 	/**
