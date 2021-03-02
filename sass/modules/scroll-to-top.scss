@@ -9,23 +9,26 @@
 	padding: 0;
 	right: 1em;
 	bottom: 1em;
-	background: #22aadd;
+	@include background(--button-color);
+	@include color(--button-text-color);
 	transition: none;
 }
 
 .scroll-to-top-button:focus,
 .scroll-to-top-button:active {
-	background: #22aadd;
+	@include background(--button-color);
+	@include color(--button-text-color);
 }
 
 .scroll-to-top-button:hover {
-	background: #404040;
+	@include background(--button-hover-color);
+	@include color(--button-hover-text-color);
 }
 
-.scroll-to-top-button:after {
+.scroll-to-top-button::after {
 	display: inline-block;
 	margin: 0 0 0 3px;
-	color: #fff;
+	color: currentColor;
 	content: '\f432';
 	vertical-align: top;
 	text-decoration: inherit;

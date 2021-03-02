@@ -4,8 +4,9 @@
 	display: none;
 	margin: 0;
 	padding: 1em;
-	background: #fff;
-	border: 1px solid #ddd;
+	@include background(--header-background-color);
+	border: 1px solid;
+	@include border-color(--light-border-color);
 	z-index: 10;
 }
 
@@ -20,7 +21,7 @@
 
 .header-search .header-search-icon {
 	padding: 1em;
-	color: #404040;
+	@include color(--navi-color);
 }
 
 .header-search .header-search-icon:hover {

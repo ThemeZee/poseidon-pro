@@ -1,6 +1,6 @@
 .footer-widgets-background {
 	padding: 3em 0 0;
-	background: #404040;
+	@include background(--footer-widgets-background-color);
 }
 
 .footer-widgets {
@@ -15,51 +15,53 @@
 }
 
 .footer-widgets .widget {
-	color: rgba(255,255,255,0.6)
+	@include color(--footer-widgets-text-color);
 }
 
 .footer-widgets .widget-title {
-	border-bottom: 4px solid rgba(255,255,255,0.08);
-	color: #fff;
+	border-bottom: 4px solid;
+	@include border-color(--footer-widgets-border-color);
+	@include color(--footer-widgets-link-color);
 }
 
 .footer-widgets .widget a:link,
 .footer-widgets .widget a:visited {
-	color: #fff;
+	@include color(--footer-widgets-link-color);
 }
 
 .footer-widgets .widget a:hover,
 .footer-widgets .widget a:active {
-	color: rgba(255,255,255,0.6);
+	@include color(--footer-widgets-link-hover-color);
 }
 
 /* Custom Footer Widgets */
 #footer-widgets .tzwb-social-icons .social-icons-menu li a,
 #footer-widgets .widget_tag_cloud .tagcloud a {
-	background: rgba(255,255,255,0.1);
+	@include color(--footer-widgets-link-color);
+	@include background(--footer-widgets-border-color);
 }
 
 #footer-widgets .tzwb-social-icons .social-icons-menu li a:hover,
 #footer-widgets .widget_tag_cloud .tagcloud a:hover,
 #footer-widgets .widget_tag_cloud .tagcloud a:active {
-	color: #fff;
-	background: rgba(255,255,255,0.2);
+	@include color(--footer-widgets-link-hover-color);
 }
 
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi {
-	border-top: 1px solid rgba(255,255,255,0.08);
-	border-bottom: 1px solid rgba(255,255,255,0.08);
+	border-top: 1px solid;
+	border-bottom: 1px solid;
+	@include border-color(--footer-widgets-border-color);
 }
 
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:link,
-.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:visited  {
-	color: rgba(255,255,255,0.6);
+.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:visited {
+	@include color(--footer-widgets-link-hover-color);
 }
 
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:hover,
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:active,
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
-	color: #fff;
+	@include color(--footer-widgets-link-color);
 }
 
 @media only screen and (max-width: 65em) {

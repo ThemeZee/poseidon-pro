@@ -1,0 +1,11 @@
+:root {
+	@include variable(--header-bar-background-color, $themeColors);
+	@include variable(--header-bar-text-color, $themeColors);
+	@include variable(--header-bar-text-hover-color, $themeColors);
+	@include variable(--header-bar-border-color, $themeColors);
+	@include variable(--footer-widgets-background-color, $themeColors);
+	@include variable(--footer-widgets-text-color, $themeColors);
+	@include variable(--footer-widgets-link-color, $themeColors);
+	@include variable(--footer-widgets-link-hover-color, $themeColors);
+	@include variable(--footer-widgets-border-color, $themeColors);
+}

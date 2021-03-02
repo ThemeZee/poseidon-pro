@@ -1,6 +1,6 @@
 .header-bar-wrap {
-	background: #404040;
-	color: #fff;
+	@include background(--header-bar-background-color);
+	@include color(--header-bar-text-color);
 }
 
 .header-bar {
@@ -23,7 +23,7 @@
 }
 
 .header-bar .social-icons-menu li a:hover {
-	color: rgba(255, 255, 255, 0.6);
+	@include color(--header-bar-text-hover-color);
 	text-decoration: none;
 }
 
@@ -52,7 +52,7 @@
 	padding: 0.75em 1.25em;
 	border: none;
 	background: none;
-	color: #fff;
+	@include color(--header-bar-text-color);
 	text-decoration: none;
 	@include font-size(13);
 	@include font-family(--navi-font);
@@ -68,13 +68,13 @@
 
 .secondary-menu-toggle:focus {
 	outline: thin dotted;
-	color: #fff;
+	@include color(--header-bar-text-color);
 	background: none;
 }
 
 .secondary-menu-toggle:hover,
 .secondary-menu-toggle:active {
-	color: rgba(255, 255, 255, 0.5);
+	@include color(--header-bar-text-hover-color);
 	background: none;
 	cursor: pointer;
 }
@@ -84,12 +84,12 @@
 	width: 18px;
 	height: 18px;
 	vertical-align: top;
-	fill: #fff;
+	@include fill(--header-bar-text-color);
 }
 
 .secondary-menu-toggle:hover .icon,
 .secondary-menu-toggle:active .icon {
-	fill: rgba(255, 255, 255, 0.5);
+	@include fill(--header-bar-text-hover-color);
 }
 
 .secondary-menu-toggle[aria-expanded="true"] .icon-menu,
@@ -105,7 +105,7 @@
 .top-navigation ul {
 	margin: 0;
 	padding: 0;
-	color: #fff;
+	@include color(--header-bar-text-color);
 	list-style: none;
 	@include font-size(13);
 	@include font-family(--navi-font);
@@ -114,7 +114,8 @@
 }
 
 .top-navigation > ul {
-	border-top: 4px solid rgba(255, 255, 255, 0.15);
+	border-top: 4px solid;
+	@include border-color(--header-bar-border-color);
 }
 
 .top-navigation ul li {
@@ -126,21 +127,22 @@
 	display: block;
 	margin: 0;
 	padding: 1em 1.25em;
-	border-bottom: 1px dotted rgba(255, 255, 255, 0.15);
+	border-bottom: 1px dotted;
+	@include border-color(--header-bar-border-color);
 	text-decoration: none;
 }
 
 .top-navigation ul a,
 .top-navigation ul a:link,
 .top-navigation ul a:visited {
-	color: #fff;
+	@include color(--header-bar-text-color);
 	text-decoration: none;
 }
 
 .top-navigation ul a:hover,
 .top-navigation ul a:active,
 .top-navigation ul a:focus {
-	color: rgba(255, 255, 255, 0.5);
+	@include color(--header-bar-text-hover-color);
 }
 
 .top-navigation ul li.current-menu-item > a {
@@ -178,7 +180,6 @@
 
 .top-navigation .dropdown-toggle:focus {
 	outline: thin dotted;
-	color: #303030;
 	background: none;
 }
 
@@ -192,12 +193,12 @@
 	width: 18px;
 	height: 18px;
 	vertical-align: top;
-	fill: #fff;
+	@include fill(--header-bar-text-color);
 }
 
 .top-navigation .dropdown-toggle:hover .icon,
 .top-navigation .dropdown-toggle:active .icon {
-	fill: rgba(255, 255, 255, 0.5);
+	@include fill(--header-bar-text-hover-color);
 }
 
 .top-navigation .dropdown-toggle.toggled-on .icon {
@@ -253,8 +254,9 @@
 		left: -999em;
 		top: 100%;
 		z-index: 99999;
-		border-top: 4px solid rgba(255, 255, 255, 0.15);
-		background: #404040;
+		border-top: 4px solid;
+		@include border-color(--header-bar-border-color);
+		@include background(--header-bar-background-color);
 	}
 
 	.top-navigation ul li:hover > ul,
@@ -293,7 +295,7 @@
 		top: 0.05rem;
 		width: 10px;
 		height: 10px;
-		fill: #fff;
+		@include fill(--header-bar-text-color);
 	}
 
 	.top-navigation ul ul .menu-item-has-children > a > .icon {
@@ -308,7 +310,7 @@
 	}
 
 	.top-navigation ul .menu-item-has-children > a:hover > .icon {
-		fill: rgba(255, 255, 255, 0.5);
+		@include fill(--header-bar-text-hover-color);
 	}
 }
 
