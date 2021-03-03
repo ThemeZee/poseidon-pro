@@ -20,9 +20,10 @@
 
 .header-bar .social-icons-menu li a::before {
 	font-size: 18px;
+	@include color(--header-bar-text-color);
 }
 
-.header-bar .social-icons-menu li a:hover {
+.header-bar .social-icons-menu li a:hover::before {
 	@include color(--header-bar-text-hover-color);
 	text-decoration: none;
 }

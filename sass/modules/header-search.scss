@@ -6,7 +6,7 @@
 	padding: 1em;
 	@include background(--header-background-color);
 	border: 1px solid;
-	@include border-color(--light-border-color);
+	@include border-color(--navi-border-color);
 	z-index: 10;
 }
 

@@ -50,9 +50,11 @@
 
 .header-bar .social-icons-menu li a::before {
 	font-size: 18px;
+	color: #fff;
+	color: var(--header-bar-text-color);
 }
 
-.header-bar .social-icons-menu li a:hover {
+.header-bar .social-icons-menu li a:hover::before {
 	color: rgba(255, 255, 255, 0.5);
 	color: var(--header-bar-text-hover-color);
 	text-decoration: none;
@@ -398,8 +400,8 @@
 	background-color: #fff;
 	background-color: var(--header-background-color);
 	border: 1px solid;
-	border-color: #ddd;
-	border-color: var(--light-border-color);
+	border-color: #ccc;
+	border-color: var(--navi-border-color);
 	z-index: 10;
 }
 
