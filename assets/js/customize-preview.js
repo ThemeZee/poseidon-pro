@@ -30,221 +30,128 @@
 		} );
 	} );
 
-	/* Header Color Option */
-	wp.customize( 'poseidon_theme_options[header_color]', function( value ) {
-		value.bind( function( newval ) {
-			var custom_css, text_color, hover_color, border_color, dotted_color,
-				post_primary_color = '#22aadd',
-				post_secondary_color = '#22aadd',
-				link_color = '#22aadd';
-
-			if( typeof wp.customize.value( 'poseidon_theme_options[post_primary_color]' ) !== 'undefined' ) {
-				post_primary_color = wp.customize.value( 'poseidon_theme_options[post_primary_color]' ).get();
-			}
-
-			if( typeof wp.customize.value( 'poseidon_theme_options[post_secondary_color]' ) !== 'undefined' ) {
-				post_secondary_color = wp.customize.value( 'poseidon_theme_options[post_secondary_color]' ).get();
-			}
-
-			if( typeof wp.customize.value( 'poseidon_theme_options[link_color]' ) !== 'undefined' ) {
-				link_color = wp.customize.value( 'poseidon_theme_options[link_color]' ).get();
-			}
-
-			custom_css = '.site-header, .main-navigation ul ul, .footer-wrap { background: ' + newval + '; }';
-
-			if( isColorDark( newval ) ) {
-				text_color = '#ffffff';
-				hover_color = 'rgba(255,255,255,0.6)';
-				border_color = 'rgba(255,255,255,0.12)';
-				dotted_color = 'rgba(255,255,255,0.24)';
-
-				custom_css += '.site-branding, .site-title, .site-title a:link, .site-title a:visited, .site-info a:link, .site-info a:visited { color: ' + text_color + ' !important; }';
-				custom_css += '.site-title a:hover, .site-title a:active, .site-info, .site-info a:hover, .site-info a:active { color: ' + hover_color + ' !important; }';
-
-			} else {
-				text_color = '#404040';
-				hover_color = 'rgba(0,0,0,0.6)';
-				border_color = 'rgba(0,0,0,0.12)';
-				dotted_color = 'rgba(0,0,0,0.24)';
-
-				custom_css += '.site-branding, .site-info { color: ' + text_color + '; }';
-				custom_css += '.site-title, .site-title a:link, .site-title a:visited { color: ' + post_primary_color + '; }';
-				custom_css += '.site-title a:hover, .site-title a:active { color: ' + post_secondary_color + '; }';
-
-				custom_css += '.site-info a:link, .site-info a:visited { color: ' + link_color + '; }';
-				custom_css += '.site-info a:hover, .site-info a:active { color: #404040; }';
-			}
-
-			custom_css += '.site-header, .footer-wrap { border-color: ' + border_color + '; }';
-			custom_css += '.main-navigation ul ul { border-left-color: ' + border_color + '; border-right-color: ' + border_color + '; border-bottom-color: ' + border_color + '; }';
-			custom_css += '.main-navigation ul ul a { border-color: ' + dotted_color + '; }';
-
-			addColorStyles( custom_css, 1 );
-		} );
-	} );
-
 	/* Link & Button Color Option */
 	wp.customize( 'poseidon_theme_options[link_color]', function( value ) {
 		value.bind( function( newval ) {
-			var custom_css;
-
-			custom_css = 'a:link, a:visited, .more-link, .widget-title a:hover, .widget-title a:active, .tzwb-tabbed-content .tzwb-tabnavi li a:hover, .tzwb-tabbed-content .tzwb-tabnavi li a:active, .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab, .site-info a:link, .site-info a:visited { color: ' + newval + '; }';
-			custom_css += 'a:hover, a:focus, a:active, .site-info a:hover, .site-info a:active { color: #404040; }';
-
-			custom_css += 'button, input[type="button"], input[type="reset"], input[type="submit"], .entry-tags .meta-tags a:hover, .entry-tags .meta-tags a:active, .widget_tag_cloud .tagcloud a:hover, .widget_tag_cloud .tagcloud a:active, .scroll-to-top-button, .scroll-to-top-button:focus, .scroll-to-top-button:active, .tzwb-social-icons .social-icons-menu li a { color: #fff; background: ' + newval + '; }';
-			custom_css += 'button:hover, input[type="button"]:hover, input[type="reset"]:hover, input[type="submit"]:hover, button:focus, input[type="button"]:focus, input[type="reset"]:focus, input[type="submit"]:focus, button:active, input[type="button"]:active, input[type="reset"]:active, input[type="submit"]:active, .scroll-to-top-button:hover { background: #404040; }';
-
-			addColorStyles( custom_css, 2 );
-
-			custom_css = '.widget-title a:hover, .widget-title a:active { color: ' + newval + '; }';
-
-			addColorStyles( custom_css, 9 );
-
-			$( '.has-primary-color' ).css( 'color', newval );
-			$( '.has-primary-background-color' ).css( 'background-color', newval );
-		} );
-	} );
-
-	/* Top Navigation Color Option */
-	wp.customize( 'poseidon_theme_options[top_navi_color]', function( value ) {
-		value.bind( function( newval ) {
-			var custom_css, text_color, hover_color, border_color, border;
-
-			custom_css = '.header-bar-wrap, .top-navigation ul ul { background: ' + newval + '; }';
+			var text_color;
 
 			if( isColorLight( newval ) ) {
-				text_color = 'rgba(0,0,0,0.75)';
-				hover_color = 'rgba(0,0,0,0.6)';
-				border_color = 'rgba(0,0,0,0.15)';
-				border = '.header-bar-wrap { border-bottom: 1px solid rgba(0,0,0,0.1); }';
+				text_color = '#111';
 			} else {
-				text_color = '#ffffff';
-				hover_color = 'rgba(255,255,255,0.6)';
-				border_color = 'rgba(255,255,255,0.15)';
-				border = '.header-bar-wrap { border-bottom: none }';
+				text_color = '#fff';
 			}
 
-			custom_css += '.header-bar-wrap, .top-navigation ul a, .top-navigation ul a:link, .top-navigation ul a:visited, .secondary-menu-toggle, .secondary-menu-toggle:focus, .header-bar .social-icons-menu li a, .header-bar .social-icons-menu li a:link, .header-bar .social-icons-menu li a:visited { color: ' + text_color + '; }';
-			custom_css += '.top-navigation ul a:hover, .top-navigation ul a:active, .secondary-menu-toggle:hover, .secondary-menu-toggle:active, .header-bar .social-icons-menu li a:hover, .header-bar .social-icons-menu li a:active { color: ' + hover_color + '; }';
-			custom_css += '.secondary-menu-toggle .icon, .top-navigation .dropdown-toggle .icon, .top-navigation ul .menu-item-has-children > a > .icon { fill: ' + text_color + '; }';
-			custom_css += '.secondary-menu-toggle:hover .icon, .secondary-menu-toggle:active .icon, .top-navigation .dropdown-toggle:hover .icon, .top-navigation .dropdown-toggle:active .icon, .top-navigation ul .menu-item-has-children > a:hover > .icon, .top-navigation ul .menu-item-has-children > a:active > .icon { fill: ' + hover_color + '; }';
-			custom_css += '.top-navigation ul, .top-navigation ul a, .top-navigation ul ul, .top-navigation ul ul a, .top-navigation ul ul li:last-child > a { border-color: ' + border_color + '; }';
-			custom_css += border;
-
-			addColorStyles( custom_css, 3 );
-		} );
-	} );
-
-	/* Navigation (primary) Color Option */
-	wp.customize( 'poseidon_theme_options[navi_primary_color]', function( value ) {
-		value.bind( function( newval ) {
-			var custom_css,
-				navi_secondary_color = '#22aadd';
-
-			if( typeof wp.customize.value( 'poseidon_theme_options[navi_secondary_color]' ) !== 'undefined' ) {
-				navi_secondary_color = wp.customize.value( 'poseidon_theme_options[navi_secondary_color]' ).get();
-			}
-
-			custom_css = '.main-navigation ul a:link, .main-navigation ul a:visited, .primary-menu-toggle, .footer-navigation-menu a:link, .footer-navigation-menu a:visited, .header-search .header-search-icon { color: ' + newval + '; }';
-			custom_css += '.main-navigation ul a:hover, .main-navigation ul a:active, .primary-menu-toggle:hover, .footer-navigation-menu a:hover, .footer-navigation-menu a:active { color: ' + navi_secondary_color + '; }';
-			custom_css += '.primary-menu-toggle .icon, .main-navigation .dropdown-toggle .icon, .main-navigation ul .menu-item-has-children > a > .icon { fill: ' + newval + '; }';
-			custom_css += '.primary-menu-toggle:hover .icon, .primary-menu-toggle:active .icon, .main-navigation .dropdown-toggle:hover .icon, .main-navigation .dropdown-toggle:active .icon, .main-navigation ul .menu-item-has-children > a:hover > .icon, .main-navigation ul .menu-item-has-children > a:active > .icon { fill: ' + navi_secondary_color + '; }';
-			custom_css += '.main-navigation ul, .main-navigation ul ul { border-top-color: ' + newval + '; }';
-
-			addColorStyles( custom_css, 4 );
-		} );
-	} );
-
-	/* Navigation (secondary) Color Option */
-	wp.customize( 'poseidon_theme_options[navi_secondary_color]', function( value ) {
-		value.bind( function( newval ) {
-			var custom_css;
-
-			custom_css = '.main-navigation ul a:hover, .main-navigation ul a:active, .main-navigation ul li.current-menu-item > a, .primary-menu-toggle:hover, .footer-navigation-menu a:hover, .footer-navigation-menu a:active { color: ' + newval + '; }';
-			custom_css += '.primary-menu-toggle:hover .icon, .primary-menu-toggle:active .icon, .main-navigation .dropdown-toggle:hover .icon, .main-navigation .dropdown-toggle:active .icon, .main-navigation ul .menu-item-has-children > a:hover > .icon, .main-navigation ul .menu-item-has-children > a:active > .icon { fill: ' + newval + '; }';
-			addColorStyles( custom_css, 5 );
+			document.documentElement.style.setProperty( '--link-color', newval );
+			document.documentElement.style.setProperty( '--button-color', newval );
+			document.documentElement.style.setProperty( '--button-text-color', text_color );
 		} );
 	} );
 
 	/* Post Titles (primary) Color Option */
 	wp.customize( 'poseidon_theme_options[post_primary_color]', function( value ) {
 		value.bind( function( newval ) {
-			var custom_css,
-				post_secondary_color = '#22aadd';
-
-			if( typeof wp.customize.value( 'poseidon_theme_options[post_secondary_color]' ) !== 'undefined' ) {
-				post_secondary_color = wp.customize.value( 'poseidon_theme_options[post_secondary_color]' ).get();
-			}
-
-			custom_css = '.site-title, .site-title a:link, .site-title a:visited, .page-title, .entry-title, .entry-title a:link, .entry-title a:visited { color: ' + newval + '; }';
-			custom_css += '.site-title a:hover, .site-title a:active, .entry-title a:hover, .entry-title a:active { color: ' + post_secondary_color + '; }';
-
-			addColorStyles( custom_css, 6 );
+			document.documentElement.style.setProperty( '--title-color', newval );
+			document.documentElement.style.setProperty( '--site-title-color', newval );
 		} );
 	} );
 
 	/* Post Titles (secondary) Color Option */
 	wp.customize( 'poseidon_theme_options[post_secondary_color]', function( value ) {
 		value.bind( function( newval ) {
-			var custom_css;
+			document.documentElement.style.setProperty( '--title-hover-color', newval );
+			document.documentElement.style.setProperty( '--site-title-hover-color', newval );
+			document.documentElement.style.setProperty( '--widget-title-hover-color', newval );
+		} );
+	} );
 
-			custom_css = '.site-title a:hover, .site-title a:active, .entry-title a:hover, .entry-title a:active { color: ' + newval + '; }';
+	/* Top Navigation Color Option */
+	wp.customize( 'poseidon_theme_options[top_navi_color]', function( value ) {
+		value.bind( function( newval ) {
+			var text_color, hover_color, border_color;
 
-			addColorStyles( custom_css, 7 );
+			if( isColorLight( newval ) ) {
+				text_color = '#151515';
+				hover_color = 'rgba(0, 0, 0, 0.5)';
+				border_color = 'rgba(0, 0, 0, 0.15)';
+			} else {
+				text_color = '#fff';
+				hover_color = 'rgba(255, 255, 255, 0.5)';
+				border_color = 'rgba(255, 255, 255, 0.15)';
+			}
+
+			document.documentElement.style.setProperty( '--header-bar-background-color', newval );
+			document.documentElement.style.setProperty( '--header-bar-text-color', text_color );
+			document.documentElement.style.setProperty( '--header-bar-text-hover-color', hover_color );
+			document.documentElement.style.setProperty( '--header-bar-border-color', border_color );
+		} );
+	} );
+
+	/* Header Color Option */
+	wp.customize( 'poseidon_theme_options[header_color]', function( value ) {
+		value.bind( function( newval ) {
+			var text_color, hover_color, border_color;
+
+			if( isColorLight( newval ) ) {
+				text_color = '#151515';
+				hover_color = 'rgba(0, 0, 0, 0.5)';
+				border_color = 'rgba(0, 0, 0, 0.1)';
+			} else {
+				text_color = '#fff';
+				hover_color = 'rgba(255, 255, 255, 0.5)';
+				border_color = 'rgba(255, 255, 255, 0.1)';
+			}
+
+			document.documentElement.style.setProperty( '--header-background-color', newval );
+			document.documentElement.style.setProperty( '--navi-submenu-color', newval );
+			document.documentElement.style.setProperty( '--site-title-color', text_color );
+			document.documentElement.style.setProperty( '--site-title-hover-color', hover_color );
+			document.documentElement.style.setProperty( '--navi-border-color', border_color );
+		} );
+	} );
+
+	/* Navigation (primary) Color Option */
+	wp.customize( 'poseidon_theme_options[navi_primary_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--navi-color', newval );
+		} );
+	} );
+
+	/* Navigation (secondary) Color Option */
+	wp.customize( 'poseidon_theme_options[navi_secondary_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--navi-hover-color', newval );
 		} );
 	} );
 
 	/* Widget Title Color Option */
 	wp.customize( 'poseidon_theme_options[widget_title_color]', function( value ) {
 		value.bind( function( newval ) {
-			var custom_css,
-				link_color = '#22aadd';
-
-			if( typeof wp.customize.value( 'poseidon_theme_options[link_color]' ) !== 'undefined' ) {
-				link_color = wp.customize.value( 'poseidon_theme_options[link_color]' ).get();
-			}
-
-			custom_css = '.widget-title, .widget-title a:link, .widget-title a:visited, .page-header .archive-title, .comments-header .comments-title, .comment-reply-title span { color: ' + newval + '; }';
-			custom_css += '.widget-title a:hover, .widget-title a:active { color: ' + link_color + '; }';
-
-			addColorStyles( custom_css, 8 );
+			document.documentElement.style.setProperty( '--widget-title-color', newval );
 		} );
 	} );
 
 	/* Footer Widgets Color Option */
 	wp.customize( 'poseidon_theme_options[footer_color]', function( value ) {
 		value.bind( function( newval ) {
-			var custom_css, text_color, hover_color, bg_color, bg_hover_color, border_color, border;
-
-			custom_css = '.footer-widgets-background { background: ' + newval + '; }';
+			var text_color, link_color, link_hover_color, border_color;
 
 			if( isColorLight( newval ) ) {
-				text_color = 'rgba(0,0,0,0.8)';
-				hover_color = 'rgba(0,0,0,0.6)';
-				bg_color = 'rgba(0,0,0,0.1)';
-				bg_hover_color = 'rgba(0,0,0,0.2)';
-				border_color = 'rgba(0,0,0,0.08)';
-				border = '.footer-widgets-background { border-top: 1px solid rgba(0,0,0,0.1); }';
+				text_color = 'rgba(0, 0, 0, 0.5)';
+				link_color = '#111';
+				link_hover_color = 'rgba(0, 0, 0, 0.5)';
+				border_color = 'rgba(0, 0, 0, 0.08)';
 			} else {
-				text_color = '#ffffff';
-				hover_color = 'rgba(255,255,255,0.6)';
-				bg_color = 'rgba(255,255,255,0.1)';
-				bg_hover_color = 'rgba(255,255,255,0.2)'
-				border_color = 'rgba(255,255,255,0.15)';
-				border = '.footer-widgets-background { border-top: none }';
+				text_color = 'rgba(255, 255, 255, 0.5)';
+				link_color = '#fff';
+				link_hover_color = 'rgba(255, 255, 255, 0.5)';
+				border_color = 'rgba(255, 255, 255, 0.08)';
 			}
 
-			custom_css += border;
-			custom_css += '.footer-widgets .widget-title, .footer-widgets .widget a:link, .footer-widgets .widget a:visited { color: ' + text_color + '; }';
-			custom_css += '.footer-widgets .widget, .footer-widgets .widget a:hover, .footer-widgets .widget a:active { color: ' + hover_color + '; }';
-			custom_css += '.footer-widgets .widget-title, .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi { border-color: ' + border_color + '; }';
-
-			custom_css += '#footer-widgets .tzwb-social-icons .social-icons-menu li a, #footer-widgets .widget_tag_cloud .tagcloud a { background: ' + bg_color + '; }';
-			custom_css += '#footer-widgets .tzwb-social-icons .social-icons-menu li a:hover, #footer-widgets .widget_tag_cloud .tagcloud a:hover, #footer-widgets .widget_tag_cloud .tagcloud a:active { color: ' + text_color + '; background: ' + bg_hover_color + '; }';
-			custom_css += '.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:link, .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:visited { color: ' + hover_color + '; }';
-			custom_css += '.footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:hover, .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:active, .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab { color: ' + text_color + '; }';
-
-			addColorStyles( custom_css, 10 );
+			document.documentElement.style.setProperty( '--footer-widgets-background-color', newval );
+			document.documentElement.style.setProperty( '--footer-widgets-text-color', text_color );
+			document.documentElement.style.setProperty( '--footer-widgets-link-color', link_color );
+			document.documentElement.style.setProperty( '--footer-widgets-link-hover-color', link_hover_color );
+			document.documentElement.style.setProperty( '--footer-widgets-border-color', border_color );
 		} );
 	} );
 
@@ -404,22 +311,6 @@
 
 	function isColorDark( hexColor ) {
 		return ( getColorBrightness( hexColor ) <= 130 );
-	}
-
-	function writeColorStyles() {
-		for( var i = 1; i < 11; i++) {
-			$( 'head' ).append( '<style id="poseidon-pro-colors-' + i + '"></style>' );
-		}
-	}
-
-	function addColorStyles( colorRules, priority ) {
-
-		// Write Color Styles if they do not exist.
-		if ( ! $( '#poseidon-pro-colors-1' ).length ) {
-			writeColorStyles();
-		}
-
-		$( '#poseidon-pro-colors-' + priority ).html( colorRules );
 	}
 
 	function loadCustomFont( font, type ) {
