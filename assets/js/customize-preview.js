@@ -30,6 +30,62 @@
 		} );
 	} );
 
+	/* Primary Color Option */
+	wp.customize( 'poseidon_theme_options[primary_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--primary-color', newval );
+		} );
+	} );
+
+	/* Secondary Color Option */
+	wp.customize( 'poseidon_theme_options[secondary_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--secondary-color', newval );
+		} );
+	} );
+
+	/* Tertiary Color Option */
+	wp.customize( 'poseidon_theme_options[tertiary_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--tertiary-color', newval );
+		} );
+	} );
+
+	/* Accent Color Option */
+	wp.customize( 'poseidon_theme_options[accent_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--accent-color', newval );
+		} );
+	} );
+
+	/* Highlight Color Option */
+	wp.customize( 'poseidon_theme_options[highlight_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--highlight-color', newval );
+		} );
+	} );
+
+	/* Light Gray Color Option */
+	wp.customize( 'poseidon_theme_options[light_gray_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--light-gray-color', newval );
+		} );
+	} );
+
+	/* Gray Color Option */
+	wp.customize( 'poseidon_theme_options[gray_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--gray-color', newval );
+		} );
+	} );
+
+	/* Dark Gray Color Option */
+	wp.customize( 'poseidon_theme_options[dark_gray_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--dark-gray-color', newval );
+		} );
+	} );
+
 	/* Link & Button Color Option */
 	wp.customize( 'poseidon_theme_options[link_color]', function( value ) {
 		value.bind( function( newval ) {
