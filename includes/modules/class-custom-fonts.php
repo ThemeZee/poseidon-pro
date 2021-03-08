@@ -212,7 +212,7 @@ class Poseidon_Pro_Custom_Fonts {
 		// Add Section for Theme Fonts.
 		$wp_customize->add_section( 'poseidon_pro_section_typography', array(
 			'title'    => __( 'Typography', 'poseidon-pro' ),
-			'priority' => 70,
+			'priority' => 80,
 			'panel'    => 'poseidon_options_panel',
 		) );
 

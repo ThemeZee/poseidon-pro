@@ -151,7 +151,7 @@ class Poseidon_Pro_Custom_Colors {
 		// Add Section for Theme Colors.
 		$wp_customize->add_section( 'poseidon_pro_section_colors', array(
 			'title'    => __( 'Theme Colors', 'poseidon-pro' ),
-			'priority' => 60,
+			'priority' => 70,
 			'panel'    => 'poseidon_options_panel',
 		) );
 
