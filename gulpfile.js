@@ -13,7 +13,7 @@ var sorting      = require( 'postcss-sorting' );
 
 // Minify JS
 gulp.task( 'minifyjs', function() {
-	return gulp.src( ['assets/js/*.js'] )
+	return gulp.src( ['assets/js/custom-font-control.js', 'assets/js/customize-preview.js', 'assets/js/header-search.js', 'assets/js/scroll-to-top.js'] )
 		.pipe( uglify() )
 		.pipe( rename( {
 			suffix: '.min'

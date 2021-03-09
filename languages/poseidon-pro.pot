@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Poseidon Pro\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2021-02-11 16:26+0100\n"
+"POT-Creation-Date: 2021-03-09 14:50+0100\n"
 "PO-Revision-Date: 2016-05-03 17:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: ThemeZee <support@themezee.com>\n"
@@ -171,52 +171,111 @@ msgstr ""
 msgid "Display Author Bio"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:494
+#: includes/modules/class-block-colors.php:136
+msgid "Block Colors"
+msgstr ""
+
+#: includes/modules/class-block-colors.php:153
+msgctxt "Color Option"
+msgid "Primary"
+msgstr ""
+
+#: includes/modules/class-block-colors.php:169
+msgctxt "Color Option"
+msgid "Secondary"
+msgstr ""
+
+#: includes/modules/class-block-colors.php:185
+msgctxt "Color Option"
+msgid "Tertiary"
+msgstr ""
+
+#: includes/modules/class-block-colors.php:201
+msgctxt "Color Option"
+msgid "Accent"
+msgstr ""
+
+#: includes/modules/class-block-colors.php:217
+msgctxt "Color Option"
+msgid "Highlight"
+msgstr ""
+
+#: includes/modules/class-block-colors.php:233
+msgctxt "Color Option"
+msgid "Light Gray"
+msgstr ""
+
+#: includes/modules/class-block-colors.php:249
+msgctxt "Color Option"
+msgid "Gray"
+msgstr ""
+
+#: includes/modules/class-block-colors.php:265
+msgctxt "Color Option"
+msgid "Dark Gray"
+msgstr ""
+
+#: includes/modules/class-custom-colors.php:172
 msgid "Theme Colors"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:511
-msgctxt "color setting"
+#: includes/modules/class-custom-colors.php:189
+msgctxt "Color Option"
 msgid "Top Navigation"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:527
-msgctxt "color setting"
+#: includes/modules/class-custom-colors.php:205
+msgctxt "Color Option"
 msgid "Header"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:543
-msgctxt "color setting"
-msgid "Navigation (primary)"
+#: includes/modules/class-custom-colors.php:221
+msgctxt "Color Option"
+msgid "Navigation"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:559
-msgctxt "color setting"
-msgid "Navigation (secondary)"
+#: includes/modules/class-custom-colors.php:237
+msgctxt "Color Option"
+msgid "Navigation Hover"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:575
-msgctxt "color setting"
-msgid "Post Titles (primary)"
+#: includes/modules/class-custom-colors.php:253
+msgctxt "Color Option"
+msgid "Links"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:591
-msgctxt "color setting"
-msgid "Post Titles (secondary)"
+#: includes/modules/class-custom-colors.php:269
+msgctxt "Color Option"
+msgid "Link Hover"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:607
-msgctxt "color setting"
-msgid "Links and Buttons"
+#: includes/modules/class-custom-colors.php:285
+msgctxt "Color Option"
+msgid "Buttons"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:623
-msgctxt "color setting"
+#: includes/modules/class-custom-colors.php:301
+msgctxt "Color Option"
+msgid "Button Hover"
+msgstr ""
+
+#: includes/modules/class-custom-colors.php:317
+msgctxt "Color Option"
+msgid "Titles"
+msgstr ""
+
+#: includes/modules/class-custom-colors.php:333
+msgctxt "Color Option"
+msgid "Title Hover"
+msgstr ""
+
+#: includes/modules/class-custom-colors.php:349
+msgctxt "Color Option"
 msgid "Widget Titles"
 msgstr ""
 
-#: includes/modules/class-custom-colors.php:639
-msgctxt "color setting"
+#: includes/modules/class-custom-colors.php:365
+msgctxt "Color Option"
 msgid "Footer Widgets"
 msgstr ""
 
@@ -410,6 +469,6 @@ msgstr ""
 msgid "Displays a single post from a selected category."
 msgstr ""
 
-#: poseidon-pro.php:206
+#: poseidon-pro.php:236
 msgid "Settings"
 msgstr ""
