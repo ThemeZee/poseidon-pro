@@ -86,40 +86,6 @@
 		} );
 	} );
 
-	/* Link & Button Color Option */
-	wp.customize( 'poseidon_theme_options[link_color]', function( value ) {
-		value.bind( function( newval ) {
-			var text_color;
-
-			if( isColorLight( newval ) ) {
-				text_color = '#111';
-			} else {
-				text_color = '#fff';
-			}
-
-			document.documentElement.style.setProperty( '--link-color', newval );
-			document.documentElement.style.setProperty( '--button-color', newval );
-			document.documentElement.style.setProperty( '--button-text-color', text_color );
-		} );
-	} );
-
-	/* Post Titles (primary) Color Option */
-	wp.customize( 'poseidon_theme_options[post_primary_color]', function( value ) {
-		value.bind( function( newval ) {
-			document.documentElement.style.setProperty( '--title-color', newval );
-			document.documentElement.style.setProperty( '--site-title-color', newval );
-		} );
-	} );
-
-	/* Post Titles (secondary) Color Option */
-	wp.customize( 'poseidon_theme_options[post_secondary_color]', function( value ) {
-		value.bind( function( newval ) {
-			document.documentElement.style.setProperty( '--title-hover-color', newval );
-			document.documentElement.style.setProperty( '--site-title-hover-color', newval );
-			document.documentElement.style.setProperty( '--widget-title-hover-color', newval );
-		} );
-	} );
-
 	/* Top Navigation Color Option */
 	wp.customize( 'poseidon_theme_options[top_navi_color]', function( value ) {
 		value.bind( function( newval ) {
@@ -176,6 +142,69 @@
 	wp.customize( 'poseidon_theme_options[navi_secondary_color]', function( value ) {
 		value.bind( function( newval ) {
 			document.documentElement.style.setProperty( '--navi-hover-color', newval );
+		} );
+	} );
+
+	/* Link Color Option */
+	wp.customize( 'poseidon_theme_options[link_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--link-color', newval );
+		} );
+	} );
+
+	/* Link Color Hover Option */
+	wp.customize( 'poseidon_theme_options[link_hover_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--link-hover-color', newval );
+		} );
+	} );
+
+	/* Button Color Option */
+	wp.customize( 'poseidon_theme_options[button_color]', function( value ) {
+		value.bind( function( newval ) {
+			var text_color;
+
+			if( isColorLight( newval ) ) {
+				text_color = '#111';
+			} else {
+				text_color = '#fff';
+			}
+
+			document.documentElement.style.setProperty( '--button-color', newval );
+			document.documentElement.style.setProperty( '--button-text-color', text_color );
+		} );
+	} );
+
+	/* Button Color Hover Option */
+	wp.customize( 'poseidon_theme_options[button_hover_color]', function( value ) {
+		value.bind( function( newval ) {
+			var text_color;
+
+			if( isColorLight( newval ) ) {
+				text_color = '#111';
+			} else {
+				text_color = '#fff';
+			}
+
+			document.documentElement.style.setProperty( '--button-hover-color', newval );
+			document.documentElement.style.setProperty( '--button-hover-text-color', text_color );
+		} );
+	} );
+
+	/* Post Titles (primary) Color Option */
+	wp.customize( 'poseidon_theme_options[post_primary_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--title-color', newval );
+			document.documentElement.style.setProperty( '--site-title-color', newval );
+		} );
+	} );
+
+	/* Post Titles (secondary) Color Option */
+	wp.customize( 'poseidon_theme_options[post_secondary_color]', function( value ) {
+		value.bind( function( newval ) {
+			document.documentElement.style.setProperty( '--title-hover-color', newval );
+			document.documentElement.style.setProperty( '--site-title-hover-color', newval );
+			document.documentElement.style.setProperty( '--widget-title-hover-color', newval );
 		} );
 	} );
 

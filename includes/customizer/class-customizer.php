@@ -77,9 +77,12 @@ class Poseidon_Pro_Customizer {
 			'header_color'              => '#ffffff',
 			'navi_primary_color'        => '#404040',
 			'navi_secondary_color'      => '#22aadd',
+			'link_color'                => '#22aadd',
+			'link_hover_color'          => '#404040',
+			'button_color'              => '#22aadd',
+			'button_hover_color'        => '#404040',
 			'post_primary_color'        => '#404040',
 			'post_secondary_color'      => '#22aadd',
-			'link_color'                => '#22aadd',
 			'widget_title_color'        => '#404040',
 			'widget_link_color'         => '#22aadd',
 			'footer_color'              => '#404040',
@@ -104,7 +107,7 @@ class Poseidon_Pro_Customizer {
 	 * @return void
 	 */
 	static function customize_preview_js() {
-		wp_enqueue_script( 'poseidon-pro-customizer-js', POSEIDON_PRO_PLUGIN_URL . 'assets/js/customize-preview.js', array( 'customize-preview' ), '20210215', true );
+		wp_enqueue_script( 'poseidon-pro-customizer-js', POSEIDON_PRO_PLUGIN_URL . 'assets/js/customize-preview.js', array( 'customize-preview' ), '20210306', true );
 	}
 
 	/**

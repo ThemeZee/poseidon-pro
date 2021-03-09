@@ -53,30 +53,6 @@ class Poseidon_Pro_Custom_Colors {
 		// Color Variables.
 		$color_variables = '';
 
-		// Set Link Color.
-		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
-			$color_variables .= '--link-color: ' . $theme_options['link_color'] . ';';
-			$color_variables .= '--button-color: ' . $theme_options['link_color'] . ';';
-
-			// Check if a light background color was chosen.
-			if ( self::is_color_light( $theme_options['link_color'] ) ) {
-				$color_variables .= '--button-text-color: #111;';
-			}
-		}
-
-		// Set Primary Post Color.
-		if ( $theme_options['post_primary_color'] !== $default_options['post_primary_color'] ) {
-			$color_variables .= '--title-color: ' . $theme_options['post_primary_color'] . ';';
-			$color_variables .= '--site-title-color: ' . $theme_options['post_primary_color'] . ';';
-		}
-
-		// Set Secondary Post Color.
-		if ( $theme_options['post_secondary_color'] !== $default_options['post_secondary_color'] ) {
-			$color_variables .= '--title-hover-color: ' . $theme_options['post_secondary_color'] . ';';
-			$color_variables .= '--site-title-hover-color: ' . $theme_options['post_secondary_color'] . ';';
-			$color_variables .= '--widget-title-hover-color: ' . $theme_options['post_secondary_color'] . ';';
-		}
-
 		// Set Top Navigation Color.
 		if ( $theme_options['top_navi_color'] !== $default_options['top_navi_color'] ) {
 			$color_variables .= '--header-bar-background-color: ' . $theme_options['top_navi_color'] . ';';
@@ -113,6 +89,49 @@ class Poseidon_Pro_Custom_Colors {
 		// Set Secondary Navigation Color.
 		if ( $theme_options['navi_secondary_color'] !== $default_options['navi_secondary_color'] ) {
 			$color_variables .= '--navi-hover-color: ' . $theme_options['navi_secondary_color'] . ';';
+		}
+
+		// Set Link Color.
+		if ( $theme_options['link_color'] !== $default_options['link_color'] ) {
+			$color_variables .= '--link-color: ' . $theme_options['link_color'] . ';';
+		}
+
+		// Set Link Hover Color.
+		if ( $theme_options['link_hover_color'] !== $default_options['link_hover_color'] ) {
+			$color_variables .= '--link-hover-color: ' . $theme_options['link_hover_color'] . ';';
+		}
+
+		// Set Button Color.
+		if ( $theme_options['button_color'] !== $default_options['button_color'] ) {
+			$color_variables .= '--button-color: ' . $theme_options['button_color'] . ';';
+
+			// Check if a light background color was chosen.
+			if ( self::is_color_light( $theme_options['button_color'] ) ) {
+				$color_variables .= '--button-text-color: #111;';
+			}
+		}
+
+		// Set Button Hover Color.
+		if ( $theme_options['button_hover_color'] !== $default_options['button_hover_color'] ) {
+			$color_variables .= '--button-hover-color: ' . $theme_options['button_hover_color'] . ';';
+
+			// Check if a light background color was chosen.
+			if ( self::is_color_light( $theme_options['button_hover_color'] ) ) {
+				$color_variables .= '--button-hover-text-color: #111;';
+			}
+		}
+
+		// Set Primary Post Color.
+		if ( $theme_options['post_primary_color'] !== $default_options['post_primary_color'] ) {
+			$color_variables .= '--title-color: ' . $theme_options['post_primary_color'] . ';';
+			$color_variables .= '--site-title-color: ' . $theme_options['post_primary_color'] . ';';
+		}
+
+		// Set Secondary Post Color.
+		if ( $theme_options['post_secondary_color'] !== $default_options['post_secondary_color'] ) {
+			$color_variables .= '--title-hover-color: ' . $theme_options['post_secondary_color'] . ';';
+			$color_variables .= '--site-title-hover-color: ' . $theme_options['post_secondary_color'] . ';';
+			$color_variables .= '--widget-title-hover-color: ' . $theme_options['post_secondary_color'] . ';';
 		}
 
 		// Set Widget Title Color.
@@ -167,7 +186,7 @@ class Poseidon_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[top_navi_color]', array(
-				'label'    => _x( 'Top Navigation', 'color setting', 'poseidon-pro' ),
+				'label'    => _x( 'Top Navigation', 'Color Option', 'poseidon-pro' ),
 				'section'  => 'poseidon_pro_section_colors',
 				'settings' => 'poseidon_theme_options[top_navi_color]',
 				'priority' => 10,
@@ -183,7 +202,7 @@ class Poseidon_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[header_color]', array(
-				'label'    => _x( 'Header', 'color setting', 'poseidon-pro' ),
+				'label'    => _x( 'Header', 'Color Option', 'poseidon-pro' ),
 				'section'  => 'poseidon_pro_section_colors',
 				'settings' => 'poseidon_theme_options[header_color]',
 				'priority' => 20,
@@ -199,7 +218,7 @@ class Poseidon_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[navi_primary_color]', array(
-				'label'    => _x( 'Navigation (primary)', 'color setting', 'poseidon-pro' ),
+				'label'    => _x( 'Navigation', 'Color Option', 'poseidon-pro' ),
 				'section'  => 'poseidon_pro_section_colors',
 				'settings' => 'poseidon_theme_options[navi_primary_color]',
 				'priority' => 30,
@@ -215,42 +234,10 @@ class Poseidon_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[navi_secondary_color]', array(
-				'label'    => _x( 'Navigation (secondary)', 'color setting', 'poseidon-pro' ),
+				'label'    => _x( 'Navigation Hover', 'Color Option', 'poseidon-pro' ),
 				'section'  => 'poseidon_pro_section_colors',
 				'settings' => 'poseidon_theme_options[navi_secondary_color]',
 				'priority' => 40,
-			)
-		) );
-
-		// Add Post Primary Color setting.
-		$wp_customize->add_setting( 'poseidon_theme_options[post_primary_color]', array(
-			'default'           => $default_options['post_primary_color'],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => 'sanitize_hex_color',
-		) );
-		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'poseidon_theme_options[post_primary_color]', array(
-				'label'    => _x( 'Post Titles (primary)', 'color setting', 'poseidon-pro' ),
-				'section'  => 'poseidon_pro_section_colors',
-				'settings' => 'poseidon_theme_options[post_primary_color]',
-				'priority' => 50,
-			)
-		) );
-
-		// Add Post Secondary Color setting.
-		$wp_customize->add_setting( 'poseidon_theme_options[post_secondary_color]', array(
-			'default'           => $default_options['post_secondary_color'],
-			'type'              => 'option',
-			'transport'         => 'postMessage',
-			'sanitize_callback' => 'sanitize_hex_color',
-		) );
-		$wp_customize->add_control( new WP_Customize_Color_Control(
-			$wp_customize, 'poseidon_theme_options[post_secondary_color]', array(
-				'label'    => _x( 'Post Titles (secondary)', 'color setting', 'poseidon-pro' ),
-				'section'  => 'poseidon_pro_section_colors',
-				'settings' => 'poseidon_theme_options[post_secondary_color]',
-				'priority' => 60,
 			)
 		) );
 
@@ -263,10 +250,90 @@ class Poseidon_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[link_color]', array(
-				'label'    => _x( 'Links and Buttons', 'color setting', 'poseidon-pro' ),
+				'label'    => esc_html_x( 'Links', 'Color Option', 'poseidon-pro' ),
 				'section'  => 'poseidon_pro_section_colors',
 				'settings' => 'poseidon_theme_options[link_color]',
+				'priority' => 50,
+			)
+		) );
+
+		// Add Link Hover Color setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[link_hover_color]', array(
+			'default'           => $default_options['link_hover_color'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+		) );
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'poseidon_theme_options[link_hover_color]', array(
+				'label'    => esc_html_x( 'Link Hover', 'Color Option', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[link_hover_color]',
+				'priority' => 60,
+			)
+		) );
+
+		// Add Button Color setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[button_color]', array(
+			'default'           => $default_options['button_color'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+		) );
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'poseidon_theme_options[button_color]', array(
+				'label'    => esc_html_x( 'Buttons', 'Color Option', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[button_color]',
 				'priority' => 70,
+			)
+		) );
+
+		// Add Button Hover Color setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[button_hover_color]', array(
+			'default'           => $default_options['button_hover_color'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+		) );
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'poseidon_theme_options[button_hover_color]', array(
+				'label'    => esc_html_x( 'Button Hover', 'Color Option', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[button_hover_color]',
+				'priority' => 80,
+			)
+		) );
+
+		// Add Post Primary Color setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[post_primary_color]', array(
+			'default'           => $default_options['post_primary_color'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+		) );
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'poseidon_theme_options[post_primary_color]', array(
+				'label'    => _x( 'Titles', 'Color Option', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[post_primary_color]',
+				'priority' => 90,
+			)
+		) );
+
+		// Add Post Secondary Color setting.
+		$wp_customize->add_setting( 'poseidon_theme_options[post_secondary_color]', array(
+			'default'           => $default_options['post_secondary_color'],
+			'type'              => 'option',
+			'transport'         => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+		) );
+		$wp_customize->add_control( new WP_Customize_Color_Control(
+			$wp_customize, 'poseidon_theme_options[post_secondary_color]', array(
+				'label'    => _x( 'Title Hover', 'Color Option', 'poseidon-pro' ),
+				'section'  => 'poseidon_pro_section_colors',
+				'settings' => 'poseidon_theme_options[post_secondary_color]',
+				'priority' => 100,
 			)
 		) );
 
@@ -279,10 +346,10 @@ class Poseidon_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[widget_title_color]', array(
-				'label'    => _x( 'Widget Titles', 'color setting', 'poseidon-pro' ),
+				'label'    => _x( 'Widget Titles', 'Color Option', 'poseidon-pro' ),
 				'section'  => 'poseidon_pro_section_colors',
 				'settings' => 'poseidon_theme_options[widget_title_color]',
-				'priority' => 80,
+				'priority' => 110,
 			)
 		) );
 
@@ -295,10 +362,10 @@ class Poseidon_Pro_Custom_Colors {
 		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control(
 			$wp_customize, 'poseidon_theme_options[footer_color]', array(
-				'label'    => _x( 'Footer Widgets', 'color setting', 'poseidon-pro' ),
+				'label'    => _x( 'Footer Widgets', 'Color Option', 'poseidon-pro' ),
 				'section'  => 'poseidon_pro_section_colors',
 				'settings' => 'poseidon_theme_options[footer_color]',
-				'priority' => 90,
+				'priority' => 120,
 			)
 		) );
 	}
