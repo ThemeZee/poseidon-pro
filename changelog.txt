@@ -2,6 +2,13 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 2.0
+-----------------------------------
+* added CSS variables for colors
+* updated color settings to support CSS variables
+* added new color settings
+* added block color palette options
+
 Version 1.9
 -----------------------------------
 * added CSS variables for font styles
