@@ -124,14 +124,22 @@ class Poseidon_Pro_Custom_Colors {
 		// Set Primary Post Color.
 		if ( $theme_options['post_primary_color'] !== $default_options['post_primary_color'] ) {
 			$color_variables .= '--title-color: ' . $theme_options['post_primary_color'] . ';';
-			$color_variables .= '--site-title-color: ' . $theme_options['post_primary_color'] . ';';
 		}
 
 		// Set Secondary Post Color.
 		if ( $theme_options['post_secondary_color'] !== $default_options['post_secondary_color'] ) {
 			$color_variables .= '--title-hover-color: ' . $theme_options['post_secondary_color'] . ';';
-			$color_variables .= '--site-title-hover-color: ' . $theme_options['post_secondary_color'] . ';';
 			$color_variables .= '--widget-title-hover-color: ' . $theme_options['post_secondary_color'] . ';';
+		}
+
+		// Set Site Title Color.
+		if ( $theme_options['post_primary_color'] !== $default_options['post_primary_color'] && $theme_options['header_color'] === $default_options['header_color'] ) {
+			$color_variables .= '--site-title-color: ' . $theme_options['post_primary_color'] . ';';
+		}
+
+		// Set Site Title Hover Color.
+		if ( $theme_options['post_secondary_color'] !== $default_options['post_secondary_color'] && $theme_options['header_color'] === $default_options['header_color'] ) {
+			$color_variables .= '--site-title-hover-color: ' . $theme_options['post_secondary_color'] . ';';
 		}
 
 		// Set Widget Title Color.
