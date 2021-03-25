@@ -770,15 +770,15 @@
 
 .footer-navigation-menu a:link,
 .footer-navigation-menu a:visited {
-	color: #404040;
-	color: var(--footer-text-color);
+	color: #22aadd;
+	color: var(--footer-link-color);
 	text-decoration: none;
 }
 
 .footer-navigation-menu a:hover,
 .footer-navigation-menu a:active {
-	color: #22aadd;
-	color: var(--footer-text-hover-color);
+	color: #404040;
+	color: var(--footer-link-hover-color);
 }
 
 @media only screen and (max-width: 60em) {

@@ -32,13 +32,13 @@
 
 .footer-navigation-menu a:link,
 .footer-navigation-menu a:visited {
-	@include color(--footer-text-color);
+	@include color(--footer-link-color);
 	text-decoration: none;
 }
 
 .footer-navigation-menu a:hover,
 .footer-navigation-menu a:active {
-	@include color(--footer-text-hover-color);
+	@include color(--footer-link-hover-color);
 }
 
 @media only screen and (max-width: 60em) {

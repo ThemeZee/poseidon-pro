@@ -124,10 +124,12 @@
 			}
 
 			document.documentElement.style.setProperty( '--header-background-color', newval );
+			document.documentElement.style.setProperty( '--footer-background-color', newval );
 			document.documentElement.style.setProperty( '--navi-submenu-color', newval );
 			document.documentElement.style.setProperty( '--site-title-color', text_color );
 			document.documentElement.style.setProperty( '--site-title-hover-color', hover_color );
 			document.documentElement.style.setProperty( '--navi-border-color', border_color );
+			document.documentElement.style.setProperty( '--footer-text-color', text_color );
 		} );
 	} );
 
@@ -135,6 +137,7 @@
 	wp.customize( 'poseidon_theme_options[navi_primary_color]', function( value ) {
 		value.bind( function( newval ) {
 			document.documentElement.style.setProperty( '--navi-color', newval );
+			document.documentElement.style.setProperty( '--footer-link-color', newval );
 		} );
 	} );
 
@@ -142,6 +145,7 @@
 	wp.customize( 'poseidon_theme_options[navi_secondary_color]', function( value ) {
 		value.bind( function( newval ) {
 			document.documentElement.style.setProperty( '--navi-hover-color', newval );
+			document.documentElement.style.setProperty( '--footer-link-hover-color', newval );
 		} );
 	} );
 
