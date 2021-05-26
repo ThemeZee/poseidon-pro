@@ -1,0 +1,36 @@
+.header-bar .social-icons-navigation .social-icons-menu {
+	display: flex;
+	flex-flow: row wrap;
+	margin: 0;
+	padding: 0;
+	border: none;
+	list-style: none;
+}
+
+.header-bar .social-icons-navigation .social-icons-menu li {
+	margin: 0;
+	padding: 0;
+	border: none;
+	list-style: none;
+}
+
+.header-bar .social-icons-navigation .social-icons-menu li a {
+	display: flex;
+	margin: 0;
+	padding: 0.75em;
+	@include color(--header-bar-text-color);
+}
+
+.header-bar .social-icons-navigation .social-icons-menu li a:hover,
+.header-bar .social-icons-navigation .social-icons-menu li a:active {
+	@include color(--header-bar-text-hover-color);
+	text-decoration: none;
+}
+
+.header-bar .social-icons-navigation .social-icons-menu li a .icon {
+	margin: 0;
+	width: 18px;
+	height: 18px;
+	vertical-align: top;
+	fill: currentColor;
+}

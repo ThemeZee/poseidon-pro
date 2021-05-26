@@ -31,6 +31,9 @@ class Poseidon_Pro_Header_Bar {
 
 		// Display Header Bar.
 		add_action( 'poseidon_header_bar', array( __CLASS__, 'display_header_bar' ) );
+
+		// Filter Social Menu to add SVG icons.
+		add_filter( 'walker_nav_menu_start_el', array( __CLASS__, 'nav_menu_social_icons' ), 10, 4 );
 	}
 
 	/**
@@ -115,6 +118,116 @@ class Poseidon_Pro_Header_Bar {
 		if ( function_exists( 'poseidon_get_svg' ) ) {
 			return poseidon_get_svg( $icon );
 		}
+	}
+
+	/**
+	 * Display SVG icons in social links menu.
+	 *
+	 * @param  string  $item_output The menu item output.
+	 * @param  WP_Post $item        Menu item object.
+	 * @param  int     $depth       Depth of the menu.
+	 * @param  array   $args        wp_nav_menu() arguments.
+	 * @return string  $item_output The menu item output with social icon.
+	 */
+	static function nav_menu_social_icons( $item_output, $item, $depth, $args ) {
+
+		// Get supported social icons.
+		$social_icons = self::supported_social_icons();
+
+		// Change SVG icon inside social links menu if there is supported URL.
+		if ( 'social' === $args->theme_location ) {
+			$icon = 'star';
+			foreach ( $social_icons as $attr => $value ) {
+				if ( false !== strpos( $item_output, $attr ) ) {
+					$icon = esc_attr( $value );
+				}
+			}
+			$item_output = str_replace( $args->link_after, '</span>' . self::get_social_svg( $icon ), $item_output );
+		}
+
+		return $item_output;
+	}
+
+	/**
+	 * Return social SVG markup.
+	 *
+	 * @param string $icon SVG icon id.
+	 * @return string $svg SVG markup.
+	 */
+	static function get_social_svg( $icon = null ) {
+		// Return early if no icon was defined.
+		if ( empty( $icon ) ) {
+			return;
+		}
+
+		// Create SVG markup.
+		$svg  = '<svg class="icon icon-' . esc_attr( $icon ) . '" aria-hidden="true" role="img">';
+		$svg .= ' <use xlink:href="' . POSEIDON_PRO_PLUGIN_URL . 'assets/icons/social-icons.svg#icon-' . esc_html( $icon ) . '"></use> ';
+		$svg .= '</svg>';
+
+		return $svg;
+	}
+
+	/**
+	 * Returns an array of supported social links (URL and icon name).
+	 *
+	 * @return array $social_links_icons
+	 */
+	static function supported_social_icons() {
+		// Supported social links icons.
+		$supported_social_icons = array(
+			'500px'           => '500px',
+			'amazon'          => 'amazon',
+			'apple'           => 'apple',
+			'bandcamp'        => 'bandcamp',
+			'behance.net'     => 'behance',
+			'bitbucket'       => 'bitbucket',
+			'codepen'         => 'codepen',
+			'deviantart'      => 'deviantart',
+			'digg.com'        => 'digg',
+			'dribbble'        => 'dribbble',
+			'dropbox.com'     => 'dropbox',
+			'etsy.com'        => 'etsy',
+			'facebook.com'    => 'facebook',
+			'feed'            => 'rss',
+			'rss'             => 'rss',
+			'flickr.com'      => 'flickr',
+			'foursquare.com'  => 'foursquare',
+			'github.com'      => 'github',
+			'instagram.com'   => 'instagram',
+			'linkedin.com'    => 'linkedin',
+			'mailto:'         => 'envelope',
+			'medium.com'      => 'medium-m',
+			'meetup.com'      => 'meetup',
+			'patreon'         => 'patreon',
+			'pinterest'       => 'pinterest-p',
+			'getpocket.com'   => 'get-pocket',
+			'reddit.com'      => 'reddit-alien',
+			'skype.com'       => 'skype',
+			'skype:'          => 'skype',
+			'slideshare'      => 'slideshare',
+			'snapchat.com'    => 'snapchat',
+			'soundcloud.com'  => 'soundcloud',
+			'spotify.com'     => 'spotify',
+			'stumbleupon.com' => 'stumbleupon',
+			'telegram'        => 'telegram',
+			't.me'            => 'telegram',
+			'tumblr.com'      => 'tumblr',
+			'twitch.tv'       => 'twitch',
+			'twitter.com'     => 'twitter',
+			'vimeo.com'       => 'vimeo',
+			'vine.co'         => 'vine',
+			'vk.com'          => 'vk',
+			'whatsapp'        => 'whatsapp',
+			'wa.me'           => 'whatsapp',
+			'wordpress.org'   => 'wordpress',
+			'wordpress.com'   => 'wordpress',
+			'xing.com'        => 'xing',
+			'yelp.com'        => 'yelp',
+			'youtube.com'     => 'youtube',
+		);
+
+		return $supported_social_icons;
 	}
 
 	/**
