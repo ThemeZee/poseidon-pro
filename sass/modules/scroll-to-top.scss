@@ -25,16 +25,10 @@
 	@include color(--button-hover-text-color);
 }
 
-.scroll-to-top-button::after {
-	display: inline-block;
-	margin: 0 0 0 3px;
-	color: currentColor;
-	content: '\f432';
+.scroll-to-top-button .icon {
+	margin: 0;
+	width: 22px;
+	height: 22px;
 	vertical-align: top;
-	text-decoration: inherit;
-	font-size: 28px;
-	font-family: 'Genericons';
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	fill: currentColor;
 }
