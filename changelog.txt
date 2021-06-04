@@ -2,6 +2,13 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 2.1
+-----------------------------------
+* added svg icons for social icons menu
+* added svg icon for header search
+* added svg icon for scroll to top button
+* updated RTL language stylesheet
+
 Version 2.0.2
 -----------------------------------
 * updated header and footer color option
