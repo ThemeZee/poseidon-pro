@@ -80,7 +80,7 @@ class Poseidon_Pro_Header_Search {
 
 			$items .= '<li class="header-search menu-item menu-item-search">';
 			$items .= '<a class="header-search-icon" aria-expanded="false" ' . self::amp_search_toggle() . '>';
-			$items .= '<span class="genericon-search"></span>';
+			$items .= self::get_svg( 'search' );
 			$items .= '<span class="screen-reader-text">' . esc_html_x( 'Search', 'poseidon-pro' ) . '</span>';
 			$items .= '</a>';
 			$items .= '<div class="header-search-form" ' . self::amp_search_is_toggled() . '>';
@@ -91,6 +91,17 @@ class Poseidon_Pro_Header_Search {
 		endif;
 
 		return $items;
+	}
+
+	/**
+	 * Get SVG icon.
+	 *
+	 * @return void
+	 */
+	static function get_svg( $icon ) {
+		if ( function_exists( 'poseidon_get_svg' ) ) {
+			return poseidon_get_svg( $icon );
+		}
 	}
 
 	/**

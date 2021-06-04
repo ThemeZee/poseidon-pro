@@ -32,20 +32,13 @@
 	outline: none;
 }
 
-.header-search .header-search-icon .genericon-search {
-	display: inline-block;
-	margin: 0.1em 0 0;
+.header-search .header-search-icon .icon-search {
+	display: block;
+	margin: 0.35rem 0 0;
 	padding: 0;
-	content: '\f400';
-	vertical-align: middle;
-	text-decoration: inherit;
-	font-weight: normal;
-	font-style: normal;
-	font-size: 26px;
-	font-family: 'Genericons';
-	line-height: 1;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	width: 20px;
+	height: 20px;
+	fill: currentColor;
 }
 
 @media only screen and (max-width: 60em) {
