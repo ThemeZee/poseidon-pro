@@ -474,6 +474,43 @@
 }
 
 /*--------------------------------------------------------------
+# Widget Areas
+--------------------------------------------------------------*/
+.before-header-widget-area,
+.after-header-widget-area,
+.before-footer-widget-area {
+	margin: 0 auto;
+	max-width: 1280px;
+}
+
+.before-header-widget-area,
+.after-header-widget-area {
+	padding: 3em 2em 0;
+}
+
+.before-footer-widget-area {
+	padding: 0 2em;
+}
+
+@media only screen and (max-width: 80em) {
+	.before-header-widget-area,
+	.after-header-widget-area {
+		padding-top: 2em;
+	}
+}
+
+@media only screen and (max-width: 30em) {
+	.before-header-widget-area,
+	.after-header-widget-area {
+		padding: 1.5em 1.5em 0;
+	}
+
+	.before-footer-widget-area {
+		padding: 0 1.5em;
+	}
+}
+
+/*--------------------------------------------------------------
 # Magazine Widgets
 --------------------------------------------------------------*/
 
