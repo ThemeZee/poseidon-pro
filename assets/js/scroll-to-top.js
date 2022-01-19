@@ -6,36 +6,40 @@
  * @package Poseidon Pro
  */
 
-( function( $ ) {
+ ( function() {
 
 	/**--------------------------------------------------------------
 	# Scroll to Top Feature
 	--------------------------------------------------------------*/
-	$.fn.scrollToTop = function() {
+	function scrollToTop( scrollButton ) {
+		// Return early if scroll button is missing.
+		if ( scrollButton === null ) {
+			return;
+		}
 
-		var scrollButton = $( this );
-
-		/* Hide Button by default */
-		scrollButton.hide();
-
-		/* Show Button on scroll down */
+		// Show Button on scroll down.
 		var showButton = function() {
-
-			var window_top = $( window ).scrollTop();
+			var window_top =  window.pageYOffset | document.body.scrollTop;
 
 			if ( window_top > 150 ) {
-				scrollButton.fadeIn( 200 );
+				scrollButton.classList.add( 'visible' );
 			} else {
-				scrollButton.fadeOut( 200 );
+				scrollButton.classList.remove( 'visible' );
 			}
 		}
 
+		// Call Show Button function on scrolling window event.
 		showButton();
-		$( window ).scroll( showButton );
+		window.onscroll = function() {
+			showButton();
+		}
 
-		/* Scroll Up when Button is clicked */
-		scrollButton.click( function () {
-			$( 'html, body' ).animate( { scrollTop: 0 }, 300 );
+		// Scroll up when Button is clicked.
+		scrollButton.addEventListener( 'click', function() {
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth'
+			});
 			return false;
 		} );
 	};
@@ -43,14 +47,20 @@
 	/**--------------------------------------------------------------
 	# Setup Scroll Button
 	--------------------------------------------------------------*/
-	$( document ).ready( function() {
+	document.addEventListener( 'DOMContentLoaded', function() {
+		// Create Scroll to Top button.
+		var scrollButton = document.createElement( 'button' );
+		scrollButton.setAttribute( 'id', 'scroll-to-top' );
+		scrollButton.classList.add( 'scroll-to-top-button' );
 
-		/* Add Button to HTML DOM */
-		$( 'body' ).append( '<button id=\"scroll-to-top\" class=\"scroll-to-top-button\">' + poseidonProScrollToTop.icon + '</button>' );
+		// Add icon to Scroll to Top button.
+		var icon = new DOMParser().parseFromString( poseidonProScrollToTop.icon, 'text/html' ).body.firstElementChild;
+		scrollButton.appendChild( icon);
 
-		/* Add Scroll To Top Functionality */
-		$( '#scroll-to-top' ).scrollToTop();
+		// Add Button to HTML DOM.
+		document.body.appendChild( scrollButton );
 
+		// Add Scroll To Top Functionality.
+		scrollToTop( scrollButton );
 	} );
-
-} )( jQuery );
+} )();

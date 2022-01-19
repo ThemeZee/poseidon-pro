@@ -872,7 +872,13 @@
 	background-color: var(--button-color);
 	color: #fff;
 	color: var(--button-text-color);
-	transition: none;
+	opacity: 0;
+	-webkit-transition: opacity 0.2s ease-in-out;
+	transition: opacity 0.2s ease-in-out;
+}
+
+.scroll-to-top-button.visible {
+	opacity: 1;
 }
 
 .scroll-to-top-button:focus,
