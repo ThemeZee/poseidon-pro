@@ -55,7 +55,7 @@ class Poseidon_Pro_Header_Search {
 		// Embed header search JS if enabled.
 		if ( ( true === $theme_options['header_search'] || is_customize_preview() ) && ! self::is_amp() ) :
 
-			wp_enqueue_script( 'poseidon-pro-header-search', POSEIDON_PRO_PLUGIN_URL . 'assets/js/header-search.min.js', array(), '20220120', true );
+			wp_enqueue_script( 'poseidon-pro-header-search', POSEIDON_PRO_PLUGIN_URL . 'assets/js/header-search.min.js', array(), '20220121', true );
 
 		endif;
 	}
@@ -79,11 +79,11 @@ class Poseidon_Pro_Header_Search {
 		if ( true === $theme_options['header_search'] || is_customize_preview() ) :
 
 			$items .= '<li class="header-search menu-item menu-item-search">';
-			$items .= '<a class="header-search-icon" aria-expanded="false" ' . self::amp_search_toggle() . '>';
+			$items .= '<a class="header-search-icon" aria-expanded="false" aria-controls="header-search-dropdown" ' . self::amp_search_toggle() . '>';
 			$items .= self::get_svg( 'search' );
 			$items .= '<span class="screen-reader-text">' . esc_html_x( 'Search', 'poseidon-pro' ) . '</span>';
 			$items .= '</a>';
-			$items .= '<div class="header-search-form" ' . self::amp_search_is_toggled() . '>';
+			$items .= '<div id="header-search-dropdown" class="header-search-form" ' . self::amp_search_is_toggled() . '>';
 			$items .= get_search_form( false );
 			$items .= '</div>';
 			$items .= '</li>';
