@@ -79,10 +79,9 @@ class Poseidon_Pro_Header_Search {
 		if ( true === $theme_options['header_search'] || is_customize_preview() ) :
 
 			$items .= '<li class="header-search menu-item menu-item-search">';
-			$items .= '<a class="header-search-icon" aria-expanded="false" aria-controls="header-search-dropdown" ' . self::amp_search_toggle() . '>';
+			$items .= '<button class="header-search-icon" aria-label="' . esc_attr__( 'Open search form', 'poseidon-pro' ) . '" aria-expanded="false" aria-controls="header-search-dropdown" ' . self::amp_search_toggle() . '>';
 			$items .= self::get_svg( 'search' );
-			$items .= '<span class="screen-reader-text">' . esc_html_x( 'Search', 'poseidon-pro' ) . '</span>';
-			$items .= '</a>';
+			$items .= '</button>';
 			$items .= '<div id="header-search-dropdown" class="header-search-form" ' . self::amp_search_is_toggled() . '>';
 			$items .= get_search_form( false );
 			$items .= '</div>';

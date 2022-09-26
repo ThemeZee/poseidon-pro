@@ -51,6 +51,7 @@
 		// Create Scroll to Top button.
 		var scrollButton = document.createElement( 'button' );
 		scrollButton.setAttribute( 'id', 'scroll-to-top' );
+		scrollButton.setAttribute( 'aria-label', poseidonProScrollToTop.label );
 		scrollButton.classList.add( 'scroll-to-top-button' );
 
 		// Add icon to Scroll to Top button.

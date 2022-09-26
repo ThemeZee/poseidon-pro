@@ -22,10 +22,14 @@
 .header-search .header-search-icon {
 	padding: 1em;
 	@include color(--navi-color);
+	background: none;
+	font-size: 15px;
+	font-size: 0.9375rem;
 }
 
 .header-search .header-search-icon:hover {
 	cursor: pointer;
+	color: var(--navi-hover-color);
 }
 
 .header-search .header-search-icon:focus {
