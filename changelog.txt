@@ -2,6 +2,10 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 2.2.3
+-----------------------------------
+* added Mastodon to social icons menu
+
 Version 2.2.2
 -----------------------------------
 * updated aria labels to improve accessibility
