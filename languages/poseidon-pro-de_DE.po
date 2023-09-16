@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Poseidon Pro\n"
 "Report-Msgid-Bugs-To: https://themezee.com/\n"
-"POT-Creation-Date: 2022-09-26 14:05+0200\n"
-"PO-Revision-Date: 2022-09-26 14:05+0200\n"
+"POT-Creation-Date: 2023-09-16 16:58+0200\n"
+"PO-Revision-Date: 2023-09-16 16:59+0200\n"
 "Last-Translator: \n"
 "Language-Team: ThemeZee <support@themezee.com>\n"
 "Language: de_DE\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: includes/admin/class-admin-notices.php:52
@@ -45,28 +45,36 @@ msgid "Security check failed"
 msgstr "Sicherheitscheck fehlgeschlagen"
 
 #: includes/admin/class-admin-notices.php:108
-#: includes/admin/class-plugin-updater.php:395
+#: includes/admin/class-plugin-updater.php:526
 msgid "Error"
 msgstr "Fehler"
 
-#: includes/admin/class-plugin-updater.php:201
+#: includes/admin/class-plugin-updater.php:264
 #, php-format
-msgid ""
-"There is a new version of %1$s available. %2$sView version %3$s details%4$s."
-msgstr ""
-"Es ist eine neue Version von %1$s verfügbar. %2$sDetails zu Version %3$s "
-"ansehen%4$s."
+msgid "There is a new version of %1$s available."
+msgstr "Es ist eine neue Version von %1$s verfügbar."
 
-#: includes/admin/class-plugin-updater.php:209
+#: includes/admin/class-plugin-updater.php:270
+msgid "Contact your network administrator to install the update."
+msgstr ""
+"Wende dich an deinen Netzwerkadministrator, um das Update zu installieren."
+
+#: includes/admin/class-plugin-updater.php:275
 #, php-format
-msgid ""
-"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
-"or %5$supdate now%6$s."
-msgstr ""
-"Es ist eine neue Version von %1$s verfügbar. %2$sDetails zu Version %3$s "
-"ansehen%4$s oder %5$sjetzt aktualisieren%6$s."
+msgid "%1$sView version %2$s details%3$s."
+msgstr "%1$sDetails zur Version %2$s anzeigen%3$s."
 
-#: includes/admin/class-plugin-updater.php:395
+#: includes/admin/class-plugin-updater.php:283
+#, php-format
+msgid "%1$sView version %2$s details%3$s or %4$supdate now%5$s."
+msgstr ""
+"%1$s Sehe dir Version %2$s Details an%3$s oder %4$sjetzt aktualisieren%5$s."
+
+#: includes/admin/class-plugin-updater.php:294
+msgid "Update now."
+msgstr "Jetzt aktualisieren."
+
+#: includes/admin/class-plugin-updater.php:526
 msgid "You do not have permission to install plugin updates"
 msgstr "Du hast keine Berechtigung zur Installation von Plugin Updates"
 
@@ -78,8 +86,8 @@ msgstr "Pro Version"
 #: includes/admin/class-settings-page.php:81
 #, php-format
 msgid ""
-"You can find your license keys and manage your active sites on <a href=\"%s"
-"\" target=\"_blank\">themezee.com</a>."
+"You can find your license keys and manage your active sites on <a "
+"href=\"%s\" target=\"_blank\">themezee.com</a>."
 msgstr ""
 "Du kannst deine Lizenzschlüssel und aktive Seiten unter <a href=\"%s\" "
 "target=\"_blank\">themezee.com</a> einsehen."
@@ -385,11 +393,11 @@ msgstr "Menü"
 msgid "Secondary Menu"
 msgstr "Sekundäres Menü"
 
-#: includes/modules/class-header-bar.php:256
+#: includes/modules/class-header-bar.php:257
 msgid "Top Navigation"
 msgstr "Obere Navigation"
 
-#: includes/modules/class-header-bar.php:257
+#: includes/modules/class-header-bar.php:258
 msgid "Social Icons"
 msgstr "Social Icons"
 
