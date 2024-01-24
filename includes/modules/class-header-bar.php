@@ -169,7 +169,7 @@ class Poseidon_Pro_Header_Bar {
 
 		// Create SVG markup.
 		$svg  = '<svg class="icon icon-' . esc_attr( $icon ) . '" aria-hidden="true" role="img">';
-		$svg .= ' <use xlink:href="' . POSEIDON_PRO_PLUGIN_URL . 'assets/icons/social-icons.svg?ver=20221122#icon-' . esc_html( $icon ) . '"></use> ';
+		$svg .= ' <use xlink:href="' . POSEIDON_PRO_PLUGIN_URL . 'assets/icons/social-icons.svg?ver=20240124#icon-' . esc_html( $icon ) . '"></use> ';
 		$svg .= '</svg>';
 
 		return $svg;
@@ -233,6 +233,7 @@ class Poseidon_Pro_Header_Bar {
 			'wa.me'           => 'whatsapp',
 			'wordpress.org'   => 'wordpress',
 			'wordpress.com'   => 'wordpress',
+			'x.com'           => 'x-twitter',
 			'xing.com'        => 'xing',
 			'yelp.com'        => 'yelp',
 			'youtube.com'     => 'youtube',
