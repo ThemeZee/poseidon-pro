@@ -1,3 +1,5 @@
+@use "../_mixins";
+
 .scroll-to-top-button {
 	z-index: 9999;
 	width: 45px;
@@ -9,8 +11,8 @@
 	padding: 0;
 	right: 1em;
 	bottom: 1em;
-	@include background(--button-color);
-	@include color(--button-text-color);
+	@include mixins.background(--button-color);
+	@include mixins.color(--button-text-color);
 	opacity: 0;
 	-webkit-transition: opacity 0.2s ease-in-out;
 	transition: opacity 0.2s ease-in-out;
@@ -22,13 +24,13 @@
 
 .scroll-to-top-button:focus,
 .scroll-to-top-button:active {
-	@include background(--button-color);
-	@include color(--button-text-color);
+	@include mixins.background(--button-color);
+	@include mixins.color(--button-text-color);
 }
 
 .scroll-to-top-button:hover {
-	@include background(--button-hover-color);
-	@include color(--button-hover-text-color);
+	@include mixins.background(--button-hover-color);
+	@include mixins.color(--button-hover-text-color);
 }
 
 .scroll-to-top-button .icon {

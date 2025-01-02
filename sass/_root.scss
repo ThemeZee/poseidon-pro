@@ -1,11 +1,14 @@
+@use "_mixins";
+@use "_variables";
+
 :root {
-	@include variable(--header-bar-background-color, $themeColors);
-	@include variable(--header-bar-text-color, $themeColors);
-	@include variable(--header-bar-text-hover-color, $themeColors);
-	@include variable(--header-bar-border-color, $themeColors);
-	@include variable(--footer-widgets-background-color, $themeColors);
-	@include variable(--footer-widgets-text-color, $themeColors);
-	@include variable(--footer-widgets-link-color, $themeColors);
-	@include variable(--footer-widgets-link-hover-color, $themeColors);
-	@include variable(--footer-widgets-border-color, $themeColors);
+	@include mixins.variable(--header-bar-background-color, variables.$themeColors);
+	@include mixins.variable(--header-bar-text-color, variables.$themeColors);
+	@include mixins.variable(--header-bar-text-hover-color, variables.$themeColors);
+	@include mixins.variable(--header-bar-border-color, variables.$themeColors);
+	@include mixins.variable(--footer-widgets-background-color, variables.$themeColors);
+	@include mixins.variable(--footer-widgets-text-color, variables.$themeColors);
+	@include mixins.variable(--footer-widgets-link-color, variables.$themeColors);
+	@include mixins.variable(--footer-widgets-link-hover-color, variables.$themeColors);
+	@include mixins.variable(--footer-widgets-border-color, variables.$themeColors);
 }

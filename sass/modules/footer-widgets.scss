@@ -1,6 +1,8 @@
+@use "../_mixins";
+
 .footer-widgets-background {
 	padding: 3em 0 0;
-	@include background(--footer-widgets-background-color);
+	@include mixins.background(--footer-widgets-background-color);
 }
 
 .footer-widgets {
@@ -15,53 +17,53 @@
 }
 
 .footer-widgets .widget {
-	@include color(--footer-widgets-text-color);
+	@include mixins.color(--footer-widgets-text-color);
 }
 
 .footer-widgets .widget-title {
 	border-bottom: 4px solid;
-	@include border-color(--footer-widgets-border-color);
-	@include color(--footer-widgets-link-color);
+	@include mixins.border-color(--footer-widgets-border-color);
+	@include mixins.color(--footer-widgets-link-color);
 }
 
 .footer-widgets .widget a:link,
 .footer-widgets .widget a:visited {
-	@include color(--footer-widgets-link-color);
+	@include mixins.color(--footer-widgets-link-color);
 }
 
 .footer-widgets .widget a:hover,
 .footer-widgets .widget a:active {
-	@include color(--footer-widgets-link-hover-color);
+	@include mixins.color(--footer-widgets-link-hover-color);
 }
 
 /* Custom Footer Widgets */
 #footer-widgets .tzwb-social-icons .social-icons-menu li a,
 #footer-widgets .widget_tag_cloud .tagcloud a {
-	@include color(--footer-widgets-link-color);
-	@include background(--footer-widgets-border-color);
+	@include mixins.color(--footer-widgets-link-color);
+	@include mixins.background(--footer-widgets-border-color);
 }
 
 #footer-widgets .tzwb-social-icons .social-icons-menu li a:hover,
 #footer-widgets .widget_tag_cloud .tagcloud a:hover,
 #footer-widgets .widget_tag_cloud .tagcloud a:active {
-	@include color(--footer-widgets-link-hover-color);
+	@include mixins.color(--footer-widgets-link-hover-color);
 }
 
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi {
 	border-top: 1px solid;
 	border-bottom: 1px solid;
-	@include border-color(--footer-widgets-border-color);
+	@include mixins.border-color(--footer-widgets-border-color);
 }
 
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:link,
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:visited {
-	@include color(--footer-widgets-link-hover-color);
+	@include mixins.color(--footer-widgets-link-hover-color);
 }
 
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:hover,
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a:active,
 .footer-widgets .tzwb-tabbed-content .tzwb-tabnavi li a.current-tab {
-	@include color(--footer-widgets-link-color);
+	@include mixins.color(--footer-widgets-link-color);
 }
 
 @media only screen and (max-width: 65em) {

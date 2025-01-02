@@ -1,3 +1,5 @@
+@use "../_mixins";
+
 .footer-navigation {
 	float: right;
 }
@@ -22,23 +24,23 @@
 	display: block;
 	padding: 0.1em 1em;
 	text-decoration: none;
-	@include font-size(14);
-	@include font-family(--navi-font);
-	@include font-weight(--navi-font-weight);
-	@include text-transform(--navi-text-transform);
+	@include mixins.font-size(14);
+	@include mixins.font-family(--navi-font);
+	@include mixins.font-weight(--navi-font-weight);
+	@include mixins.text-transform(--navi-text-transform);
 	-webkit-transition: all 0.2s ease;
 	transition: all 0.2s ease;
 }
 
 .footer-navigation-menu a:link,
 .footer-navigation-menu a:visited {
-	@include color(--footer-link-color);
+	@include mixins.color(--footer-link-color);
 	text-decoration: none;
 }
 
 .footer-navigation-menu a:hover,
 .footer-navigation-menu a:active {
-	@include color(--footer-link-hover-color);
+	@include mixins.color(--footer-link-hover-color);
 }
 
 @media only screen and (max-width: 60em) {
