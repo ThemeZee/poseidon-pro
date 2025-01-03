@@ -1,16 +1,18 @@
 .before-header-widget-area,
 .after-header-widget-area,
+.before-footer-columns-widget-area,
 .before-footer-widget-area {
 	margin: 0 auto;
 	max-width: 1280px;
 }
 
 .before-header-widget-area,
-.after-header-widget-area {
+.after-header-widget-area,
+.before-footer-widget-area {
 	padding: 3em 2em 0;
 }
 
-.before-footer-widget-area {
+.before-footer-columns-widget-area {
 	padding: 0 2em;
 }
 
@@ -27,7 +29,7 @@
 		padding: 1.5em 1.5em 0;
 	}
 
-	.before-footer-widget-area {
+	.before-footer-columns-widget-area {
 		padding: 0 1.5em;
 	}
 }
