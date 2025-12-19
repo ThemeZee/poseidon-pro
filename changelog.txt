@@ -2,6 +2,10 @@
 Poseidon Pro Changelog
 ===================================
 
+Version 2.2.7
+-----------------------------------
+* added Bluesky to social icons menu
+
 Version 2.2.6
 -----------------------------------
 * added Before Footer Columns widget area

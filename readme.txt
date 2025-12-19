@@ -2,7 +2,7 @@
 Plugin URL: https://themezee.com/addons/poseidon-pro/
 Tags: theme colors, typography options, header search, author bio, custom menus, scroll-to-top button, footer widgets
 Requires at least: 5.2
-Tested up to: 6.7
+Tested up to: 6.9
 
 License: GPLv2 or later
 
